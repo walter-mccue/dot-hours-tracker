@@ -24,7 +24,9 @@ const ErrorResponse = require("../services/error-response");
 // Logging and Validation
 const myFile = "users-routes.js";
 const ajv = new Ajv();
-const saltRounds = 10; // hashes password
+
+// hashes password
+const saltRounds = 10;
 
 // Schema for  create validation
 const userSchema = {
@@ -512,17 +514,17 @@ router.delete("/:id", async (req, res) => {
 /**
  * FindSelectedSecurityQuestions
  * @openapi
- * /api/users/{userName}/security-questions:
+ * /api/users/{hubId}/security-questions:
  *   get:
  *     tags:
  *       - Users
- *     description: API that finds security questions by userName
- *     summary:  Finds Selected Security Questions by username
+ *     description: API that finds security questions by hubId
+ *     summary:  Finds Selected Security Questions by hubId
  *     parameters:
- *        - name: userName
+ *        - name: hubId
  *          in: path
  *          required: true
- *          description: Username
+ *          description: hubId
  *          schema:
  *            type: string
  *     responses:
@@ -537,11 +539,11 @@ router.delete("/:id", async (req, res) => {
  */
 
 // FindSelectedSecurityQuestions
-router.get("/:userName/security-questions", async (req, res) => {
+router.get("/:hubId/security-questions", async (req, res) => {
   try {
 
-    // findOne function to find user by _id
-    User.findOne({ userName: req.params.userName }, function (err, user) {
+    // findOne function to find user by hubId
+    User.findOne({ hubId: req.params.hubId }, function (err, user) {
 
       // 404 error if user not found
       if (err) {
@@ -580,17 +582,17 @@ router.get("/:userName/security-questions", async (req, res) => {
 /**
  * findUserRole
  * @openapi
- * /api/users/{userName}/role:
+ * /api/users/{hubId}/role:
  *   get:
  *     tags:
  *       - Users
- *     description: API that finds role by userName
- *     summary:  Finds role by username
+ *     description: API that finds role by hubId
+ *     summary:  Finds role by hubId
  *     parameters:
- *        - name: userName
+ *        - name: hubId
  *          in: path
  *          required: true
- *          description: Username
+ *          description: hubId
  *          schema:
  *            type: string
  *     responses:
@@ -605,19 +607,19 @@ router.get("/:userName/security-questions", async (req, res) => {
  */
 
 //findUserRole
-router.get('/:userName/role', async (req, res) => {
+router.get('/:hubId/role', async (req, res) => {
   try {
 
-    // findOne function to find user by userName
-    User.findOne({'userName': req.params.userName}, function(err, user) {
+    // findOne function to find user by hubId
+    User.findOne({'hubId': req.params.hubId}, function(err, user) {
 
-      // If userName not found
+      // If hubId not found
       if (err) {
         console.log(err);
         const userError = new ErrorResponse(
-          404, 'Bad request, userName not found', err);
+          404, 'Bad request, hubId not found', err);
         res.status(404).send(userError.toObject());
-        errorLogger({ filename: myFile, message: "Bad request, userName not found" });
+        errorLogger({ filename: myFile, message: "Bad request, hubId not found" });
         return
       }
 

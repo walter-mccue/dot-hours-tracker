@@ -83,3 +83,364 @@
   __v: 0,
   dateModified: 2023-05-11T04:53:30.356Z
 }
+[5/11/2023, 1:58:30 AM] server	 session-routes.js - {
+  _id: new ObjectId("645c74166c7075d2349ab614"),
+  hubId: 'mccuw008',
+  password: '$2a$10$AgkvlwrG6QgOQRz3YnbqM.pYoRetthuQbJvd75uvCWpvGf9DfAs6y',
+  firstName: 'Walter',
+  lastName: 'McCue',
+  email: 'walter.mccue@gmail.com',
+  isDisabled: false,
+  role: { text: 'admin', _id: new ObjectId("645c74946c7075d2349ab61b") },
+  dateCreated: 2023-05-11T04:50:10.649Z,
+  selectedSecurityQuestions: [],
+  __v: 0,
+  dateModified: 2023-05-11T04:53:30.356Z
+}
+[5/11/2023, 2:05:04 AM] server	 session-routes.js - {
+  hubId: 'valid',
+  password: '$2a$10$ZUyxpy6/j6Hy6N2CQ5Bft.3SXaMXGgcEFTlsMwKuuH7adLXXweJ3G',
+  firstName: 'valid',
+  lastName: 'valid',
+  email: 'valid',
+  isDisabled: false,
+  role: { text: 'standard', _id: new ObjectId("645c85907d25809cea9a15d6") },
+  selectedSecurityQuestions: [
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c85907d25809cea9a15d7")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c85907d25809cea9a15d8")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c85907d25809cea9a15d9")
+    }
+  ],
+  dateCreated: 2023-05-11T05:57:11.804Z,
+  _id: new ObjectId("645c85907d25809cea9a15d5"),
+  __v: 0
+}
+[5/11/2023, 2:06:28 AM] server	 session-routes.js - {
+  hubId: 'valid1',
+  password: '$2a$10$ReBKxs5bT79PG.2snVAGFOwslSFOzEk8g/1qrA9vOqFEUCp6Gxk6S',
+  firstName: 'valid',
+  lastName: 'valid',
+  email: 'valid',
+  isDisabled: false,
+  role: { text: 'standard', _id: new ObjectId("645c85e4cd999a12071e5733") },
+  selectedSecurityQuestions: [
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c85e4cd999a12071e5734")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c85e4cd999a12071e5735")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c85e4cd999a12071e5736")
+    }
+  ],
+  dateCreated: 2023-05-11T06:06:24.022Z,
+  _id: new ObjectId("645c85e4cd999a12071e5732"),
+  __v: 0
+}
+[5/11/2023, 2:08:02 AM] server	 session-routes.js - {
+  hubId: 'valid2',
+  password: '$2a$10$8KZyLSV/WMVSgmn03uBpauD/47CVGj4NUXJ3zgRZh9a37KLo7mIuy',
+  firstName: 'valid',
+  lastName: 'valid',
+  email: 'valid',
+  isDisabled: false,
+  role: { text: 'standard', _id: new ObjectId("645c864227bc6094c029b120") },
+  selectedSecurityQuestions: [
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c864227bc6094c029b121")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c864227bc6094c029b122")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c864227bc6094c029b123")
+    }
+  ],
+  dateCreated: 2023-05-11T06:07:57.191Z,
+  _id: new ObjectId("645c864227bc6094c029b11f"),
+  __v: 0
+}
+[5/11/2023, 2:10:43 AM] server	 session-routes.js - {
+  hubId: 'valid3',
+  password: '$2a$10$pjCtAjVpX415y25rTJi6geUCVtcGXkSy9KDXA1QcRqRHInBWLIHai',
+  firstName: 'valid',
+  lastName: 'valid',
+  email: 'valid',
+  isDisabled: false,
+  role: { text: 'standard', _id: new ObjectId("645c86e31e3f1c67e368e673") },
+  selectedSecurityQuestions: [
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c86e31e3f1c67e368e674")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c86e31e3f1c67e368e675")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c86e31e3f1c67e368e676")
+    }
+  ],
+  dateCreated: 2023-05-11T06:10:34.939Z,
+  _id: new ObjectId("645c86e31e3f1c67e368e672"),
+  __v: 0
+}
+[5/11/2023, 2:13:27 AM] server	 session-routes.js - {
+  hubId: 'valid4',
+  password: '$2a$10$z26SLXO3G5aHmP5RSlRc1uGw5ebqPACwJfAqj6aDTtRucRzyE2CqW',
+  firstName: 'valid',
+  lastName: 'valid',
+  email: 'valid',
+  isDisabled: false,
+  role: { text: 'standard', _id: new ObjectId("645c878728435e016e247d5f") },
+  selectedSecurityQuestions: [
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c878728435e016e247d60")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c878728435e016e247d61")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c878728435e016e247d62")
+    }
+  ],
+  dateCreated: 2023-05-11T06:13:20.534Z,
+  _id: new ObjectId("645c878728435e016e247d5e"),
+  __v: 0
+}
+[5/11/2023, 2:13:39 AM] server	 session-routes.js - {
+  hubId: 'valid5',
+  password: '$2a$10$dOM0JVKlQs.wCbTWhSPxYuuN782zVjJeiBGqpfdJrVtP5oL1bIsUK',
+  firstName: 'valid',
+  lastName: 'valid',
+  email: 'valid',
+  isDisabled: false,
+  role: { text: 'standard', _id: new ObjectId("645c879328435e016e247d66") },
+  selectedSecurityQuestions: [
+    {
+      answerText: 'valid',
+      _id: new ObjectId("645c879328435e016e247d67")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c879328435e016e247d68")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c879328435e016e247d69")
+    }
+  ],
+  dateCreated: 2023-05-11T06:13:20.534Z,
+  _id: new ObjectId("645c879328435e016e247d65"),
+  __v: 0
+}
+[5/11/2023, 2:19:42 AM] server	 session-routes.js - {
+  hubId: 'valid6',
+  password: '$2a$10$2B5y39BcTGgZeBBLxH9cp.Qqpv3P3ZGp2rNBULf5y51.j1/.4K14e',
+  firstName: 'valid',
+  lastName: 'valid',
+  email: 'valid',
+  isDisabled: false,
+  role: { text: 'standard', _id: new ObjectId("645c88feef270cf38daf7727") },
+  selectedSecurityQuestions: [
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c88feef270cf38daf7728")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c88feef270cf38daf7729")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c88feef270cf38daf772a")
+    }
+  ],
+  dateCreated: 2023-05-11T06:19:24.978Z,
+  _id: new ObjectId("645c88feef270cf38daf7726"),
+  __v: 0
+}
+[5/11/2023, 2:22:14 AM] server	 session-routes.js - {
+  hubId: 'valid7',
+  password: '$2a$10$/QVLdnnqRVOgDTY45EamxeTsc3E85yNeyGWQmTbLevFj3EkC4F8K.',
+  firstName: 'valid',
+  lastName: 'valid',
+  email: 'valid',
+  isDisabled: false,
+  role: { text: 'standard', _id: new ObjectId("645c8996ef270cf38daf772e") },
+  selectedSecurityQuestions: [
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c8996ef270cf38daf772f")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c8996ef270cf38daf7730")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c8996ef270cf38daf7731")
+    }
+  ],
+  dateCreated: 2023-05-11T06:19:24.978Z,
+  _id: new ObjectId("645c8996ef270cf38daf772d"),
+  __v: 0
+}
+[5/11/2023, 2:24:18 AM] server	 session-routes.js - {
+  _id: new ObjectId("645c8996ef270cf38daf772d"),
+  hubId: 'valid7',
+  password: '$2a$10$/QVLdnnqRVOgDTY45EamxeTsc3E85yNeyGWQmTbLevFj3EkC4F8K.',
+  firstName: 'valid',
+  lastName: 'valid',
+  email: 'valid',
+  isDisabled: false,
+  role: { text: 'standard', _id: new ObjectId("645c8996ef270cf38daf772e") },
+  selectedSecurityQuestions: [
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c8996ef270cf38daf772f")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c8996ef270cf38daf7730")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c8996ef270cf38daf7731")
+    }
+  ],
+  dateCreated: 2023-05-11T06:19:24.978Z,
+  __v: 0
+}
+[5/11/2023, 2:24:31 AM] server	 session-routes.js - {
+  _id: new ObjectId("645c8996ef270cf38daf772d"),
+  hubId: 'valid7',
+  password: '$2a$10$/QVLdnnqRVOgDTY45EamxeTsc3E85yNeyGWQmTbLevFj3EkC4F8K.',
+  firstName: 'valid',
+  lastName: 'valid',
+  email: 'valid',
+  isDisabled: false,
+  role: { text: 'standard', _id: new ObjectId("645c8996ef270cf38daf772e") },
+  selectedSecurityQuestions: [
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c8996ef270cf38daf772f")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c8996ef270cf38daf7730")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c8996ef270cf38daf7731")
+    }
+  ],
+  dateCreated: 2023-05-11T06:19:24.978Z,
+  __v: 0
+}
+[5/11/2023, 2:27:39 AM] server	 session-routes.js - {
+  _id: new ObjectId("645c8996ef270cf38daf772d"),
+  hubId: 'valid7',
+  password: '$2a$10$/QVLdnnqRVOgDTY45EamxeTsc3E85yNeyGWQmTbLevFj3EkC4F8K.',
+  firstName: 'valid',
+  lastName: 'valid',
+  email: 'valid',
+  isDisabled: false,
+  role: { text: 'standard', _id: new ObjectId("645c8996ef270cf38daf772e") },
+  selectedSecurityQuestions: [
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c8996ef270cf38daf772f")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c8996ef270cf38daf7730")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c8996ef270cf38daf7731")
+    }
+  ],
+  dateCreated: 2023-05-11T06:19:24.978Z,
+  __v: 0
+}
+[5/11/2023, 2:30:56 AM] server	 session-routes.js - {
+  hubId: 'valid7',
+  password: '$2a$10$f99cRCmVpg8YDg02CmzwfeAWBLP2QxuwAJDBRBZIwaeHJVlU7jdUG',
+  firstName: 'valid',
+  lastName: 'valid',
+  email: 'valid',
+  isDisabled: false,
+  role: { text: 'standard', _id: new ObjectId("645c8996ef270cf38daf772e") },
+  selectedSecurityQuestions: [
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c8996ef270cf38daf772f")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c8996ef270cf38daf7730")
+    },
+    {
+      questionText: 'valid',
+      answerText: 'valid',
+      _id: new ObjectId("645c8996ef270cf38daf7731")
+    }
+  ],
+  dateCreated: 2023-05-11T06:19:24.978Z,
+  _id: new ObjectId("645c8996ef270cf38daf772d"),
+  __v: 0
+}
