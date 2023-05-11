@@ -23,3 +23,10 @@
 [5/11/2023, 2:27:12 AM] server	 session-routes.js - User valid7 failed to answer security questions correctly
 [5/11/2023, 2:29:33 AM] server	 session-routes.js - Bad Request, unable to validate
 [5/11/2023, 2:30:17 AM] server	 session-routes.js - Bad Request, unable to validate
+[5/11/2023, 2:44:18 PM] server	 security-routes.js - Bad Request, unable to validate
+[5/11/2023, 2:44:44 PM] server	 security-routes.js - Bad Request, unable to validate
+[5/11/2023, 2:44:56 PM] server	 security-routes.js - Bad Request, unable to validate
+[5/11/2023, 2:45:51 PM] server	 security-routes.js - Bad request, invalid _id
+[5/11/2023, 2:46:01 PM] server	 security-routes.js - Bad request, _id not valid
+[5/11/2023, 2:46:05 PM] server	 security-routes.js - Bad Request, unable to validate
+[5/11/2023, 2:46:18 PM] server	 security-routes.js - Bad Request, unable to validate

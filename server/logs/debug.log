@@ -444,3 +444,47 @@
   _id: new ObjectId("645c8996ef270cf38daf772d"),
   __v: 0
 }
+[5/11/2023, 2:44:07 PM] server	 security-routes.js - 
+[5/11/2023, 2:45:01 PM] server	 security-routes.js - {
+  text: 'valid',
+  isDisabled: false,
+  _id: new ObjectId("645d37ad06e33ca3944ca241"),
+  __v: 0
+}
+[5/11/2023, 2:45:44 PM] server	 security-routes.js - {
+  _id: new ObjectId("645d37ad06e33ca3944ca241"),
+  text: 'valid',
+  isDisabled: false,
+  __v: 0
+}
+[5/11/2023, 2:45:49 PM] server	 security-routes.js - {
+  _id: new ObjectId("645d37ad06e33ca3944ca241"),
+  text: 'valid',
+  isDisabled: false,
+  __v: 0
+}
+[5/11/2023, 2:46:25 PM] server	 security-routes.js - {
+  text: 'valid1',
+  isDisabled: false,
+  _id: new ObjectId("645d37ad06e33ca3944ca241"),
+  __v: 0
+}
+[5/11/2023, 2:46:30 PM] server	 security-routes.js - {
+  _id: new ObjectId("645d37ad06e33ca3944ca241"),
+  text: 'valid1',
+  isDisabled: false,
+  __v: 0
+}
+[5/11/2023, 2:48:02 PM] server	 security-routes.js - {
+  text: 'valid1',
+  isDisabled: true,
+  _id: new ObjectId("645d37ad06e33ca3944ca241"),
+  __v: 0
+}
+[5/11/2023, 2:48:06 PM] server	 security-routes.js - {
+  _id: new ObjectId("645d37ad06e33ca3944ca241"),
+  text: 'valid1',
+  isDisabled: true,
+  __v: 0
+}
+[5/11/2023, 2:48:13 PM] server	 security-routes.js - 
