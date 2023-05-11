@@ -5,6 +5,12 @@
  * Description: User APIs
 */
 
+
+/**
+ * API: http://localhost:3000/api/users
+ */
+
+
 // Require statements
 const express = require("express");
 const User = require("../models/user");
@@ -63,11 +69,6 @@ const updateUserSchema = {
   ],
   additionalProperties: false,
 };
-
-
-/**
- * API: http://localhost:3000/api/users
- */
 
 
 /**
