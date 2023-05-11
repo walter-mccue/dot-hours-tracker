@@ -1,0 +1,85 @@
+[5/11/2023, 12:43:41 AM] server	 users-routes.js - 
+[5/11/2023, 12:48:41 AM] server	 users-routes.js - 
+[5/11/2023, 12:50:30 AM] server	 users-routes.js - {
+  hubId: 'mccuw008',
+  password: '$2a$10$AgkvlwrG6QgOQRz3YnbqM.pYoRetthuQbJvd75uvCWpvGf9DfAs6y',
+  firstName: 'Walter',
+  lastName: 'McCue',
+  email: 'walter.mccue@gmail.com',
+  isDisabled: false,
+  role: { text: 'standard', _id: new ObjectId("645c74166c7075d2349ab615") },
+  dateCreated: 2023-05-11T04:50:10.649Z,
+  _id: new ObjectId("645c74166c7075d2349ab614"),
+  selectedSecurityQuestions: [],
+  __v: 0
+}
+[5/11/2023, 12:50:42 AM] server	 users-routes.js - {
+  _id: new ObjectId("645c74166c7075d2349ab614"),
+  hubId: 'mccuw008',
+  password: '$2a$10$AgkvlwrG6QgOQRz3YnbqM.pYoRetthuQbJvd75uvCWpvGf9DfAs6y',
+  firstName: 'Walter',
+  lastName: 'McCue',
+  email: 'walter.mccue@gmail.com',
+  isDisabled: false,
+  role: { text: 'standard', _id: new ObjectId("645c74166c7075d2349ab615") },
+  dateCreated: 2023-05-11T04:50:10.649Z,
+  selectedSecurityQuestions: [],
+  __v: 0
+}
+[5/11/2023, 12:52:37 AM] server	 users-routes.js - {
+  hubId: 'mccuw008',
+  password: '$2a$10$AgkvlwrG6QgOQRz3YnbqM.pYoRetthuQbJvd75uvCWpvGf9DfAs6y',
+  firstName: 'Walter',
+  lastName: 'McCue',
+  email: 'walter.mccue@gmail.com',
+  isDisabled: false,
+  role: { text: 'admin', _id: new ObjectId("645c74946c7075d2349ab61b") },
+  selectedSecurityQuestions: [],
+  dateCreated: 2023-05-11T04:50:10.649Z,
+  dateModified: 2023-05-11T04:52:36.983Z,
+  _id: new ObjectId("645c74166c7075d2349ab614"),
+  __v: 0
+}
+[5/11/2023, 12:53:30 AM] server	 users-routes.js - {
+  hubId: 'mccuw008',
+  password: '$2a$10$AgkvlwrG6QgOQRz3YnbqM.pYoRetthuQbJvd75uvCWpvGf9DfAs6y',
+  firstName: 'Walter',
+  lastName: 'McCue',
+  email: 'walter.mccue@gmail.com',
+  isDisabled: true,
+  role: { text: 'admin', _id: new ObjectId("645c74946c7075d2349ab61b") },
+  selectedSecurityQuestions: [],
+  dateCreated: 2023-05-11T04:50:10.649Z,
+  dateModified: 2023-05-11T04:53:30.356Z,
+  _id: new ObjectId("645c74166c7075d2349ab614"),
+  __v: 0
+}
+[5/11/2023, 12:53:46 AM] server	 users-routes.js - 
+[5/11/2023, 12:53:48 AM] server	 users-routes.js - {
+  _id: new ObjectId("645c74166c7075d2349ab614"),
+  hubId: 'mccuw008',
+  password: '$2a$10$AgkvlwrG6QgOQRz3YnbqM.pYoRetthuQbJvd75uvCWpvGf9DfAs6y',
+  firstName: 'Walter',
+  lastName: 'McCue',
+  email: 'walter.mccue@gmail.com',
+  isDisabled: true,
+  role: { text: 'admin', _id: new ObjectId("645c74946c7075d2349ab61b") },
+  dateCreated: 2023-05-11T04:50:10.649Z,
+  selectedSecurityQuestions: [],
+  __v: 0,
+  dateModified: 2023-05-11T04:53:30.356Z
+}
+[5/11/2023, 12:54:19 AM] server	 users-routes.js - {
+  _id: new ObjectId("645c74166c7075d2349ab614"),
+  hubId: 'mccuw008',
+  password: '$2a$10$AgkvlwrG6QgOQRz3YnbqM.pYoRetthuQbJvd75uvCWpvGf9DfAs6y',
+  firstName: 'Walter',
+  lastName: 'McCue',
+  email: 'walter.mccue@gmail.com',
+  isDisabled: false,
+  role: { text: 'admin', _id: new ObjectId("645c74946c7075d2349ab61b") },
+  dateCreated: 2023-05-11T04:50:10.649Z,
+  selectedSecurityQuestions: [],
+  __v: 0,
+  dateModified: 2023-05-11T04:53:30.356Z
+}

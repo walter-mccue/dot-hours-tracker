@@ -18,7 +18,7 @@ const Session = require("./routes/session-routes");
 
 const app = express(); // Express variable.
 
-dotenv.config();
+dotenv.config(); // dotenv config function
 
 mongoose.set('strictQuery', false); // Removes depreciation warning in console
 
