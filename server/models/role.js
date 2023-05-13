@@ -3,6 +3,7 @@
  * Author: Walter McCue
  * Date: 05/10/23
  * Description: Schema to define the roles collection
+ * References: See references.log: line 1
 */
 
 // Require statements

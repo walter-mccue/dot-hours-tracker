@@ -3,6 +3,7 @@
  * Author: Walter McCue
  * Date: 05/10/23
  * Description: Schema to define the user's selected security question
+ * References: See references.log: line 1
 */
 
 // Require statements

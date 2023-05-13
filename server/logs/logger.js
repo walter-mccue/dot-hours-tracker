@@ -3,6 +3,7 @@
  * Author: Walter McCue
  * Date: 05/10/23
  * Description: Logging script to direct log commands to the appropriate log file.
+ * References: See references.log: line 1
 */
 
 // Require statements

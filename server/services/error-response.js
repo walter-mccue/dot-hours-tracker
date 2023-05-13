@@ -3,6 +3,7 @@
  * Author: Walter McCue
  * Date: 05/10/23
  * Description: Queries with an error or no response from server
+ * References: See references.log: line 1
 */
 
 // Allows us to store server responses

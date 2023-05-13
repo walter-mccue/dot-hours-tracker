@@ -3,6 +3,7 @@
  * Author: Walter McCue
  * Date: 05/10/23
  * Description: Server connections to the database and routes for the API queries
+ * References: See references.log: line 1
 */
 
 // Require statements

@@ -3,6 +3,7 @@
  * Author: Walter McCue
  * Date: 05/10/23
  * Description: Queries with a successful response from server
+ * References: See references.log: line 1
 */
 
 
