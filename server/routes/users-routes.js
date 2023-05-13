@@ -77,16 +77,16 @@ const updateUserSchema = {
 // Logging
 const myFile = "users-routes.js";
 
-function validError() { errorLogger({
-  filename: myFile, message: "Bad request: Validation failure"});
+function validError(responseError) { errorLogger({
+  filename: myFile, message: "Bad request: Validation failure", item: responseError});
 }
 
-function requestError() { errorLogger({
-  filename: myFile, message: "Bad request: invalid path or id"});
+function requestError(responseError) { errorLogger({
+  filename: myFile, message: "Bad request: invalid path or id", item: responseError});
 }
 
-function serverError() { errorLogger({
-  filename: myFile, message: "Server error"});
+function serverError(responseError) { errorLogger({
+  filename: myFile, message: "Server error", item: responseError});
 }
 
 function successResponse(responseData) { debugLogger({
@@ -120,12 +120,21 @@ router.get("/", async (req, res) => {
       .equals(false)
       .exec(function (err, users) {
 
-        // Server Error
+        // 404 error if null values
         if (users === null) {
           const userError = new ErrorResponse(
-            404, "Bad request, path not found.", err.message);
+            404, "Bad request, path not found.", err);
           res.status(404).send(userError.toObject());
-          requestError();
+          requestError(err);
+          return;
+        }
+
+        // Server Error
+        if (err) {
+          const userError = new ErrorResponse(
+            500, "Server error.", err);
+          res.status(500).send(userError.toObject());
+          serverError(err);
           return;
         }
 
@@ -142,7 +151,7 @@ router.get("/", async (req, res) => {
     const userError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(userError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 
@@ -185,7 +194,17 @@ router.get("/:id", async (req, res) => {
         const userError = new ErrorResponse(
           404, "Bad request, invalid UserId", err);
         res.status(404).send(userError.toObject());
-        requestError();
+        requestError(req.params.id);
+        return
+      }
+
+      // Server error
+      if (err) {
+        console.log(err);
+        const userError = new ErrorResponse(
+          500, "Server error", err);
+        res.status(500).send(userError.toObject());
+        serverError(err);
         return
       }
 
@@ -272,9 +291,9 @@ router.post("/", async (req, res) => {
     if (!valid) {
       console.log("Bad Request, unable to validate");
       const userError = new ErrorResponse(
-        400, "Bad Request, unable to validate", valid);
+        400, "Bad Request, unable to validate", newUser);
       res.status(400).send(userError.toObject());
-      validError();
+      validError(newUser);
       return;
     }
 
@@ -299,7 +318,8 @@ router.post("/", async (req, res) => {
         res.status(404).send(userError.toObject());
         errorLogger({
           filename: myFile,
-          message: "Bad request, please ensure request meets requirements."});
+          message: "Bad request, please ensure request meets requirements.",
+          item: err});
         return
       }
 
@@ -317,7 +337,7 @@ router.post("/", async (req, res) => {
     const userError = ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(userError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 
@@ -379,9 +399,9 @@ router.put("/:id", async (req, res) => {
     if (!valid) {
       console.log("Bad Request, unable to validate");
       const userError = new ErrorResponse(
-        400, "Bad Request, unable to validate", valid);
+        400, "Bad Request, unable to validate", updatedUser);
       res.status(400).send(userError.toObject());
-      validError();
+      validError(updatedUser);
       return;
     }
 
@@ -394,7 +414,7 @@ router.put("/:id", async (req, res) => {
         const userError = new ErrorResponse(
           404, "Bad request, id not found", err);
         res.status(404).send(userError.toObject());
-        requestError();
+        requestError(req.params.id);
         return
       }
 

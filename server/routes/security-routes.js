@@ -19,6 +19,7 @@ const Ajv = require("ajv");
 const BaseResponse = require("../services/base-response");
 const ErrorResponse = require("../services/error-response");
 const SecurityQuestion = require("../models/security-question");
+const { async } = require("rxjs");
 
 
 // Validation
@@ -38,16 +39,16 @@ const securitySchema = {
 // Logging
 const myFile = "security-routes.js";
 
-function validError() { errorLogger({
-  filename: myFile, message: "Bad request: Validation failure"});
+function validError(responseError) { errorLogger({
+  filename: myFile, message: "Bad request: Validation failure", item: responseError});
 }
 
-function requestError() { errorLogger({
-  filename: myFile, message: "Bad request: invalid path or id"});
+function requestError(responseError) { errorLogger({
+  filename: myFile, message: "Bad request: invalid path or id", item: responseError});
 }
 
-function serverError() { errorLogger({
-  filename: myFile, message: "Server error"});
+function serverError(responseError) { errorLogger({
+  filename: myFile, message: "Server error", item: responseError});
 }
 
 function successResponse(responseData) { debugLogger({
@@ -66,13 +67,9 @@ function successResponse(responseData) { debugLogger({
  *     summary: view all security questions
  *     responses:
  *       '200':
- *         description: Success
- *       '400':
- *         description: Bad Request
- *       '404':
- *         description: Not Found
+ *         description: Successful Query
  *       '500':
- *         description: server error for all other use cases
+ *         description: Server error
  */
 
 // findAllSecurityQuestions
@@ -89,9 +86,9 @@ router.get("/", async (req, res) => {
         if (err) {
           console.log(err);
           const securityError = new ErrorResponse(
-            404, "Bad request, path not found.", err);
-          res.status(404).send(securityError.toObject());
-          requestError();
+            500, "Server error.", err);
+          res.status(500).send(securityError.toObject());
+          serverError(err);
           return
         }
 
@@ -101,16 +98,17 @@ router.get("/", async (req, res) => {
           200, "Query Successful", securityQuestions);
         res.json(securityResponse.toObject());
         successResponse(securityQuestions);
+
       }
     );
 
-  // Server error
+   // Server error
   } catch (e) {
     console.log(e);
     const securityError = new ErrorResponse(
       500, "Internal server error", e.message);
-    res.status(500).send(securityError.toObject());
-    serverError();
+   res.status(500).send(securityError.toObject());
+    serverError(e.message);
   }
 });
 
@@ -144,12 +142,12 @@ router.get("/", async (req, res) => {
  *                   type: string
  *                 isDisabled:
  *                   type: Boolean
- *       '400':
- *         description: Bad request.
+ *       '200':
+ *         description: Successful Query.
  *       '404':
  *         description: Not found.
  *       '500':
- *         description: Server expectations.
+ *         description: Server error.
  */
 
 // findById
@@ -157,17 +155,24 @@ router.get("/:id", async (req, res) => {
   try {
 
     // Find question by _id
-    SecurityQuestion.findOne(
-      { _id: req.params.id },
-      (err, securityQuestion) => {
+    SecurityQuestion.findOne({ _id: req.params.id }, (err, securityQuestion) => {
 
         // 404 Error if question is not found
-        if (securityQuestion === null) {
+        if (securityQuestion === undefined) {
           console.log(err);
           const securityError = new ErrorResponse(
-            404, "Bad request, invalid securityQuestionId", err);
+            404, "Bad request, invalid _id", err);
           res.status(404).send(securityError.toObject());
-          requestError();
+          requestError(req.params.id);
+          return
+        }
+
+        if (err) {
+          console.log(err);
+          const securityError = new ErrorResponse(
+            500, "Server Error", err);
+          res.status(500).send(securityError.toObject());
+          serverError(err);
           return
         }
 
@@ -186,7 +191,7 @@ router.get("/:id", async (req, res) => {
     const securityError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(securityError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 
@@ -216,8 +221,6 @@ router.get("/:id", async (req, res) => {
  *         description: New security question added to MongoDB
  *       '400':
  *         description: Bad Request
- *       '404':
- *         description: Null Record
  *       '500':
  *         description: Server Exception
  */
@@ -236,9 +239,9 @@ router.post("/", async (req, res) => {
     if (!valid) {
       console.log('Bad Request, unable to validate');
       const createServiceError = new ErrorResponse(
-        400, 'Bad Request, unable to validate', valid);
+        400, 'Bad Request, unable to validate', newSecurityQuestion);
       res.status(400).send(createServiceError.toObject());
-      validError();
+      validError(newSecurityQuestion);
       return
     }
 
@@ -251,9 +254,9 @@ router.post("/", async (req, res) => {
         if (err) {
           console.log(err);
           const securityError = new ErrorResponse(
-            404, "Bad request, path not found.", err);
-          res.status(404).send(securityError.toObject());
-          requestError();
+            500, "Server error", err);
+          res.status(500).send(securityError.toObject());
+          requestError(err);
           return
         }
         console.log(securityQuestion);
@@ -270,7 +273,7 @@ router.post("/", async (req, res) => {
     const securityError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(securityError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 
@@ -327,9 +330,9 @@ router.put("/:id", async (req, res) => {
     if (!valid) {
       console.log('Bad Request, unable to validate');
       const securityError = new ErrorResponse(
-        400, 'Bad Request, unable to validate', valid);
+        400, 'Bad Request, unable to validate', updateSecurityQuestion);
       res.status(400).send(securityError.toObject());
-      validError();
+      validError(securityError);
       return
     }
 
@@ -338,13 +341,23 @@ router.put("/:id", async (req, res) => {
       { _id: req.params.id },
       function (err, securityQuestion) {
 
-        // Server error
-        if (securityQuestion === null) {
+        // 404 error if _id is not found
+        if (securityQuestion === undefined) {
           console.log(err);
           const securityError = new ErrorResponse(
-            404, "Bad request, securityQuestionId not valid", err);
+            404, "Bad request, _id not valid", err);
           res.status(404).send(securityError.toObject());
-          requestError();
+          requestError(req.params.id);
+          return
+        }
+
+        // Server error
+        if (err) {
+          console.log(err);
+          const securityError = new ErrorResponse(
+            500, "Server error", err);
+          res.status(500).send(securityError.toObject());
+          serverError(err);
           return
         }
 
@@ -362,7 +375,7 @@ router.put("/:id", async (req, res) => {
             const securityError = new ErrorResponse(
               500, "Server error", err);
             res.status(500).send(securityError.toObject());
-            serverError();
+            serverError(err);
             return
           }
 
@@ -382,7 +395,7 @@ router.put("/:id", async (req, res) => {
     const securityError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(securityError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 
@@ -405,7 +418,7 @@ router.put("/:id", async (req, res) => {
  *         schema:
  *           type: string
  *     responses:
- *       '200':
+ *       '204':
  *         description: Service disabled
  *       '404':
  *         description: Bad Request
@@ -416,17 +429,28 @@ router.put("/:id", async (req, res) => {
 // deleteSecurity
 router.delete('/:id', async (req, res) => {
 
-  // findOne function to find Security Question by _id
   try {
-    SecurityQuestion.findOne({'_id': req.params.id },function (err, securityQuestion) {
+
+    // findOne function to find Security Question by _id
+    SecurityQuestion.findOne({ _id: req.params.id }, (err, securityQuestion) => {
 
       // 404 error if _id is not found
-      if (securityQuestion === null) {
+      if (securityQuestion === undefined) {
         console.log(err);
-        const securityError = new new ErrorResponse(
+        const securityError = new ErrorResponse(
           404, "Bad Request, _id not valid", err);
         res.status(404).send(securityError.toObject());
-        requestError();
+        requestError(req.params.id);
+        return
+      }
+
+      // Server error
+      if (err) {
+        console.log(err);
+        const securityError = new ErrorResponse(
+          500, "Server error", err);
+        res.status(500).send(securityError.toObject());
+        requestError(err);
         return
       }
 
@@ -443,7 +467,7 @@ router.delete('/:id', async (req, res) => {
           const securityError = ErrorResponse(
             500, "Server error", err);
           res.status(500).send(securityError.toObject());
-          serverError();
+          serverError(err);
           return
         }
 
@@ -460,9 +484,9 @@ router.delete('/:id', async (req, res) => {
   } catch (e) {
     console.log(e);
     const securityError = new ErrorResponse(
-      500, "Internal server error", err);
+      500, "Internal server error", e.message);
     res.status(500).send(securityError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 

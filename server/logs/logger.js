@@ -27,6 +27,6 @@ module.exports.debugLogger = (data) => {
 
 // Errors are logged to the error.log
 module.exports.errorLogger = (data) => {
-  const logString = `[${getDateTime()}] server\t ${data.filename} - ${data.message}\n`
+  const logString = `[${getDateTime()}] server\t ${data.filename} - ${data.message} - ${data.item}\n`
   appendFileSync(errorLog, logString)
 }
