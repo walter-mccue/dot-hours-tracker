@@ -1,0 +1,25 @@
+BUWEBDEV - inspired files:
+  server/
+    logs/
+      logger.js
+    models/
+      role.js
+      security-question.js
+      user.js
+    routes/
+      roles-routes.js
+      security-routes.js
+      session-routes.js
+      users-routes.js
+    schemas/
+      selected-security-question.js
+      user-role.js
+    services/
+      base-response.js
+      error-response.js
+    index.js
+
+Code in the above files is inspired by code written by members of House Slytherin in Web-450 316H
+  Contributors include: Richard Krasso, Thomas Schultz, Jamal Damir, Carl Logan, Walter McCue
+  Github repo: https://github.com/thschultz/bcrs
+
