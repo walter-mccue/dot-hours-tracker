@@ -342,7 +342,7 @@ router.post("/register", async (req, res) => {
       if (err) {
         console.log(err);
         const sessionError = new ErrorResponse(
-          500, "Bad request, hubId in use", err);
+          500, "Server error", err);
         res.status(500).send(sessionError.toObject());
         serverError(req.body.hubId);
         return
