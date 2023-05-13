@@ -57,6 +57,7 @@ const updateUserSchema = {
     lastName: { type: "string" },
     email: { type: "string" },
     role: {
+      type: "object",
       properties : {
         text: { type: 'string' }
       },
@@ -78,19 +79,27 @@ const updateUserSchema = {
 const myFile = "users-routes.js";
 
 function validError(responseError) { errorLogger({
-  filename: myFile, message: "Bad request: Validation failure", item: responseError});
+  filename: myFile,
+  message: "Bad request: Validation failure",
+  item: responseError});
 }
 
 function requestError(responseError) { errorLogger({
-  filename: myFile, message: "Bad request: invalid path or id", item: responseError});
+  filename: myFile,
+  message: "Bad request: invalid path or id",
+  item: responseError});
 }
 
 function serverError(responseError) { errorLogger({
-  filename: myFile, message: "Server error", item: responseError});
+  filename: myFile,
+  message: "Server error",
+  item: responseError});
 }
 
 function successResponse(responseData) { debugLogger({
-  filename: myFile, message: "Successful Query", item: responseData});
+  filename: myFile,
+  message: "Successful Query",
+  item: responseData});
 }
 
 
@@ -189,7 +198,7 @@ router.get("/:id", async (req, res) => {
     User.findOne({ _id: req.params.id }, function (err, user) {
 
       // If user is not found
-      if (user === null) {
+      if (user === undefined) {
         console.log(err);
         const userError = new ErrorResponse(
           404, "Bad request, invalid UserId", err);
@@ -409,7 +418,7 @@ router.put("/:id", async (req, res) => {
     User.findOne({ _id: req.params.id }, function (err, user) {
 
       // 404 error if user._id is not found
-      if (user === null) {
+      if (user === undefined) {
         console.log(err);
         const userError = new ErrorResponse(
           404, "Bad request, id not found", err);
@@ -437,7 +446,7 @@ router.put("/:id", async (req, res) => {
           const userError = new ErrorResponse(
             500, "Server Error", err);
           res.status(500).send(userError.toObject());
-          serverError();
+          serverError(err);
           return
         }
           // Successful Put
@@ -455,7 +464,7 @@ router.put("/:id", async (req, res) => {
     const userError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(userError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 
@@ -495,13 +504,23 @@ router.delete("/:id", async (req, res) => {
     // findOne function to find user by _id
     User.findOne({ _id: req.params.id }, function (err, user) {
 
-      // Server error
-      if (user === null) {
+      // 404 error if _id not found
+      if (user === undefined) {
         console.log(err);
         const userError = new ErrorResponse(
-          404, "Bad request, invalid UserId", err.message);
+          404, "Bad request, invalid _id", err);
         res.status(404).send(userError.toObject());
-        requestError();
+        requestError(req.params.id);
+        return;
+      }
+
+      // Server error
+      if (err) {
+        console.log(err);
+        const userError = new ErrorResponse(
+          500, "Server error", err);
+        res.status(500).send(userError.toObject());
+        serverError(err);
         return;
       }
 
@@ -521,7 +540,7 @@ router.delete("/:id", async (req, res) => {
           const userError = new ErrorResponse(
             500, "Bad request, unable to update record", err);
           res.json(500).send(userError.toObject());
-          serverError();
+          serverError(err);
           return;
         }
 
@@ -582,10 +601,10 @@ router.get("/:hubId/security-questions", async (req, res) => {
       // 404 error if user not found
       if (user === null) {
         console.log(err);
-        const userError =
-          new ErrorResponse(404, "Bad request, invalid path.", err);
+        const userError = new ErrorResponse(
+          404, "Bad request, invalid path.", err);
         res.status(404).send(userError.toObject());
-          requestError();
+          requestError(req.params.hubId);
         return
       }
 
@@ -594,16 +613,16 @@ router.get("/:hubId/security-questions", async (req, res) => {
       const userResponse = new BaseResponse(
         204, "Query Successful", user.selectedSecurityQuestions);
       res.json(userResponse.toObject());
-      successResponse(user);
+      successResponse(user.selectedSecurityQuestions);
     });
 
   // Server Error
   } catch (e) {
     console.log(e);
     const userError = new ErrorResponse(
-      500, "Internal server error", e);
+      500, "Internal server error", e.message);
     res.status(500).send(userError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 
@@ -648,23 +667,35 @@ router.get('/:hubId/role', async (req, res) => {
         const userError = new ErrorResponse(
           404, 'Bad request, hubId not found', err);
         res.status(404).send(userError.toObject());
-        requestError();
+        requestError(req.params.hubId);
+        return
+      }
+
+      // If hubId not found
+      if (err) {
+        console.log(err);
+        const userError = new ErrorResponse(
+          500, 'Server error', err);
+        res.status(500).send(userError.toObject());
+        serverError(err);
         return
       }
 
       // if user found, return user role
       console.log(user);
-      const userResponse = new BaseResponse(200, 'Query successful', user.role);
+      const userResponse = new BaseResponse(
+        200, 'Query successful', user.role);
       res.json(userResponse.toObject());
-      successResponse(user);
+      successResponse(user.role);
     })
 
     // Server error
   } catch (e) {
     console.log(e);
-    const userError = new ErrorResponse(500, 'Internal server error', e.message);
+    const userError = new ErrorResponse(
+      500, 'Internal server error', e.message);
     res.status(500).send(userError.toObject());
-    serverError();
+    serverError(e.message);
   }
 })
 
