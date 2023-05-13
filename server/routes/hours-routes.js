@@ -219,20 +219,28 @@ const hoursSchema = {
 // Logging
 const myFile = "hours-routes.js";
 
-function validError() { errorLogger({
-  filename: myFile, message: "Bad request: Validation failure"});
+function validError(responseError) { errorLogger({
+  filename: myFile,
+  message: "Bad request: Validation failure",
+  item: responseError});
 }
 
-function requestError() { errorLogger({
-  filename: myFile, message: "Bad request: invalid path or id"});
+function requestError(responseError) { errorLogger({
+  filename: myFile,
+  message: "Bad request: invalid path or id",
+  item: responseError});
 }
 
-function serverError() { errorLogger({
-  filename: myFile, message: "Server error"});
+function serverError(responseError) { errorLogger({
+  filename: myFile,
+  message: "Server error",
+  item: responseError});
 }
 
 function successResponse(responseData) { debugLogger({
-  filename: myFile, message: "Successful Query", item: responseData});
+  filename: myFile,
+  message: "Successful Query",
+  item: responseData});
 }
 
 

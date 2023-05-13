@@ -103,20 +103,28 @@ const resetPasswordSchema = {
 // Logging
 const myFile = "session-routes.js";
 
-function validError() { errorLogger({
-  filename: myFile, message: "Bad request: Validation failure"});
+function validError(responseError) { errorLogger({
+  filename: myFile,
+  message: "Bad request: Validation failure",
+  item: responseError});
 }
 
-function requestError() { errorLogger({
-  filename: myFile, message: "Bad request: invalid path or id"});
+function requestError(responseError) { errorLogger({
+  filename: myFile,
+  message: "Bad request: invalid path or id",
+  item: responseError});
 }
 
-function serverError() { errorLogger({
-  filename: myFile, message: "Server error"});
+function serverError(responseError) { errorLogger({
+  filename: myFile,
+  message: "Server error",
+  item: responseError});
 }
 
 function successResponse(responseData) { debugLogger({
-  filename: myFile, message: "Successful Query", item: responseData});
+  filename: myFile,
+  message: "Successful Query",
+  item: responseData});
 }
 
 
@@ -170,9 +178,9 @@ router.post("/login", async (req, res) => {
     if (!valid) {
       console.log("Bad Request, unable to validate");
       const sessionError = new ErrorResponse(
-        400, "Bad Request, unable to validate", valid);
+        400, "Bad Request, unable to validate", userLogin);
       res.status(400).send(sessionError.toObject());
-      validError();
+      validError(userLogin);
       return;
     }
 
@@ -180,12 +188,12 @@ router.post("/login", async (req, res) => {
     User.findOne({ hubId: req.body.hubId }, (err, user) => {
 
       // If user not found
-      if (user === null) {
+      if (err) {
         console.log(err);
         const sessionError = new ErrorResponse(
-          404, "Bad request, invalid path", err);
-        res.status(404).send(sessionError.toObject());
-        requestError();
+          500, "Server error", err);
+        res.status(500).send(sessionError.toObject());
+        serverError(err);
         return
       }
       console.log(user);
@@ -213,7 +221,9 @@ router.post("/login", async (req, res) => {
           401, "Invalid password or hubId, please try again.", null);
         res.status(401).send(sessionError.toObject());
         errorLogger({
-          filename: myFile, message: "Invalid password or hubId"});
+          filename: myFile,
+          message: "Invalid password or hubId",
+          item: req.body.password});
         return
       }
 
@@ -223,7 +233,9 @@ router.post("/login", async (req, res) => {
         401, "Invalid password or hubId, please try again.", null);
       res.status(401).send(sessionError.toObject());
       errorLogger({
-        filename: myFile, message: "Invalid password or hubId"});
+        filename: myFile,
+        message: "Invalid password or hubId",
+        item: req.body.hubId});
     });
 
   // Server Error
@@ -232,7 +244,7 @@ router.post("/login", async (req, res) => {
     const sessionError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(sessionError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 
@@ -305,7 +317,7 @@ router.post("/register", async (req, res) => {
       const sessionError = new ErrorResponse(
         400, "Bad Request, unable to validate", registerUser);
       res.status(400).send(sessionError.toObject());
-      validError();
+      validError(registerUser);
       return;
     }
 
@@ -313,13 +325,26 @@ router.post("/register", async (req, res) => {
     User.findOne({ hubId: req.body.hubId }, (err, user) => {
       console.log("user --> " + user);
 
-      // Server error
-      if (err) {
+      // If hubId is already in use
+      if (user) {
         console.log(err);
         const sessionError = new ErrorResponse(
           401, "Bad request, hubId in use", err);
         res.status(401).send(sessionError.toObject());
-        errorLogger({ filename: myFile, message: "Bad request, hubId in use" });
+        errorLogger({
+          filename: myFile,
+          message: "Bad request, hubId in use",
+          item: req.body.hubId });
+        return
+      }
+
+      // Server error
+      if (err) {
+        console.log(err);
+        const sessionError = new ErrorResponse(
+          500, "Bad request, hubId in use", err);
+        res.status(500).send(sessionError.toObject());
+        serverError(req.body.hubId);
         return
       }
 
@@ -350,7 +375,7 @@ router.post("/register", async (req, res) => {
             const sessionError = new ErrorResponse(
               500, "Internal server error", err);
             res.status(500).send(sessionError.toObject());
-            serverError();
+            serverError(err);
             return
           }
 
@@ -371,7 +396,7 @@ router.post("/register", async (req, res) => {
     const sessionError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(sessionError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 
@@ -416,7 +441,17 @@ router.get("/verify/users/:hubId", async (req, res) => {
         const sessionError = new ErrorResponse(
           404, "hubId not found", req.params.hubId);
         res.status(404).send(sessionError.toObject());
-        requestError();
+        requestError(req.params.hubId);
+        return
+      }
+
+      // Server error
+      if (err) {
+        console.log(err);
+        const sessionError = new ErrorResponse(
+          500, "Server error", err);
+        res.status(500).send(sessionError.toObject());
+        serverError(err);
         return
       }
 
@@ -429,12 +464,6 @@ router.get("/verify/users/:hubId", async (req, res) => {
         successResponse(user);
         return
       }
-
-      // If hubId is invalid
-      const sessionError = new ErrorResponse(
-        400, "Invalid hubId", req.params.hubId);
-      res.status(400).send(sessionError.toObject());
-      requestError();
     });
 
   // Server error
@@ -443,7 +472,7 @@ router.get("/verify/users/:hubId", async (req, res) => {
     const sessionError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(sessionError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 
@@ -521,7 +550,7 @@ router.post("/verify/users/:hubId/security-questions", async (req, res) => {
       const sessionError = new ErrorResponse(
         400, "Bad Request, unable to validate", verifySecurityQuestions);
       res.status(400).send(sessionError.toObject());
-      validError();
+      validError(verifySecurityQuestions);
       return;
     }
 
@@ -534,7 +563,17 @@ router.post("/verify/users/:hubId/security-questions", async (req, res) => {
         const sessionError = new ErrorResponse(
           404, "Bad request, invalid hubId", err);
         res.status(404).send(sessionError.toObject());
-        requestError();
+        requestError(req.params.hubId);
+        return;
+      }
+
+      // Server error
+      if (err) {
+        console.log(err);
+        const sessionError = new ErrorResponse(
+          500, "Server error", err);
+        res.status(500).send(sessionError.toObject());
+        serverError(err);
         return;
       }
 
@@ -577,7 +616,8 @@ router.post("/verify/users/:hubId/security-questions", async (req, res) => {
       res.json(sessionError.toObject());
       errorLogger({
         filename: myFile,
-        message: `User ${user.hubId} failed to answer security questions correctly`});
+        message: "Failed to answer security questions correctly",
+        item: user.hubId});
     });
 
     // Server Error
@@ -586,7 +626,7 @@ router.post("/verify/users/:hubId/security-questions", async (req, res) => {
     const sessionError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(sessionError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 
@@ -645,7 +685,7 @@ router.post("/users/:hubId/reset-password", async (req, res) => {
       const sessionError = new ErrorResponse(
         400, "Bad Request, unable to validate", newPassword);
       res.status(400).send(sessionError.toObject());
-      validError();
+      validError(newPassword);
       return;
     }
 
@@ -658,7 +698,7 @@ router.post("/users/:hubId/reset-password", async (req, res) => {
         const sessionError = new ErrorResponse(
           404, "Bad request, user not found", err);
         res.status(500).send(sessionError.toObject());
-        requestError();
+        requestError(req.params.hubId);
         return
       }
 
@@ -678,7 +718,7 @@ router.post("/users/:hubId/reset-password", async (req, res) => {
           const sessionError = new ErrorResponse(
             500, "Server Error", err);
           res.status(500).send(sessionError.toObject());
-          serverError();
+          serverError(err);
           return
         }
 
@@ -694,9 +734,9 @@ router.post("/users/:hubId/reset-password", async (req, res) => {
   } catch (e) {
     console.log(e);
     const sessionError = new ErrorResponse(
-      500, "Internal server error", e);
+      500, "Internal server error", e.message);
     res.status(500).send(sessionError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 

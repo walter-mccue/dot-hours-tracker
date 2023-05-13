@@ -19,7 +19,6 @@ const Ajv = require("ajv");
 const BaseResponse = require("../services/base-response");
 const ErrorResponse = require("../services/error-response");
 const SecurityQuestion = require("../models/security-question");
-const { async } = require("rxjs");
 
 
 // Validation
@@ -40,19 +39,27 @@ const securitySchema = {
 const myFile = "security-routes.js";
 
 function validError(responseError) { errorLogger({
-  filename: myFile, message: "Bad request: Validation failure", item: responseError});
+  filename: myFile,
+  message: "Bad request: Validation failure",
+  item: responseError});
 }
 
 function requestError(responseError) { errorLogger({
-  filename: myFile, message: "Bad request: invalid path or id", item: responseError});
+  filename: myFile,
+  message: "Bad request: invalid path or id",
+  item: responseError});
 }
 
 function serverError(responseError) { errorLogger({
-  filename: myFile, message: "Server error", item: responseError});
+  filename: myFile,
+  message: "Server error",
+  item: responseError});
 }
 
 function successResponse(responseData) { debugLogger({
-  filename: myFile, message: "Successful Query", item: responseData});
+  filename: myFile,
+  message: "Successful Query",
+  item: responseData});
 }
 
 

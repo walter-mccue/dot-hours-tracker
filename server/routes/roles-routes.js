@@ -38,20 +38,28 @@ const roleSchema = {
 // Logging
 const myFile = "roles-routes.js";
 
-function validError() { errorLogger({
-  filename: myFile, message: "Bad request: Validation failure"});
+function validError(responseError) { errorLogger({
+  filename: myFile,
+  message: "Bad request: Validation failure",
+  item: responseError});
 }
 
-function requestError() { errorLogger({
-  filename: myFile, message: "Bad request: invalid path or id"});
+function requestError(responseError) { errorLogger({
+  filename: myFile,
+  message: "Bad request: invalid path or id",
+  item: responseError});
 }
 
-function serverError() { errorLogger({
-  filename: myFile, message: "Server error"});
+function serverError(responseError) { errorLogger({
+  filename: myFile,
+  message: "Server error",
+  item: responseError});
 }
 
 function successResponse(responseData) { debugLogger({
-  filename: myFile, message: "Successful Query", item: responseData});
+  filename: myFile,
+  message: "Successful Query",
+  item: responseData});
 }
 
 
@@ -67,8 +75,6 @@ function successResponse(responseData) { debugLogger({
  *     responses:
  *       '200':
  *         description: Success
- *       '400':
- *         description: Bad Request
  *       '500':
  *         description: server error for all other use cases
  */
@@ -87,9 +93,9 @@ router.get("/", async (req, res) => {
         if (err) {
           console.log(err);
           const roleError = new ErrorResponse(
-            400, "Bad request, path invalid", err);
-          res.status(400).send(roleError.toObject());
-          requestError();
+            500, "Server error", err);
+          res.status(500).send(roleError.toObject());
+          serverError(err);
           return
         }
 
@@ -108,7 +114,7 @@ router.get("/", async (req, res) => {
     const roleError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(roleError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 
@@ -146,12 +152,22 @@ router.get("/:roleId", async (req, res) => {
     Role.findOne({ _id: req.params.roleId }, function (err, role) {
 
       // 404 Error if _id not found
-      if (role === null) {
+      if (role === undefined) {
         console.log(err);
         const roleError = new ErrorResponse(
           404, "Bad request, _id not found", err);
         res.status(404).send(roleError.toObject());
-        requestError();
+        requestError(req.params.roleId);
+        return
+      }
+
+      // Server error
+      if (err) {
+        console.log(err);
+        const roleError = new ErrorResponse(
+          500, "Server error", err);
+        res.status(500).send(roleError.toObject());
+        serverError(err);
         return
       }
 
@@ -169,7 +185,7 @@ router.get("/:roleId", async (req, res) => {
     const roleError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(roleError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 
@@ -224,38 +240,34 @@ router.post("/", async (req, res) => {
       const roleError = new ErrorResponse(
         400, 'Bad Request, unable to validate', newRole);
       res.status(400).send(roleError.toObject());
-      validError();
+      validError(newRole);
       return
     }
 
     // findOne function to find a Role by text value
     Role.findOne({ text: req.body.text }, (err, role) => {
 
-      // If not found
+      // Server error
       if (err) {
         console.log(err);
         const roleError = new ErrorResponse(
-          404, "Bad Request, role path not found", err);
-        res.status(404).send(roleError.toObject());
-        requestError();
+          500, "Server error", err);
+        res.status(500).send(roleError.toObject());
+        requestError(err);
         return
       }
-
       console.log(role);
 
-      // If the role does not already exist
+      // If the role already exist, return error
       if (role) {
-
-        // Error if role already exists
         console.log(`Role: ${req.body.text} already exists`);
         const roleError = new ErrorResponse(
           401, `Role: ${req.body.text} already exists.`, role);
         res.status(401).send(roleError.toObject());
         errorLogger({
-          filename: myFile, message: "Role already exists"});
+          filename: myFile, message: "Role already exists", item: role});
         return
       }
-
       const newRole = { text: req.body.text };
 
       // create function to create a new Role
@@ -267,7 +279,7 @@ router.post("/", async (req, res) => {
           const roleError = new ErrorResponse(
             500, "Server error", err);
           res.status(500).send(roleError.toObject());
-          serverError();
+          serverError(err);
           return
         }
 
@@ -286,7 +298,7 @@ router.post("/", async (req, res) => {
     const roleError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(roleError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 
@@ -343,9 +355,9 @@ router.put("/:roleId", async (req, res) => {
     if (!valid) {
       console.log('Bad Request, unable to validate');
       const roleError = new ErrorResponse(
-        400, 'Bad Request, unable to validate', valid);
+        400, 'Bad Request, unable to validate', updateRole);
       res.status(400).send(roleError.toObject());
-      validError();
+      validError(updateRole);
       return
     }
 
@@ -353,12 +365,12 @@ router.put("/:roleId", async (req, res) => {
     Role.findOne({ _id: req.params.roleId }, (err, role) => {
 
       // 404 error if _id not found
-      if (role === null) {
+      if (role === undefined) {
         console.log(err);
         const roleError = new ErrorResponse(
           404, "Bad request, _id not found", err);
         res.status(404).send(roleError.toObject());
-        requestError();
+        requestError(req.params.roleId);
           return
       }
       console.log(role);
@@ -371,7 +383,7 @@ router.put("/:roleId", async (req, res) => {
           const roleError = new ErrorResponse(
             500, "Server error", err);
           res.status(500).send(roleError.toObject());
-          serverError();
+          serverError(err);
           return
         }
 
@@ -390,7 +402,7 @@ router.put("/:roleId", async (req, res) => {
     const roleError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(roleError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 
@@ -430,12 +442,22 @@ router.delete("/:roleId", async (req, res) => {
     Role.findOne({ _id: req.params.roleId }, function (err, role) {
 
       // If _id is not found
-      if (role === null) {
+      if (role === undefined) {
         console.log(err);
         const roleError = new ErrorResponse(
           404, "Bad request, role not found", err);
         res.status(404).send(roleError.toObject());
-        requestError();
+        requestError(req.params.roleId);
+        return;
+      }
+
+      // Server error
+      if (err) {
+        console.log(err);
+        const roleError = new ErrorResponse(
+          500, "Server error", err);
+        res.status(500).send(roleError.toObject());
+        serverError(err);
         return;
       }
 
@@ -468,7 +490,7 @@ router.delete("/:roleId", async (req, res) => {
             const roleError = new ErrorResponse(
               500, "Internal server error", err);
             res.status(500).send(roleError.toObject());
-            serverError();
+            serverError(err);
             return;
           }
 
@@ -481,7 +503,8 @@ router.delete("/:roleId", async (req, res) => {
             res.status(501).send(roleError.toObject());
             errorLogger({
               filename: myFile,
-              message: `Role <${role.text}> is already in use and cannot be deleted.`});
+              message: "Role is already in use and cannot be deleted.",
+              item: role.text});
             return
           }
 
@@ -496,7 +519,7 @@ router.delete("/:roleId", async (req, res) => {
               const roleError = new ErrorResponse(
                 500, "Internal server error", err);
               res.status(500).send(roleError.toObject());
-              serverError();
+              serverError(err);
               return;
             }
 
@@ -519,7 +542,7 @@ router.delete("/:roleId", async (req, res) => {
     const roleError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(roleError.toObject());
-    serverError();
+    serverError(e.message);
   }
 });
 
