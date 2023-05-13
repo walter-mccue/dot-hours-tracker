@@ -15,6 +15,7 @@ const UsersRoute = require("./routes/users-routes");
 const RolesRoute = require("./routes/roles-routes");
 const SecurityRoute = require("./routes/security-routes");
 const Session = require("./routes/session-routes");
+const HoursRoute = require("./routes/hours-routes");
 
 const app = express(); // Express variable.
 
@@ -51,6 +52,7 @@ app.use("/api/users", UsersRoute);
 app.use("/api/security", SecurityRoute);
 app.use("/api/roles", RolesRoute);
 app.use("/api/session", Session);
+app.use("/api/hours-tracker", HoursRoute);
 
 // Error handler for 404 errors
 app.use(function (req, res, next) {
