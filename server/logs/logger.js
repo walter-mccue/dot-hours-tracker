@@ -21,7 +21,7 @@ const getDateTime = () => {
 
 // Successful operations are logged to the debug.log
 module.exports.debugLogger = (data) => {
-  const logString = `[${getDateTime()}] server\t ${data.filename} - ${data.message}\n`
+  const logString = `[${getDateTime()}] server\t ${data.filename} - ${data.message} - ${data.item}\n`
   appendFileSync(debugLog, logString)
 }
 

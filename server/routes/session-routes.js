@@ -21,12 +21,13 @@ const BaseResponse = require("../services/base-response");
 const ErrorResponse = require("../services/error-response");
 const bcrypt = require("bcryptjs");
 
-// Logging and Validation
-const myFile = "session-routes.js";
-const ajv = new Ajv();
 
 // hashes password
 const saltRounds = 10;
+
+
+// Validation
+const ajv = new Ajv();
 
 // Schema for login validation
 const loginSchema = {
@@ -99,6 +100,26 @@ const resetPasswordSchema = {
 };
 
 
+// Logging
+const myFile = "session-routes.js";
+
+function validError() { errorLogger({
+  filename: myFile, message: "Bad request: Validation failure"});
+}
+
+function requestError() { errorLogger({
+  filename: myFile, message: "Bad request: invalid path or id"});
+}
+
+function serverError() { errorLogger({
+  filename: myFile, message: "Server error"});
+}
+
+function successResponse(responseData) { debugLogger({
+  filename: myFile, message: "Successful Query", item: responseData});
+}
+
+
 /**
  * @openapi
  * /api/session/login:
@@ -150,9 +171,8 @@ router.post("/login", async (req, res) => {
       console.log("Bad Request, unable to validate");
       const sessionError = new ErrorResponse(
         400, "Bad Request, unable to validate", valid);
-      errorLogger({
-        filename: myFile, message: "Bad Request, unable to validate"});
       res.status(400).send(sessionError.toObject());
+      validError();
       return;
     }
 
@@ -164,46 +184,46 @@ router.post("/login", async (req, res) => {
         console.log(err);
         const sessionError = new ErrorResponse(
           404, "Bad request, invalid path", err);
-        errorLogger({ filename: myFile, message: "Bad request, invalid path" });
         res.status(404).send(sessionError.toObject());
-      } else {
-        console.log(user);
+        requestError();
+        return
+      }
+      console.log(user);
 
-        // Compare the string password with the hashed password in the database
-        if (user) {
-          let passwordIsValid = bcrypt.compareSync(
-            req.body.password,
-            user.password
-          );
+      // Compare the string password with the hashed password in the database
+      if (user) {
+        let passwordIsValid = bcrypt.compareSync(
+          req.body.password,
+          user.password
+        );
 
-          // Valid password
-          if (passwordIsValid) {
-            console.log("Login successful");
-            const sessionResponse = new BaseResponse(
-              200, "Login successful", user);
-            debugLogger({ filename: myFile, message: user });
-            res.json(sessionResponse.toObject());
-            return
-          }
-
-          // Invalid password
-          console.log(`Invalid password or hubId: ${user.hubId}`);
-          const sessionError = new BaseResponse(
-            401, "Invalid password or hubId, please try again.", null);
-          errorLogger({
-            filename: myFile, message: "Invalid password or hubId"});
-          res.status(401).send(sessionError.toObject());
+        // Valid password
+        if (passwordIsValid) {
+          console.log("Login successful");
+          const sessionResponse = new BaseResponse(
+            200, "Login successful", user);
+          res.json(sessionResponse.toObject());
+          successResponse(user);
           return
         }
 
-        //  Invalid hubId
-        console.log(`hubId: ${req.body.hubId} is invalid`);
+        // Invalid password
+        console.log("Invalid password or hubId");
         const sessionError = new BaseResponse(
           401, "Invalid password or hubId, please try again.", null);
+        res.status(401).send(sessionError.toObject());
         errorLogger({
           filename: myFile, message: "Invalid password or hubId"});
-        res.status(401).send(sessionError.toObject());
+        return
       }
+
+      //  Invalid hubId
+      console.log("Invalid password or hubId");
+      const sessionError = new BaseResponse(
+        401, "Invalid password or hubId, please try again.", null);
+      res.status(401).send(sessionError.toObject());
+      errorLogger({
+        filename: myFile, message: "Invalid password or hubId"});
     });
 
   // Server Error
@@ -211,8 +231,8 @@ router.post("/login", async (req, res) => {
     console.log(err);
     const sessionError = new ErrorResponse(
       500, "Internal server error", e.message);
-    errorLogger({ filename: myFile, message: "Internal server error" });
     res.status(500).send(sessionError.toObject());
+    serverError();
   }
 });
 
@@ -284,9 +304,8 @@ router.post("/register", async (req, res) => {
       console.log("Bad Request, unable to validate");
       const sessionError = new ErrorResponse(
         400, "Bad Request, unable to validate", registerUser);
-      errorLogger({
-        filename: myFile, message: "Bad Request, unable to validate"});
       res.status(400).send(sessionError.toObject());
+      validError();
       return;
     }
 
@@ -299,8 +318,8 @@ router.post("/register", async (req, res) => {
         console.log(err);
         const sessionError = new ErrorResponse(
           401, "Bad request, hubId in use", err);
-        errorLogger({ filename: myFile, message: "Bad request, hubId in use" });
         res.status(401).send(sessionError.toObject());
+        errorLogger({ filename: myFile, message: "Bad request, hubId in use" });
         return
       }
 
@@ -330,9 +349,8 @@ router.post("/register", async (req, res) => {
             console.log(err);
             const sessionError = new ErrorResponse(
               500, "Internal server error", err);
-            errorLogger({
-              filename: myFile, message: "Internal server error"});
             res.status(500).send(sessionError.toObject());
+            serverError();
             return
           }
 
@@ -340,8 +358,8 @@ router.post("/register", async (req, res) => {
           console.log(newUser);
           const sessionResponse = new BaseResponse(
             200, "Query successful", newUser);
-          debugLogger({ filename: myFile, message: newUser });
           res.json(sessionResponse.toObject());
+          successResponse(newUser);
           return
         });
       }
@@ -349,11 +367,11 @@ router.post("/register", async (req, res) => {
 
   // Server error
   } catch (e) {
-    console.log(err);
+    console.log(e);
     const sessionError = new ErrorResponse(
       500, "Internal server error", e.message);
-    errorLogger({ filename: myFile, message: "Internal server error" });
     res.status(500).send(sessionError.toObject());
+    serverError();
   }
 });
 
@@ -398,7 +416,7 @@ router.get("/verify/users/:hubId", async (req, res) => {
         const sessionError = new ErrorResponse(
           404, "hubId not found", req.params.hubId);
         res.status(404).send(sessionError.toObject());
-        errorLogger({ filename: myFile, message: "hubId not found" });
+        requestError();
         return
       }
 
@@ -408,7 +426,7 @@ router.get("/verify/users/:hubId", async (req, res) => {
         const sessionResponse = new BaseResponse(
           200, "Query successful", user);
         res.json(sessionResponse.toObject());
-        debugLogger({ filename: myFile, message: user });
+        successResponse(user);
         return
       }
 
@@ -416,7 +434,7 @@ router.get("/verify/users/:hubId", async (req, res) => {
       const sessionError = new ErrorResponse(
         400, "Invalid hubId", req.params.hubId);
       res.status(400).send(sessionError.toObject());
-      errorLogger({ filename: myFile, message: "Invalid hubId" });
+      requestError();
     });
 
   // Server error
@@ -425,7 +443,7 @@ router.get("/verify/users/:hubId", async (req, res) => {
     const sessionError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(sessionError.toObject());
-    errorLogger({ filename: myFile, message: "Internal server error" });
+    serverError();
   }
 });
 
@@ -502,9 +520,8 @@ router.post("/verify/users/:hubId/security-questions", async (req, res) => {
       console.log("Bad Request, unable to validate");
       const sessionError = new ErrorResponse(
         400, "Bad Request, unable to validate", verifySecurityQuestions);
-      errorLogger({
-        filename: myFile, message: "Bad Request, unable to validate"});
       res.status(400).send(sessionError.toObject());
+      validError();
       return;
     }
 
@@ -517,8 +534,7 @@ router.post("/verify/users/:hubId/security-questions", async (req, res) => {
         const sessionError = new ErrorResponse(
           404, "Bad request, invalid hubId", err);
         res.status(404).send(sessionError.toObject());
-        errorLogger({
-          filename: myFile, message: "Bad request, invalid hubId"});
+        requestError();
         return;
       }
 
@@ -550,7 +566,7 @@ router.post("/verify/users/:hubId/security-questions", async (req, res) => {
           `User ${user.hubId} answered security questions correctly`);
         const sessionResponse = new BaseResponse(200, "success", user);
         res.json(sessionResponse.toObject());
-        debugLogger({ filename: myFile, message: user });
+        successResponse(user);
         return;
       }
 
@@ -570,7 +586,7 @@ router.post("/verify/users/:hubId/security-questions", async (req, res) => {
     const sessionError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(sessionError.toObject());
-    errorLogger({ filename: myFile, message: "Internal server error" });
+    serverError();
   }
 });
 
@@ -628,9 +644,8 @@ router.post("/users/:hubId/reset-password", async (req, res) => {
       console.log("Bad Request, unable to validate");
       const sessionError = new ErrorResponse(
         400, "Bad Request, unable to validate", newPassword);
-      errorLogger({
-        filename: myFile, message: "Bad Request, unable to validate"});
       res.status(400).send(sessionError.toObject());
+      validError();
       return;
     }
 
@@ -643,8 +658,7 @@ router.post("/users/:hubId/reset-password", async (req, res) => {
         const sessionError = new ErrorResponse(
           404, "Bad request, user not found", err);
         res.status(500).send(sessionError.toObject());
-        errorLogger({
-          filename: myFile, message: "Bad Request, user not found"});
+        requestError();
         return
       }
 
@@ -664,8 +678,7 @@ router.post("/users/:hubId/reset-password", async (req, res) => {
           const sessionError = new ErrorResponse(
             500, "Server Error", err);
           res.status(500).send(sessionError.toObject());
-          errorLogger({
-            filename: myFile, message: "Server Error"});
+          serverError();
           return
         }
 
@@ -674,7 +687,7 @@ router.post("/users/:hubId/reset-password", async (req, res) => {
         const sessionResponse = new BaseResponse(
           200, "Query Successful", updatedUser);
         res.json(sessionResponse.toObject());
-        debugLogger({ filename: myFile, message: updatedUser });
+        successResponse(updatedUser);
       });
 
     });
@@ -683,8 +696,7 @@ router.post("/users/:hubId/reset-password", async (req, res) => {
     const sessionError = new ErrorResponse(
       500, "Internal server error", e);
     res.status(500).send(sessionError.toObject());
-    errorLogger({
-      filename: myFile, message: "Internal Server Error"});
+    serverError();
   }
 });
 

@@ -50,8 +50,8 @@ function serverError() { errorLogger({
   filename: myFile, message: "Server error"});
 }
 
-function successResponse() { debugLogger({
-  filename: myFile, message: "Successful Query"});
+function successResponse(responseData) { debugLogger({
+  filename: myFile, message: "Successful Query", item: responseData});
 }
 
 
@@ -98,7 +98,7 @@ router.get("/", async (req, res) => {
         const roleResponse = new BaseResponse(
           200, "Query successful", roles);
         res.json(roleResponse.toObject());
-        successResponse();
+        successResponse(roles);
       }
     );
 
@@ -160,7 +160,7 @@ router.get("/:roleId", async (req, res) => {
       const roleResponse = new BaseResponse(
         200, "Query successful", role);
       res.json(roleResponse.toObject());
-      successResponse();
+      successResponse(role);
     });
 
   // Server error
@@ -276,7 +276,7 @@ router.post("/", async (req, res) => {
         const roleResponse = new BaseResponse(
           200, "Query successful", role);
         res.json(roleResponse.toObject());
-        successResponse();
+        successResponse(role);
       });
     });
 
@@ -380,7 +380,7 @@ router.put("/:roleId", async (req, res) => {
         const roleResponse = new BaseResponse(
           204, "Query successful", updateRole);
         res.json(roleResponse.toObject());
-        successResponse();
+        successResponse(updateRole);
       });
     });
 
@@ -508,7 +508,7 @@ router.delete("/:roleId", async (req, res) => {
               updatedRole
             );
             res.json(roleResponse.toObject());
-            successResponse();
+            successResponse(updatedRole);
           });
         }
       );

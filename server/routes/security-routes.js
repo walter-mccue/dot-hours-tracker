@@ -21,8 +21,7 @@ const ErrorResponse = require("../services/error-response");
 const SecurityQuestion = require("../models/security-question");
 
 
-// Logging and Validation
-const myFile = "security-routes.js";
+// Validation
 const ajv = new Ajv();
 
 // Schema for  create and update validation
@@ -33,6 +32,26 @@ const securitySchema = {
   },
   required: ['text'],
   additionalProperties: false
+}
+
+
+// Logging
+const myFile = "security-routes.js";
+
+function validError() { errorLogger({
+  filename: myFile, message: "Bad request: Validation failure"});
+}
+
+function requestError() { errorLogger({
+  filename: myFile, message: "Bad request: invalid path or id"});
+}
+
+function serverError() { errorLogger({
+  filename: myFile, message: "Server error"});
+}
+
+function successResponse(responseData) { debugLogger({
+  filename: myFile, message: "Successful Query", item: responseData});
 }
 
 
@@ -72,7 +91,7 @@ router.get("/", async (req, res) => {
           const securityError = new ErrorResponse(
             404, "Bad request, path not found.", err);
           res.status(404).send(securityError.toObject());
-          errorLogger({ filename: myFile, message: "Bad request, path not found." });
+          requestError();
           return
         }
 
@@ -81,7 +100,7 @@ router.get("/", async (req, res) => {
         const securityResponse = new BaseResponse(
           200, "Query Successful", securityQuestions);
         res.json(securityResponse.toObject());
-        debugLogger({ filename: myFile, message: securityQuestions });
+        successResponse(securityQuestions);
       }
     );
 
@@ -91,7 +110,7 @@ router.get("/", async (req, res) => {
     const securityError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(securityError.toObject());
-    errorLogger({ filename: myFile, message: "Internal server error" });
+    serverError();
   }
 });
 
@@ -148,8 +167,7 @@ router.get("/:id", async (req, res) => {
           const securityError = new ErrorResponse(
             404, "Bad request, invalid securityQuestionId", err);
           res.status(404).send(securityError.toObject());
-          errorLogger({
-            filename: myFile, message: "Bad request, invalid _id"});
+          requestError();
           return
         }
 
@@ -158,7 +176,7 @@ router.get("/:id", async (req, res) => {
         const securityResponse = new BaseResponse(
           200, "Query successful", securityQuestion);
         res.json(securityResponse.toObject());
-        debugLogger({ filename: myFile, message: securityQuestion });
+        successResponse(securityQuestion);
       }
     );
 
@@ -168,7 +186,7 @@ router.get("/:id", async (req, res) => {
     const securityError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(securityError.toObject());
-    errorLogger({ filename: myFile, message: "Internal server error" });
+    serverError();
   }
 });
 
@@ -219,8 +237,8 @@ router.post("/", async (req, res) => {
       console.log('Bad Request, unable to validate');
       const createServiceError = new ErrorResponse(
         400, 'Bad Request, unable to validate', valid);
-      errorLogger({ filename: myFile, message: "Bad Request, unable to validate" });
       res.status(400).send(createServiceError.toObject());
+      validError();
       return
     }
 
@@ -235,14 +253,14 @@ router.post("/", async (req, res) => {
           const securityError = new ErrorResponse(
             404, "Bad request, path not found.", err);
           res.status(404).send(securityError.toObject());
-          errorLogger({ filename: myFile, message: "Bad request, path not found." });
+          requestError();
           return
         }
         console.log(securityQuestion);
         const securityResponse = new BaseResponse(
           200, "Query Successful", securityQuestion);
         res.json(securityResponse.toObject());
-        debugLogger({ filename: myFile, message: securityQuestion });
+        successResponse(securityQuestion);
       }
     );
 
@@ -252,7 +270,7 @@ router.post("/", async (req, res) => {
     const securityError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(securityError.toObject());
-    errorLogger({ filename: myFile, message: "Internal server error" });
+    serverError();
   }
 });
 
@@ -310,9 +328,8 @@ router.put("/:id", async (req, res) => {
       console.log('Bad Request, unable to validate');
       const securityError = new ErrorResponse(
         400, 'Bad Request, unable to validate', valid);
-      errorLogger({
-        filename: myFile, message: "Bad Request, unable to validate"});
       res.status(400).send(securityError.toObject());
+      validError();
       return
     }
 
@@ -327,8 +344,7 @@ router.put("/:id", async (req, res) => {
           const securityError = new ErrorResponse(
             404, "Bad request, securityQuestionId not valid", err);
           res.status(404).send(securityError.toObject());
-          errorLogger({
-            filename: myFile, message: "Bad request, _id not valid"});
+          requestError();
           return
         }
 
@@ -346,8 +362,7 @@ router.put("/:id", async (req, res) => {
             const securityError = new ErrorResponse(
               500, "Server error", err);
             res.status(500).send(securityError.toObject());
-            errorLogger({
-              filename: myFile, message: "Server error"});
+            serverError();
             return
           }
 
@@ -356,7 +371,7 @@ router.put("/:id", async (req, res) => {
           const securityResponse = new BaseResponse(
             204, "Query successful", savedSecurityQuestion);
           res.json(securityResponse.toObject());
-          debugLogger({ filename: myFile, message: savedSecurityQuestion });
+          successResponse(savedSecurityQuestion);
         });
       }
     );
@@ -367,7 +382,7 @@ router.put("/:id", async (req, res) => {
     const securityError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(securityError.toObject());
-    errorLogger({ filename: myFile, message: "Internal server error" });
+    serverError();
   }
 });
 
@@ -409,10 +424,9 @@ router.delete('/:id', async (req, res) => {
       if (err) {
         console.log(err);
         const securityError = new new ErrorResponse(
-          404, "Bad Request, securityQuestionId not valid", err);
+          404, "Bad Request, _id not valid", err);
         res.status(404).send(securityError.toObject());
-        errorLogger({
-          filename: myFile, message: "Bad Request, _id not valid"});
+        requestError();
         return
       }
 
@@ -429,7 +443,7 @@ router.delete('/:id', async (req, res) => {
           const securityError = ErrorResponse(
             500, "Server error", err);
           res.status(500).send(securityError.toObject());
-          errorLogger({ filename: myFile, message: "Server error" });
+          serverError();
           return
         }
 
@@ -438,7 +452,7 @@ router.delete('/:id', async (req, res) => {
         const securityResponse = new BaseResponse(
           204, "Query successful", savedSecurityQuestion);
         res.json(securityResponse.toObject());
-        debugLogger({ filename: myFile, message: savedSecurityQuestion });
+        successResponse(savedSecurityQuestion);
       });
     });
 
@@ -448,7 +462,7 @@ router.delete('/:id', async (req, res) => {
     const securityError = new ErrorResponse(
       500, "Internal server error", err);
     res.status(500).send(securityError.toObject());
-    errorLogger({ filename: myFile, message: "Internal server error" });
+    serverError();
   }
 });
 

@@ -21,12 +21,13 @@ const bcrypt = require("bcryptjs");
 const BaseResponse = require("../services/base-response");
 const ErrorResponse = require("../services/error-response");
 
-// Logging and Validation
-const myFile = "users-routes.js";
-const ajv = new Ajv();
 
 // hashes password
 const saltRounds = 10;
+
+
+// Validation
+const ajv = new Ajv();
 
 // Schema for  create validation
 const userSchema = {
@@ -73,6 +74,26 @@ const updateUserSchema = {
 };
 
 
+// Logging
+const myFile = "users-routes.js";
+
+function validError() { errorLogger({
+  filename: myFile, message: "Bad request: Validation failure"});
+}
+
+function requestError() { errorLogger({
+  filename: myFile, message: "Bad request: invalid path or id"});
+}
+
+function serverError() { errorLogger({
+  filename: myFile, message: "Server error"});
+}
+
+function successResponse(responseData) { debugLogger({
+  filename: myFile, message: "Successful Query", item: responseData});
+}
+
+
 /**
  * findAllUsers
  * @openapi
@@ -104,8 +125,7 @@ router.get("/", async (req, res) => {
           const userError = new ErrorResponse(
             404, "Bad request, path not found.", err.message);
           res.status(404).send(userError.toObject());
-          errorLogger({
-            filename: myFile, message: "Bad request, path not found."});
+          requestError();
           return;
         }
 
@@ -113,8 +133,8 @@ router.get("/", async (req, res) => {
         console.log(users);
         const userResponse = new BaseResponse(
           200, "Query Successful", users);
-        debugLogger({ filename: myFile, message: users });
         res.json(userResponse.toObject());
+        successResponse(users);
       });
 
     // Server Error
@@ -122,7 +142,7 @@ router.get("/", async (req, res) => {
     const userError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(userError.toObject());
-    errorLogger({ filename: myFile, message: "Internal server error" });
+    serverError();
   }
 });
 
@@ -165,8 +185,7 @@ router.get("/:id", async (req, res) => {
         const userError = new ErrorResponse(
           404, "Bad request, invalid UserId", err);
         res.status(404).send(userError.toObject());
-        errorLogger({
-          filename: myFile, message: "Bad request, invalid UserId"});
+        requestError();
         return
       }
 
@@ -175,7 +194,7 @@ router.get("/:id", async (req, res) => {
       const userResponse = new BaseResponse(
         200, "Query Successful", user);
       res.json(userResponse.toObject());
-      debugLogger({ filename: myFile, message: user });
+      successResponse(user);
     });
 
   // Server Error
@@ -184,7 +203,7 @@ router.get("/:id", async (req, res) => {
     const userError = new ErrorResponse(
       500, "Internal server error", e);
     res.status(500).send(userError.toObject());
-    errorLogger({ filename: myFile, message: "Internal server error" });
+    serverError();
   }
 });
 
@@ -254,9 +273,8 @@ router.post("/", async (req, res) => {
       console.log("Bad Request, unable to validate");
       const userError = new ErrorResponse(
         400, "Bad Request, unable to validate", valid);
-      errorLogger({
-        filename: myFile, message: "Bad Request, unable to validate"});
       res.status(400).send(userError.toObject());
+      validError();
       return;
     }
 
@@ -290,7 +308,7 @@ router.post("/", async (req, res) => {
       const userResponse = new BaseResponse(
         200, "Query successful", user);
       res.json(userResponse.toObject());
-      debugLogger({ filename: myFile, message: user });
+      successResponse(user);
     });
 
   // Server error
@@ -299,7 +317,7 @@ router.post("/", async (req, res) => {
     const userError = ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(userError.toObject());
-    errorLogger({ filename: myFile, message: "Internal server error" });
+    serverError();
   }
 });
 
@@ -362,9 +380,8 @@ router.put("/:id", async (req, res) => {
       console.log("Bad Request, unable to validate");
       const userError = new ErrorResponse(
         400, "Bad Request, unable to validate", valid);
-      errorLogger({
-        filename: myFile, message: "Bad Request, unable to validate"});
       res.status(400).send(userError.toObject());
+      validError();
       return;
     }
 
@@ -376,8 +393,8 @@ router.put("/:id", async (req, res) => {
         console.log(err);
         const userError = new ErrorResponse(
           404, "Bad request, id not found", err);
-        errorLogger({ filename: myFile, message: "Bad request, id not found" });
         res.status(404).send(userError.toObject());
+        requestError();
         return
       }
 
@@ -400,7 +417,7 @@ router.put("/:id", async (req, res) => {
           const userError = new ErrorResponse(
             500, "Server Error", err);
           res.status(500).send(userError.toObject());
-          errorLogger({ filename: myFile, message: "Server Error" });
+          serverError();
           return
         }
           // Successful Put
@@ -408,7 +425,7 @@ router.put("/:id", async (req, res) => {
           const userResponse = new BaseResponse(
             204, "Query successful", savedUser);
           res.json(userResponse.toObject());
-          debugLogger({ filename: myFile, message: user });
+          successResponse(savedUser);
       });
     });
 
@@ -418,7 +435,7 @@ router.put("/:id", async (req, res) => {
     const userError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(userError.toObject());
-    errorLogger({ filename: myFile, message: "Internal server error" });
+    serverError();
   }
 });
 
@@ -464,9 +481,7 @@ router.delete("/:id", async (req, res) => {
         const userError = new ErrorResponse(
           404, "Bad request, invalid UserId", err.message);
         res.status(404).send(userError.toObject());
-        errorLogger({
-          filename: myFile,
-          message: "Bad request, invalid UserId"});
+        requestError();
         return;
       }
 
@@ -486,8 +501,7 @@ router.delete("/:id", async (req, res) => {
           const userError = new ErrorResponse(
             500, "Bad request, unable to update record", err);
           res.json(500).send(userError.toObject());
-          errorLogger({
-            filename: myFile, message: "Bad request, unable to update record"});
+          serverError();
           return;
         }
 
@@ -496,7 +510,7 @@ router.delete("/:id", async (req, res) => {
         const userResponse = new BaseResponse(
           204, "Successful Query", savedUser);
         res.json(userResponse.toObject());
-        debugLogger({ filename: myFile, message: savedUser });
+        successResponse(savedUser);
       });
     });
 
@@ -506,7 +520,7 @@ router.delete("/:id", async (req, res) => {
     const userError = new ErrorResponse(
       500, "Internal server error", e.message);
     res.status(500).send(userError.toObject());
-    errorLogger({ filename: myFile, message: "Internal server error" });
+    serverError();
   }
 });
 
@@ -550,10 +564,8 @@ router.get("/:hubId/security-questions", async (req, res) => {
         console.log(err);
         const userError =
           new ErrorResponse(404, "Bad request, invalid path.", err);
-        res
-          .status(404)
-          .send(userError.toObject());
-        errorLogger({ filename: myFile, message: err });
+        res.status(404).send(userError.toObject());
+          requestError();
         return
       }
 
@@ -562,8 +574,7 @@ router.get("/:hubId/security-questions", async (req, res) => {
       const userResponse = new BaseResponse(
         204, "Query Successful", user.selectedSecurityQuestions);
       res.json(userResponse.toObject());
-      debugLogger({ filename: myFile, message: user });
-
+      successResponse(user);
     });
 
   // Server Error
@@ -571,10 +582,8 @@ router.get("/:hubId/security-questions", async (req, res) => {
     console.log(e);
     const userError = new ErrorResponse(
       500, "Internal server error", e);
-    res
-      .status(500)
-      .send(userError.toObject());
-    errorLogger({ filename: myFile, message: e });
+    res.status(500).send(userError.toObject());
+    serverError();
   }
 });
 
@@ -619,15 +628,15 @@ router.get('/:hubId/role', async (req, res) => {
         const userError = new ErrorResponse(
           404, 'Bad request, hubId not found', err);
         res.status(404).send(userError.toObject());
-        errorLogger({ filename: myFile, message: "Bad request, hubId not found" });
+        requestError();
         return
       }
 
       // if user found, return user role
       console.log(user);
       const userResponse = new BaseResponse(200, 'Query successful', user.role);
-      debugLogger({ filename: myFile, message: user.role });
       res.json(userResponse.toObject());
+      successResponse(user);
     })
 
     // Server error
@@ -635,7 +644,7 @@ router.get('/:hubId/role', async (req, res) => {
     console.log(e);
     const userError = new ErrorResponse(500, 'Internal server error', e.message);
     res.status(500).send(userError.toObject());
-    errorLogger({ filename: myFile, message: "Internal server error" });
+    serverError();
   }
 })
 
