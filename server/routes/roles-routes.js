@@ -20,7 +20,6 @@ const BaseResponse = require("../services/base-response");
 const ErrorResponse = require("../services/error-response");
 const User = require("../models/user");
 const Role = require("../models/role");
-const { async } = require("rxjs");
 
 // Validation
 const ajv = new Ajv();
