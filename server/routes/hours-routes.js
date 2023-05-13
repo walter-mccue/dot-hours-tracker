@@ -270,7 +270,7 @@ router.get("/:hubId", async (req, res) => {
     // findOne function to find hours by hubId
     Hours.findOne({ hubId }, function (err, hours) {
 
-      // If hubId is not found
+      // If no record is not found
       if (hours === null) {
         console.log(err);
         const hoursError = new ErrorResponse(

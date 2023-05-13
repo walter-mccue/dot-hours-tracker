@@ -121,7 +121,7 @@ router.get("/", async (req, res) => {
       .exec(function (err, users) {
 
         // Server Error
-        if (err) {
+        if (users === null) {
           const userError = new ErrorResponse(
             404, "Bad request, path not found.", err.message);
           res.status(404).send(userError.toObject());
@@ -180,7 +180,7 @@ router.get("/:id", async (req, res) => {
     User.findOne({ _id: req.params.id }, function (err, user) {
 
       // If user is not found
-      if (err) {
+      if (user === null) {
         console.log(err);
         const userError = new ErrorResponse(
           404, "Bad request, invalid UserId", err);
@@ -389,7 +389,7 @@ router.put("/:id", async (req, res) => {
     User.findOne({ _id: req.params.id }, function (err, user) {
 
       // 404 error if user._id is not found
-      if (err) {
+      if (user === null) {
         console.log(err);
         const userError = new ErrorResponse(
           404, "Bad request, id not found", err);
@@ -476,7 +476,7 @@ router.delete("/:id", async (req, res) => {
     User.findOne({ _id: req.params.id }, function (err, user) {
 
       // Server error
-      if (err) {
+      if (user === null) {
         console.log(err);
         const userError = new ErrorResponse(
           404, "Bad request, invalid UserId", err.message);
@@ -560,7 +560,7 @@ router.get("/:hubId/security-questions", async (req, res) => {
     User.findOne({ hubId: req.params.hubId }, function (err, user) {
 
       // 404 error if user not found
-      if (err) {
+      if (user === null) {
         console.log(err);
         const userError =
           new ErrorResponse(404, "Bad request, invalid path.", err);
@@ -623,7 +623,7 @@ router.get('/:hubId/role', async (req, res) => {
     User.findOne({'hubId': req.params.hubId}, function(err, user) {
 
       // If hubId not found
-      if (err) {
+      if (user === null) {
         console.log(err);
         const userError = new ErrorResponse(
           404, 'Bad request, hubId not found', err);

@@ -162,7 +162,7 @@ router.get("/:id", async (req, res) => {
       (err, securityQuestion) => {
 
         // 404 Error if question is not found
-        if (err) {
+        if (securityQuestion === null) {
           console.log(err);
           const securityError = new ErrorResponse(
             404, "Bad request, invalid securityQuestionId", err);
@@ -339,7 +339,7 @@ router.put("/:id", async (req, res) => {
       function (err, securityQuestion) {
 
         // Server error
-        if (err) {
+        if (securityQuestion === null) {
           console.log(err);
           const securityError = new ErrorResponse(
             404, "Bad request, securityQuestionId not valid", err);
@@ -421,7 +421,7 @@ router.delete('/:id', async (req, res) => {
     SecurityQuestion.findOne({'_id': req.params.id },function (err, securityQuestion) {
 
       // 404 error if _id is not found
-      if (err) {
+      if (securityQuestion === null) {
         console.log(err);
         const securityError = new new ErrorResponse(
           404, "Bad Request, _id not valid", err);

@@ -180,7 +180,7 @@ router.post("/login", async (req, res) => {
     User.findOne({ hubId: req.body.hubId }, (err, user) => {
 
       // If user not found
-      if (err) {
+      if (user === null) {
         console.log(err);
         const sessionError = new ErrorResponse(
           404, "Bad request, invalid path", err);
@@ -227,7 +227,7 @@ router.post("/login", async (req, res) => {
     });
 
   // Server Error
-  } catch (err) {
+  } catch (e) {
     console.log(err);
     const sessionError = new ErrorResponse(
       500, "Internal server error", e.message);
@@ -411,7 +411,7 @@ router.get("/verify/users/:hubId", async (req, res) => {
     User.findOne({ hubId: req.params.hubId }, function (err, user) {
 
       // 404 error if user not found
-      if (err) {
+      if (user === null) {
         console.log(err);
         const sessionError = new ErrorResponse(
           404, "hubId not found", req.params.hubId);
@@ -529,7 +529,7 @@ router.post("/verify/users/:hubId/security-questions", async (req, res) => {
     User.findOne({ hubId: req.params.hubId }, function (err, user) {
 
       // If hubId not found
-      if (err) {
+      if (user === null) {
         console.log(err);
         const sessionError = new ErrorResponse(
           404, "Bad request, invalid hubId", err);
@@ -653,7 +653,7 @@ router.post("/users/:hubId/reset-password", async (req, res) => {
     User.findOne({ hubId: req.params.hubId }, function (err, user) {
 
       // If user not found
-      if (err) {
+      if (user === null) {
         console.log(err);
         const sessionError = new ErrorResponse(
           404, "Bad request, user not found", err);

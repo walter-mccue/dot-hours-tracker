@@ -146,7 +146,7 @@ router.get("/:roleId", async (req, res) => {
     Role.findOne({ _id: req.params.roleId }, function (err, role) {
 
       // 404 Error if _id not found
-      if (err) {
+      if (role === null) {
         console.log(err);
         const roleError = new ErrorResponse(
           404, "Bad request, _id not found", err);
@@ -353,7 +353,7 @@ router.put("/:roleId", async (req, res) => {
     Role.findOne({ _id: req.params.roleId }, (err, role) => {
 
       // 404 error if _id not found
-      if (err) {
+      if (role === null) {
         console.log(err);
         const roleError = new ErrorResponse(
           404, "Bad request, _id not found", err);
@@ -430,7 +430,7 @@ router.delete("/:roleId", async (req, res) => {
     Role.findOne({ _id: req.params.roleId }, function (err, role) {
 
       // If _id is not found
-      if (err) {
+      if (role === null) {
         console.log(err);
         const roleError = new ErrorResponse(
           404, "Bad request, role not found", err);
