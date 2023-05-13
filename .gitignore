@@ -11,6 +11,10 @@
 npm-debug.log
 yarn-error.log
 
+# Logging
+server/logs/debug.log
+server/logs/error.log
+
 # Mongo String
 .env
 
