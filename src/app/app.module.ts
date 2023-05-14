@@ -5,6 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Base Layout Path
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
@@ -28,7 +30,36 @@ import { VerifyAccountComponent } from './shared/account/verify-account/verify-a
 import { ResetPasswordComponent } from './shared/account/reset-password/reset-password.component';
 import { NotFoundComponent } from './pages/errors/not-found/not-found.component';
 import { ServerErrorComponent } from './pages/errors/server-error/server-error.component';
-import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component'; // Shared Dialog
+
+// Shared
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+import { ErrorInterceptor } from './pages/errors/error.interceptor';
+import { CookieService } from 'ngx-cookie-service';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+
+// Angular Materials
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatListModule } from '@angular/material/list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
+// PrimeNg
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 
 
@@ -39,17 +70,10 @@ import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.c
 @NgModule({
   declarations: [
     AppComponent,
+    BaseLayoutComponent,
     HomeComponent,
-    LoginComponent,
     AboutComponent,
     ContactComponent,
-    RegisterComponent,
-    ForgotPasswordComponent,
-    VerifyAccountComponent,
-    ResetPasswordComponent,
-    ConfirmDialogComponent,
-    BaseLayoutComponent,
-    AuthLayoutComponent,
     ProfileComponent,
     UsersComponent,
     UserEditComponent,
@@ -57,15 +81,48 @@ import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.c
     SecurityQuestionEditComponent,
     RolesComponent,
     RoleEditComponent,
+    AuthLayoutComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
+    VerifyAccountComponent,
+    ResetPasswordComponent,
+    LoginComponent,
     NotFoundComponent,
-    ServerErrorComponent
+    ServerErrorComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FlexLayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatDividerModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MessagesModule,
+    MessageModule,
+    MatTableModule,
+    TableModule,
+    ButtonModule,
+    ConfirmDialogModule,
+    MatSelectModule,
+    MatStepperModule,
+    MatListModule,
+    MatCheckboxModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    CookieService, ConfirmationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

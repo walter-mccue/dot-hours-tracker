@@ -1,0 +1,43 @@
+
+
+:root {
+  --dark-primary: #0097A7;
+  --primary: #00BCD4;
+  --light-primary: #B2EBF2;
+  --accent: #FF9800;
+  --dark-text: #212121;
+  --light-text: #fff;
+  --secondary-text: #757575;
+  --divider: #BDBDBD;
+}
+
+.dark-primary {
+  background-color: var(--dark-primary);
+  color: var(--light-text);
+}
+
+.primary-color {
+  background-color: var(--primary);
+  color: var(--dark-text);
+}
+
+.accent-color {
+  background-color: var(--accent);
+  color: var(--dark-text);
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+}
+
+
+@media (max-width: 800px) {
+
+  .title {
+    font-size: 1.5rem;
+  }
+}

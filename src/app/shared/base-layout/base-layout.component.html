@@ -1,1 +1,66 @@
-<p>base-layout works!</p>
+
+
+<div fxLayout="column" class="w-100">
+
+  <div fxFlex class="header dark-primary">
+
+    <div class="header-content">
+      <nav>
+
+        <div class="mobile-toggle">
+          <button mat-icon-button [matMenuTriggerFor]="navMenu" aria-label="Navigation Menu" class="menu-btn">
+            <mat-icon>menu</mat-icon>
+            <mat-menu #navMenu fxFlex class="primary-color">
+              <button mat-raised-button color="accent" routerLink="/" mat-button>Home</button>
+              <button mat-raised-button color="accent" routerLink="/about" mat-button>About</button>
+              <button mat-raised-button color="accent" routerLink="/contact" mat-button>Contact</button>
+            </mat-menu>
+          </button>
+        </div>
+
+        <div class="navbar-container">
+          <button mat-raised-button color="accent" routerLink="">Home</button>
+          <button mat-raised-button color="accent" routerLink="about">About</button>
+          <button mat-raised-button color="accent" routerLink="contact">Contact</button>
+        </div>
+
+      </nav>
+    </div>
+
+    <div class="header-content">
+      <h1 class="title">DOT Hours Tracker</h1>
+    </div>
+
+    <div class="header-content" align="end">
+      <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User Profile menu" class="menu-btn">
+        <mat-icon>perm_identity</mat-icon>
+      </button>
+      <mat-menu #profileMenu class="primary-color">
+        <p style="padding: 1rem; font-size: 1.125rem; color: #fff;">
+          Signed in as
+        </p>
+        <button mat-raised-button color="accent">
+          <mat-icon>logout</mat-icon>
+          <span>Log out</span>
+        </button>
+      </mat-menu>
+    </div>
+
+  </div>
+
+  <div fxFlex class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div fxFlex class="footer dark-primary">
+    <img src="../../../assets/optical-logo.png" class="logo" />
+    <p>DOT Hours Tracker created by <br />
+      <span style="font-weight:bold;">Optical Power and Performance</span> &copy; 2023
+    </p>
+
+  </div>
+
+
+
+
+</div>
