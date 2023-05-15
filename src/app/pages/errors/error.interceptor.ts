@@ -1,3 +1,10 @@
+/**
+ * Title: error.interceptor.ts
+ * Author: Walter McCue
+ * Date: 05/14/23
+ * Description: Error handling for server errors and incorrect user paths or actions
+*/
+
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,

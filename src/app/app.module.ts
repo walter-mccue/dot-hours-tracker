@@ -1,3 +1,9 @@
+/**
+ * Title: app.module.ts
+ * Author: Walter McCue
+ * Date: 05/14/23
+ * Description: Main module for angular application
+*/
 
 // Angular modules
 import { NgModule } from '@angular/core';
@@ -28,6 +34,7 @@ import { RegisterComponent } from './shared/account/register/register.component'
 import { ForgotPasswordComponent } from './shared/account/forgot-password/forgot-password.component';
 import { VerifyAccountComponent } from './shared/account/verify-account/verify-account.component';
 import { ResetPasswordComponent } from './shared/account/reset-password/reset-password.component';
+import { TermsOfServiceComponent } from './shared/account/terms-of-service/terms-of-service.component';
 import { NotFoundComponent } from './pages/errors/not-found/not-found.component';
 import { ServerErrorComponent } from './pages/errors/server-error/server-error.component';
 
@@ -62,11 +69,6 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 
 
-
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,6 +89,7 @@ import { ConfirmationService } from 'primeng/api';
     VerifyAccountComponent,
     ResetPasswordComponent,
     LoginComponent,
+    TermsOfServiceComponent,
     NotFoundComponent,
     ServerErrorComponent,
     ConfirmDialogComponent,

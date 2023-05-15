@@ -1,3 +1,9 @@
+/**
+ * Title: app-routing.module.ts
+ * Author: Walter McCue
+ * Date: 05/14/23
+ * Description: Defines routing from within the application
+*/
 
 // Import statements
 import { NgModule } from '@angular/core';
