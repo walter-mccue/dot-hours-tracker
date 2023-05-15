@@ -56,7 +56,7 @@ const routes: Routes = [
 
       // User Children
       {
-        path: 'user-list',
+        path: 'users',
         component: UsersComponent,
       },
       {

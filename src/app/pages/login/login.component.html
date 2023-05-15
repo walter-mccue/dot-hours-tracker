@@ -5,4 +5,86 @@
   Description: html for logging in.
 -->
 
-<p>login works!</p>
+<div fxLayout="column" class="fill">
+
+  <!-- Server Messages -->
+  <div class="messages">
+    <p-messages [(value)]="serverMessages" [enableService]="false"></p-messages>
+  </div>
+
+  <div fxFlex class="w-50">
+
+    <mat-card fxFlex class="login-form">
+
+      <mat-card-title class="title">
+        <h2>Please log in to your account</h2>
+      </mat-card-title>
+
+      <mat-card-content class="w-50">
+
+          <!-- Login Form -->
+          <form [formGroup]="loginForm" (ngSubmit)="login(); loginForm.reset()" class="">
+
+            <!-- Hub Id -->
+            <mat-form-field appearance="fill" class="w-100">
+              <input type="text" matInput formControlName="hubId" placeholder="Hub Id" />
+
+              <mat-error *ngIf="
+                loginForm.controls['hubId'].hasError('required')
+                &&
+                loginForm.controls['hubId'].touched">
+                  Hub Id is a required field.
+              </mat-error>
+            </mat-form-field>
+
+            <br />
+
+            <!-- Password -->
+            <mat-form-field appearance="fill" class="w-100">
+              <input matInput type="password" formControlName="password" placeholder="Password" />
+
+              <mat-error *ngIf="
+                loginForm.controls['password'].hasError('required')
+                &&
+                loginForm.controls['password'].touched">
+                  Password is a required field.
+              </mat-error>
+
+              <mat-error *ngIf="
+                loginForm.controls['password'].hasError('pattern')
+                &&
+                loginForm.controls['password'].touched">
+                  Password must be at least 8 characters, contain one uppercase letter,
+                  one lowercase letter, and one number.
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Form submission button-->
+            <mat-card-actions align="end">
+              <button type="submit" mat-raised-button [disabled]="!loginForm.valid" color="accent">
+                Log in
+              </button>
+            </mat-card-actions>
+
+          </form>
+
+      </mat-card-content>
+    </mat-card>
+
+    </div>
+
+    <!-- Account creations and password reset anchors-->
+    <div class="account-controls">
+
+      <button type="button" mat-raised-button color="accent" routerLink="/session/forgot-password">
+        Forgot Password
+      </button>
+
+      <button type="button" mat-raised-button color="accent" routerLink="/session/register">
+        Create Account
+      </button>
+
+    </div>
+
+
+</div>

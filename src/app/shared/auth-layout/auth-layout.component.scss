@@ -11,10 +11,17 @@ Description: Styles for this component
   display: flex;
   flex-direction: row;
   align-items: center;
+  position: relative;
 }
 
-.header-content {
-  width: 33%;
+.header-title {
+  position: absolute;
+  left: 40rem;
+}
+
+.header-profile {
+  position: absolute;
+  right: 2rem;
 }
 
 nav {
@@ -54,7 +61,7 @@ button {
   padding-inline: 1.5rem;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
 
   nav {
     margin-left: .5rem;
@@ -68,5 +75,8 @@ button {
     display: block;
     display: flex;
     flex-direction: column;
+  }
+  .header-title {
+    left: 9rem;
   }
 }

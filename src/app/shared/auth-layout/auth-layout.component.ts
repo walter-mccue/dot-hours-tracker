@@ -5,7 +5,9 @@
  * Description: Default component for all users who have NOT been authenticated.
 */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { TermsOfServiceComponent } from '../account/terms-of-service/terms-of-service.component';
 
 @Component({
   selector: 'app-auth-layout',
@@ -13,6 +15,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./auth-layout.component.scss']
 })
 
-export class AuthLayoutComponent {
+export class AuthLayoutComponent implements OnInit {
+
+  constructor(private dialog: MatDialog) { }
+
+  tos() {
+    this.dialog.open(TermsOfServiceComponent)
+  }
+
+  ngOnInit(): void { }
 
 }

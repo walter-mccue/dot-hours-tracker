@@ -9,7 +9,7 @@
 
   <div fxFlex class="header dark-primary">
 
-    <div class="header-content">
+    <div class="header-nav">
       <nav>
 
         <div class="mobile-toggle">
@@ -32,11 +32,11 @@
       </nav>
     </div>
 
-    <div class="header-content">
+    <div class="header-title">
       <h1 class="title">DOT Hours Tracker</h1>
     </div>
 
-    <div class="header-content">
+    <div class="header-profile">
     </div>
 
   </div>
@@ -46,10 +46,18 @@
   </div>
 
   <div fxFlex class="footer dark-primary">
+
     <img src="../../../assets/optical-logo.png" class="logo" />
+
     <p>DOT Hours Tracker created by <br />
       <span style="font-weight:bold;">Optical Power and Performance</span> &copy; 2023
     </p>
+
+    <div class="header-profile" align="end">
+      <button mat-raised-button color="accent" class="navbar-container" (click)="tos()">
+        Terms Of Service
+      </button>
+    </div>
 
   </div>
 

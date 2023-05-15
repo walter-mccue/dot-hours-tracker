@@ -5,6 +5,7 @@ Date: 05/14/23
 Description: Global styles for the application.
 */
 
+// Variable styles
 :root {
   --dark-primary: #0097A7;
   --primary: #00BCD4;
@@ -16,6 +17,7 @@ Description: Global styles for the application.
   --divider: #BDBDBD;
 }
 
+// Colors
 .dark-primary {
   background-color: var(--dark-primary);
   color: var(--light-text);
@@ -31,8 +33,37 @@ Description: Global styles for the application.
   color: var(--dark-text);
 }
 
+// Content placement
+.fill {
+  margin: 1rem;
+  width: 100%;
+}
+
+.center {
+  justify-content: center;
+  align-content: center;
+  margin: auto;
+  width: 50%;
+}
+
+.messages {
+  width: 50%;
+  align-self: center;
+}
+
 .w-100 {
   width: 100%;
+  margin: auto;
+}
+
+.w-70 {
+  width: 70%;
+  margin: auto;
+}
+
+.w-50 {
+  width: 50%;
+  margin: auto;
 }
 
 .title {
@@ -44,5 +75,9 @@ Description: Global styles for the application.
 
   .title {
     font-size: 1.5rem;
+  }
+
+  .w-50 {
+    width: 100%;
   }
 }
