@@ -7,11 +7,6 @@
 
 <div fxLayout="column" class="fill">
 
-  <!-- Server Messages -->
-  <div class="messages">
-    <p-messages [(value)]="serverMessages" [enableService]="false"></p-messages>
-  </div>
-
   <div fxFlex class="w-50">
 
     <mat-card fxFlex class="login-form">
@@ -19,6 +14,11 @@
       <mat-card-title class="title">
         <h2>Please log in to your account</h2>
       </mat-card-title>
+
+      <!-- Server Messages -->
+      <div class="messages">
+        <p-messages [(value)]="serverMessages" [enableService]="false"></p-messages>
+      </div>
 
       <mat-card-content class="w-50">
 

@@ -34,14 +34,8 @@ export class LoginComponent implements OnInit {
   serverMessages: Message[] = [];
 
   loginForm: FormGroup = this.fb.group({
-    hubId: [null, Validators.compose([Validators.required])],
-    password: [
-      null,
-      Validators.compose([
-        Validators.required,
-        Validators.pattern('(?=\\D*\\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}'),
-      ]),
-    ],
+    hubId: [null, Validators.compose([ Validators.required ])],
+    password: [ null, Validators.compose([ Validators.required ])],
   });
 
   login() {
@@ -62,8 +56,8 @@ export class LoginComponent implements OnInit {
         this.serverMessages = [
           {
             severity: 'error',
-            summary: 'error',
-            detail: e.message
+            summary: 'Error',
+            detail: "Invalid Hub Id or Password."
           },
         ];
         console.log(e);

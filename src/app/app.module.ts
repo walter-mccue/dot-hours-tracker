@@ -56,7 +56,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
-import { MatStepperModule } from '@angular/material/stepper';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
@@ -118,7 +117,6 @@ import { ConfirmationService } from 'primeng/api';
     ButtonModule,
     ConfirmDialogModule,
     MatSelectModule,
-    MatStepperModule,
     MatListModule,
     MatCheckboxModule
   ],

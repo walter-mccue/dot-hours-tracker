@@ -12,6 +12,7 @@
     <div class="header-nav">
       <nav>
 
+        <!-- Mobile Navigation -->
         <div class="mobile-toggle">
           <button mat-icon-button [matMenuTriggerFor]="navMenu" aria-label="Navigation Menu" class="menu-btn">
             <mat-icon>menu</mat-icon>
@@ -24,6 +25,7 @@
           </button>
         </div>
 
+        <!-- Desktop Navigation -->
         <div class="navbar-container">
           <button mat-raised-button color="accent" routerLink="" class="btn">Home</button>
           <button mat-raised-button color="accent" routerLink="about" class="btn">About</button>
@@ -33,10 +35,12 @@
       </nav>
     </div>
 
+    <!-- Title -->
     <div class="header-title">
       <h1 class="title">DOT Hours Tracker</h1>
     </div>
 
+    <!-- Profile Menu -->
     <div class="header-profile" align="end">
 
       <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User Profile menu" class="menu-btn">
@@ -69,6 +73,13 @@
           </button>
         </mat-menu>
 
+        <!-- User Profile -->
+        <button mat-menu-item routerLink="profile">
+          <mat-icon>person</mat-icon>
+          View Profile
+        </button>
+
+        <!-- Logout -->
         <button mat-raised-button color="accent" class="btn m-1" (click)="logout()">
           <mat-icon>logout</mat-icon>
           <span>Log out</span>
@@ -80,10 +91,13 @@
 
   </div>
 
+  <!-- Main Content -->
   <div fxFlex class="main-content">
     <router-outlet></router-outlet>
   </div>
 
+
+  <!-- Footer -->
   <div fxFlex class="footer dark-primary">
 
     <img src="../../../assets/optical-logo.png" class="logo" />
