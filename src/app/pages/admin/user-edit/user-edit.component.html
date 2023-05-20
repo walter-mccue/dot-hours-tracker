@@ -21,10 +21,9 @@
         <p-messages [(value)]="serverMessages" [enableService]="false"></p-messages>
       </div>
 
-      <form [formGroup]="editForm" autocomplete="off" (ngSubmit)="saveUser()"
-      (keydown.enter)="$event.preventDefault()" class="w-100">
-
-        <mat-card-content>
+      <mat-card-content>
+        <form [formGroup]="editForm" autocomplete="off" (ngSubmit)="saveUser()"
+        (keydown.enter)="$event.preventDefault()" class="w-100">
 
           <!-- Hub Id -->
           <mat-form-field appearance="fill">
@@ -115,18 +114,18 @@
             </mat-error>
           </mat-form-field>
 
-        </mat-card-content>
+          <mat-card-actions align="end">
+            <button mat-raised-button (click)="cancel()" color="warn" class="btn">
+              Cancel
+            </button>
+            <button mat-raised-button [disabled]="!editForm.valid" color="accent" class="btn">
+              Submit
+            </button>
+          </mat-card-actions>
 
-        <mat-card-actions align="end">
-          <button mat-raised-button (click)="cancel()" color="warn" class="btn">
-            Cancel
-          </button>
-          <button mat-raised-button [disabled]="!editForm.valid" color="accent" class="btn">
-            Submit
-          </button>
-        </mat-card-actions>
+        </form>
+      </mat-card-content>
 
-      </form>
     </mat-card>
   </div>
 </div>
