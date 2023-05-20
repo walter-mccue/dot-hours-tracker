@@ -5,12 +5,6 @@ Date: 05/14/23
 Description: Styles for this component
 */
 
-.login-form {
-  margin-top: 20vh;
-  align-items: center;
-}
-
-
 .account-controls {
   display: flex;
   margin-top: 1.5rem;
@@ -23,15 +17,10 @@ button {
   font-weight: bold;
   font-size: 1.125rem;
   padding: .25rem;
-
   width: 10rem;
 }
 
 @media (max-width: 800px) {
-
-  .login-form {
-    margin-top: 10vh;
-  }
 
   .account-controls {
     flex-direction: column;

@@ -33,6 +33,66 @@ Description: Global styles for the application.
   color: var(--dark-text);
 }
 
+// Card Styles
+.card-form {
+  align-items: center;
+  margin-block: 1rem;
+}
+
+.small-form {
+  margin-top: 15vh;
+}
+
+.messages {
+  width: 90%;
+  align-self: center;
+}
+
+.field {
+  margin-inline: .5rem;
+}
+
+.btn {
+  font-weight: bold;
+  font-size: 1.125rem;
+  padding: .25rem;
+  margin: 1rem .5rem;
+  width: 10rem;
+}
+
+
+// API Tables
+.api-table {
+  padding: .5rem;
+  margin-bottom: .5rem;
+}
+
+.api-table th, .api-table td {
+  text-align: left;
+  overflow: hidden;
+}
+
+.api-table th {
+  background-color: #000!important;
+  padding: .5rem!important;
+}
+
+.api-table td {
+  padding: 0 .5rem!important;
+}
+
+.api-table td button {
+  margin-inline: .5rem;
+}
+
+.api-buttons {
+  text-align: end!important;
+}
+
+.api-table tr:nth-of-type(2n) {
+  background-color: #48494b;
+}
+
 // Content placement
 .fill {
   width: 100%;
@@ -45,11 +105,6 @@ Description: Global styles for the application.
   width: 50%;
 }
 
-.messages {
-  width: 50%;
-  align-self: center;
-}
-
 .w-100 {
   width: 100%;
   margin: auto;
@@ -57,6 +112,11 @@ Description: Global styles for the application.
 
 .w-70 {
   width: 70%;
+  margin: auto;
+}
+
+.w-60 {
+  width: 60%;
   margin: auto;
 }
 
@@ -69,14 +129,45 @@ Description: Global styles for the application.
   text-align: center;
 }
 
-
+// Smaller screens
 @media (max-width: 800px) {
 
   .title {
     font-size: 1.5rem;
   }
 
-  .w-50 {
+  .small-form {
+    margin-top: 10vh;
+  }
+
+  .w-50, .w-60 {
     width: 90%;
+  }
+
+  // API Tables
+  .api-table th {
+    display: none;
+  }
+  .api-table td {
+    display: grid;
+    padding: 5px 10px!important;
+  }
+
+  .api-buttons {
+    display: flex!important;
+    flex-direction: row!important;
+    gap: 10px;
+  }
+
+  .api-table td::before {
+    content: attr(data-cell);
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+  .api-table td:first-child {
+    padding-top: 15px!important;
+  }
+  .api-table td:last-child {
+    padding-bottom: 15px!important;
   }
 }

@@ -5,4 +5,45 @@
   Description: html for "admin" users to edit active security questions
 -->
 
-<p>security-question-edit works!</p>
+<div fxLayout="column" class="w-100">
+
+  <div fxFlex  class="w-50">
+
+    <mat-card class="card-form small-form">
+
+      <!-- Title -->
+      <mat-card-title class="title">
+        <h2>Security Question Editor</h2>
+      </mat-card-title>
+
+      <!-- Server Messages -->
+      <div class="messages">
+        <p-messages [(value)]="serverMessages" [enableService]="false"></p-messages>
+      </div>
+
+      <mat-card-content class="w-100">
+
+        <!-- update security question form -->
+        <form [formGroup]="editForm" (ngSubmit)="save(); editForm.reset();">
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Security question</mat-label>
+            <input type="text" matInput formControlName="text" required />
+
+            <mat-error class="error" *ngIf="editForm.controls['text'].hasError('required')
+            && editForm.controls['text'].touched">
+              Security question is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Action buttons -->
+          <mat-card-actions align="end">
+            <button mat-raised-button (click)="cancel()" color="warn" class="btn">Cancel</button>
+            <button mat-raised-button (click)="save()" color="accent" class="btn">Save</button>
+          </mat-card-actions>
+        </form>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
