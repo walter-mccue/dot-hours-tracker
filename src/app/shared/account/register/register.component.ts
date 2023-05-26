@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
   // Register Form Controls
   registerForm: FormGroup = this.fb.group({
     hubId: [null, Validators.compose([ Validators.required,
-      Validators.pattern('(?=[^a-zA-Z]{5}\\d{3}' )])],
+      Validators.pattern('^[a-zA-Z]{5}[0-9]{3}' )])],
     password: [null, Validators.compose([ Validators.required,
       Validators.pattern('(?=\\D*\\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}' )])],
     firstName: [null, Validators.compose([ Validators.required,

@@ -29,7 +29,7 @@ export class UserEditComponent implements OnInit {
 
   editForm: FormGroup = this.fb.group({
     hubId: [null, Validators.compose([ Validators.required,
-      Validators.pattern('(?=[^a-zA-Z]{5}\\d{3}' )])],
+  Validators.pattern('^[a-zA-Z]{5}[0-9]{3}' )])],
     firstName: [null, Validators.compose([ Validators.required,
       Validators.minLength(3), Validators.maxLength(35) ])],
     lastName: [null, Validators.compose([ Validators.required,
@@ -87,7 +87,7 @@ export class UserEditComponent implements OnInit {
     // Success
     this.userService.updateUser(this.userId, updateUser).subscribe({
       next: (res) => {
-        this.router.navigate(['/user-list']);
+        this.router.navigate(['/users']);
       },
 
       // Error
@@ -107,7 +107,7 @@ export class UserEditComponent implements OnInit {
 
   // Cancel edit and return
   cancel(): void {
-    this.router.navigate(['/user-list'])
+    this.router.navigate(['/users'])
   }
 
   ngOnInit(): void {

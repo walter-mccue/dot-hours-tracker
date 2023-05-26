@@ -26,7 +26,7 @@
         (keydown.enter)="$event.preventDefault()" class="w-100">
 
           <!-- Hub Id -->
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" class="w-100">
             <mat-label>Hub Id</mat-label>
             <input type="text" matInput formControlName="hubId" required />
 
@@ -42,7 +42,7 @@
           </mat-form-field>
 
           <!-- First Name -->
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" class="w-100">
             <mat-label>First Name</mat-label>
             <input type="text" matInput formControlName="firstName" required />
 
@@ -63,7 +63,7 @@
           </mat-form-field>
 
           <!-- Last Name -->
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" class="w-100">
             <mat-label>Last Name</mat-label>
             <input type="text" matInput formControlName="lastName" required />
 
@@ -84,7 +84,7 @@
           </mat-form-field>
 
           <!-- Role -->
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" class="w-100">
             <mat-label>Role</mat-label>
             <mat-select formControlName="role" required>
               <mat-option *ngFor="let role of roles" [value]="role.text">
@@ -99,7 +99,7 @@
           </mat-form-field>
 
           <!-- Email Address -->
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" class="w-100">
             <mat-label>Email address</mat-label>
             <input type="text" matInput formControlName="email" required />
 
