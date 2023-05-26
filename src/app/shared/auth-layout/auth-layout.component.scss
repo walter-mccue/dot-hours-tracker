@@ -1,0 +1,83 @@
+/**
+Title: auth-layout.component.scss
+Author: Walter McCue
+Date: 05/14/23
+Description: Styles for this component
+*/
+
+.header {
+  min-height: 10vh;
+  padding-inline: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+.header-title {
+  position: absolute;
+  left: 40rem;
+}
+
+.header-profile {
+  position: absolute;
+  right: 2rem;
+}
+
+nav {
+  margin-left: 2.5rem;
+}
+
+.mobile-toggle {
+  display: none;
+}
+
+button {
+  font-weight: bold;
+  font-size: 1.125rem;
+  padding: .25rem;
+  margin: 1rem .5rem;
+  width: 10rem;
+}
+
+.menu-btn {
+  scale: 1.5;
+}
+
+.main-content {
+  min-height: 80vh;
+  padding: 1rem;
+
+}
+
+.footer {
+  min-height: 10vh;
+  padding-inline: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  max-height: 8vh;
+  padding-inline: 1.5rem;
+}
+
+@media (max-width: 1000px) {
+
+  nav {
+    margin-left: .5rem;
+  }
+
+  .navbar-container {
+    display: none;
+  }
+
+    .mobile-toggle {
+    display: block;
+    display: flex;
+    flex-direction: column;
+  }
+  .header-title {
+    left: 9rem;
+  }
+}

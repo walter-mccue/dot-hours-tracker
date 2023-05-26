@@ -1,0 +1,30 @@
+/**
+Title: login.component.scss
+Author: Walter McCue
+Date: 05/14/23
+Description: Styles for this component
+*/
+
+.account-controls {
+  display: flex;
+  margin-top: 1.5rem;
+  width: 50%;
+  align-self: center;
+  justify-content: space-between;
+}
+
+button {
+  font-weight: bold;
+  font-size: 1.125rem;
+  padding: .25rem;
+  width: 10rem;
+}
+
+@media (max-width: 800px) {
+
+  .account-controls {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+}

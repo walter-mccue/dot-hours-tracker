@@ -1,1 +1,122 @@
-<p>base-layout works!</p>
+<!--
+  Title: base-layout.component.html
+  Author: Walter McCue
+  Date: 05/14/23
+  Description: html to set the header, navigational elements, and footer for all authenticated users.
+-->
+
+<div fxLayout="column" class="w-100">
+
+  <div fxFlex class="header dark-primary">
+
+    <div class="header-nav">
+      <nav>
+
+        <!-- Mobile Navigation -->
+        <div class="mobile-toggle">
+          <button mat-icon-button [matMenuTriggerFor]="navMenu" aria-label="Navigation Menu" class="menu-btn">
+            <mat-icon>menu</mat-icon>
+            <mat-menu #navMenu fxFlex class="primary-color">
+              <button mat-raised-button color="accent" routerLink="/" class="btn">Home</button>
+              <button mat-raised-button color="accent" routerLink="/about" class="btn">About</button>
+              <button mat-raised-button color="accent" routerLink="/contact" class="btn">Contact</button>
+              <button mat-raised-button color="accent" (click)="tos()" class="btn">Terms Of Service</button>
+            </mat-menu>
+          </button>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="navbar-container">
+          <button mat-raised-button color="accent" routerLink="" class="btn">Home</button>
+          <button mat-raised-button color="accent" routerLink="about" class="btn">About</button>
+          <button mat-raised-button color="accent" routerLink="contact" class="btn">Contact</button>
+        </div>
+
+      </nav>
+    </div>
+
+    <!-- Title -->
+    <div class="header-title">
+      <h1 class="title">DOT Hours Tracker</h1>
+    </div>
+
+    <!-- Profile Menu -->
+    <div class="header-profile" align="end">
+
+      <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User Profile menu" class="menu-btn">
+        <mat-icon>perm_identity</mat-icon>
+      </button>
+
+      <mat-menu #profileMenu class="primary-color ">
+        <p style="padding: 1rem; font-size: 1.125rem; color: #fff;">
+          Signed in as {{ hubId }}
+        </p>
+
+        <!-- Config Menu -->
+        <button mat-menu-item [matMenuTriggerFor]="configs" *ngIf="role == 'admin'">
+          <mat-icon>settings</mat-icon>
+          Configurations
+        </button>
+
+        <mat-menu #configs="matMenu" class="primary-color">
+          <button mat-menu-item routerLink="users">
+            <mat-icon>supervisor_account</mat-icon>
+            Users
+          </button>
+          <button mat-menu-item routerLink="security-questions">
+            <mat-icon>question_answer</mat-icon>
+            Security Questions
+          </button>
+          <button mat-menu-item routerLink="roles">
+            <mat-icon> vpn_key</mat-icon>
+            Roles
+          </button>
+        </mat-menu>
+
+        <!-- User Profile -->
+        <button mat-menu-item routerLink="profile">
+          <mat-icon>person</mat-icon>
+          View Profile
+        </button>
+
+        <!-- Logout -->
+        <button mat-raised-button color="accent" class="btn m-1" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Log out</span>
+        </button>
+
+      </mat-menu>
+
+    </div>
+
+  </div>
+
+  <!-- Main Content -->
+  <div>
+    <div fxFlex class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <div fxFlex class="footer dark-primary">
+
+    <img src="../../../assets/optical-logo.png" class="logo" />
+
+    <p>DOT Hours Tracker created by <br />
+      <span style="font-weight:bold;">Optical Power and Performance</span> &copy; 2023
+    </p>
+
+    <div class="header-profile" align="end">
+      <button mat-raised-button color="accent" class="navbar-container btn" (click)="tos()">
+        Terms Of Service
+      </button>
+    </div>
+
+  </div>
+
+
+
+
+</div>

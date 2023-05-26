@@ -1,1 +1,79 @@
-<p>security-questions works!</p>
+<!--
+  Title: security-questions.component.html
+  Author: Walter McCue
+  Date: 05/14/23
+  Description: html for "admin" users to create, view, and delete security questions
+-->
+
+<div fxLayout="column" class="w-100">
+
+  <div fxFlex class="w-50">
+
+    <mat-card class="card-form">
+
+      <!-- Server Messages -->
+      <div class="messages">
+        <p-messages [(value)]="serverMessages" [enableService]="false"></p-messages>
+      </div>
+
+      <!-- Title -->
+      <mat-card-title class="title">
+        <h2>Security Question Configurations</h2>
+      </mat-card-title>
+
+      <mat-card-content class="w-100">
+
+        <!-- Create Security Question Form -->
+        <form [formGroup]="securityForm" (ngSubmit)="create(); securityForm.reset()">
+          <mat-form-field appearance="fill" class="w-60 field">
+            <mat-label>Security question</mat-label>
+            <input type="text" matInput formControlName="text"
+            required placeholder="Enter a security question..." />
+          </mat-form-field>
+
+          <mat-error *ngIf="securityForm.controls['text'].hasError('required')
+          && securityForm.controls['text'].touched">
+            Security question is a required field.
+          </mat-error>
+
+          <button mat-raised-button type="submit"
+          [disabled]="!securityForm.valid"  color="accent" class="btn">
+            Add Question
+          </button>
+
+        </form>
+
+      </mat-card-content>
+
+      <!-- Security Question List -->
+        <mat-card-content class="w-100">
+          <p-table [value]="securityQuestions" responsiveLayout="scroll" class="api-table">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>
+                  Active Security Questions
+                </th>
+                <th width='200px'></th>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-sq>
+              <tr>
+                <td>{{ sq.text }}</td>
+                <td class="api-buttons">
+                  <button mat-button type="button" routerLink="/security-questions/{{ sq._id }}">
+                    <mat-icon>create</mat-icon>
+                  </button>
+                  <button mat-button type="button" (click)="delete(sq._id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+
+        </mat-card-content>
+      </mat-card>
+  </div>
+</div>
+

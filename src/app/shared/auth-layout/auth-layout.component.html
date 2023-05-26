@@ -1,1 +1,69 @@
-<p>auth-layout works!</p>
+<!--
+  Title: auth-layout.component.html
+  Author: Walter McCue
+  Date: 05/14/23
+  Description: html to set the header, navigational elements, and footer for all users who have NOT been authenticated.
+-->
+
+<div fxLayout="column" class="w-100">
+
+  <div fxFlex class="header dark-primary">
+
+    <div class="header-nav">
+      <nav>
+
+        <div class="mobile-toggle">
+          <button mat-icon-button [matMenuTriggerFor]="navMenu" aria-label="Navigation Menu" class="menu-btn">
+            <mat-icon>menu</mat-icon>
+            <mat-menu #navMenu fxFlex class="primary-color">
+              <button mat-raised-button color="accent" routerLink="/" mat-button>Home</button>
+              <button mat-raised-button color="accent" routerLink="/about" mat-button>About</button>
+              <button mat-raised-button color="accent" routerLink="/contact" mat-button>Contact</button>
+            </mat-menu>
+          </button>
+        </div>
+
+        <div class="navbar-container">
+          <button mat-raised-button color="accent" routerLink="/session/login">Login</button>
+          <button mat-raised-button color="accent" routerLink="/session/about">About</button>
+          <button mat-raised-button color="accent" routerLink="/session/contact">Contact</button>
+        </div>
+
+      </nav>
+    </div>
+
+    <div class="header-title">
+      <h1 class="title">DOT Hours Tracker</h1>
+    </div>
+
+    <div class="header-profile">
+    </div>
+
+  </div>
+
+  <div>
+    <div fxFlex class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <div fxFlex class="footer dark-primary">
+
+    <img src="../../../assets/optical-logo.png" class="logo" />
+
+    <p>DOT Hours Tracker created by <br />
+      <span style="font-weight:bold;">Optical Power and Performance</span> &copy; 2023
+    </p>
+
+    <div class="header-profile" align="end">
+      <button mat-raised-button color="accent" class="navbar-container" (click)="tos()">
+        Terms Of Service
+      </button>
+    </div>
+
+  </div>
+
+
+
+
+</div>

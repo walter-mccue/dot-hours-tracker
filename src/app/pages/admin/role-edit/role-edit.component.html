@@ -1,1 +1,53 @@
-<p>role-edit works!</p>
+<!--
+  Title: role-edit.component.html
+  Author: Walter McCue
+  Date: 05/14/23
+  Description: html for "admin" users to edit an active role
+-->
+
+<div fxLayout="column" class="w-100">
+
+  <div fxFlex  class="w-50">
+
+    <mat-card class="card-form small-form">
+
+      <!-- Title -->
+      <mat-card-title class="title">
+        <h2>Role Editor</h2>
+      </mat-card-title>
+
+      <!-- Server Messages -->
+      <div class="messages">
+        <p-messages [(value)]="serverMessage" [enableService]="false"></p-messages>
+      </div>
+
+      <mat-card-content class="w-100">
+
+        <!-- update role form -->
+        <form [formGroup]="editForm" (ngSubmit)="save(); editForm.reset()">
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Role</mat-label>
+            <input type="text" matInput formControlName="text" required />
+
+            <mat-error class="errors" *ngIf="editForm.controls['text'].hasError('required')
+            && editForm.controls['text'].touched">
+              Role is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Action buttons -->
+          <mat-card-actions align="end">
+            <button mat-raised-button (click)="cancel()" color="warn" class="btn">
+              Cancel
+            </button>
+            <button mat-raised-button (click)=" save()" color="accent" class="btn">
+              Save
+            </button>
+          </mat-card-actions>
+        </form>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

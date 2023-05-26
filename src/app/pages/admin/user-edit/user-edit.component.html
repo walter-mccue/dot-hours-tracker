@@ -1,1 +1,131 @@
-<p>user-edit works!</p>
+<!--
+  Title: user-edit.component.html
+  Author: Walter McCue
+  Date: 05/14/23
+  Description: html for "admin" users to edit/disable user accounts
+-->
+
+<div fxLayout="column" class="w-100">
+
+  <div class="w-50">
+
+    <mat-card class="card-form">
+
+      <!-- Title -->
+      <mat-card-title class="title">
+        <h2>Edit Current User</h2>
+      </mat-card-title>
+
+      <!-- Server Messages -->
+      <div class="messages">
+        <p-messages [(value)]="serverMessages" [enableService]="false"></p-messages>
+      </div>
+
+      <mat-card-content>
+        <form [formGroup]="editForm" autocomplete="off" (ngSubmit)="saveUser()"
+        (keydown.enter)="$event.preventDefault()" class="w-100">
+
+          <!-- Hub Id -->
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Hub Id</mat-label>
+            <input type="text" matInput formControlName="hubId" required />
+
+            <mat-error *ngIf="editForm.controls['hubId'].hasError('required')
+            && editForm.controls['hubId'].touched">
+              Hub Id is a required field.
+            </mat-error>
+
+            <mat-error *ngIf="editForm.controls['hubId'].hasError('pattern')
+            && editForm.controls['hubId'].touched">
+              Hub Id does not match the correct pattern.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- First Name -->
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>First Name</mat-label>
+            <input type="text" matInput formControlName="firstName" required />
+
+            <mat-error *ngIf="editForm.controls['firstName'].hasError('required')
+            && editForm.controls['firstName'].touched">
+              First name is a required field.
+            </mat-error>
+
+            <mat-error *ngIf="editForm.controls['firstName'].hasError('minlength')
+            && editForm.controls['firstName'].touched">
+              First Name must be at least 3 characters.
+            </mat-error>
+
+            <mat-error *ngIf="editForm.controls['firstName'].hasError('maxlength')
+            && editForm.controls['firstName'].touched">
+              First Name must be less than 35 characters.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Last Name -->
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Last Name</mat-label>
+            <input type="text" matInput formControlName="lastName" required />
+
+            <mat-error *ngIf="editForm.controls['lastName'].hasError('required')
+            && editForm.controls['lastName'].touched">
+              Last name is a required field.
+            </mat-error>
+
+            <mat-error *ngIf="editForm.controls['lastName'].hasError('minlength')
+            && editForm.controls['lastName'].touched">
+              Last Name must be at least 3 characters.
+            </mat-error>
+
+            <mat-error *ngIf="editForm.controls['lastName'].hasError('maxlength')
+            && editForm.controls['lastName'].touched">
+              Last Name must be less than 35 characters.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Role -->
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role" required>
+              <mat-option *ngFor="let role of roles" [value]="role.text">
+                {{ role.text }}
+              </mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="editForm.controls['role'].hasError('required')
+            && editForm.controls['role'].touched">
+              Role is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Email Address -->
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Email address</mat-label>
+            <input type="text" matInput formControlName="email" required />
+
+            <mat-error *ngIf="editForm.controls['email'].hasError('required')
+            && editForm.controls['email'].touched">
+              Email is a required field.
+            </mat-error>
+
+            <mat-error *ngIf="editForm.controls['email'].hasError('email')
+            && editForm.controls['email'].touched">
+              Invalid email format.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-card-actions align="end">
+            <button mat-raised-button (click)="cancel()" color="warn" class="btn">
+              Cancel
+            </button>
+            <button mat-raised-button [disabled]="!editForm.valid" color="accent" class="btn">
+              Submit
+            </button>
+          </mat-card-actions>
+
+        </form>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+</div>
