@@ -5,4 +5,93 @@
   Description: html to allow users to verify their security questions during the second step of the forgot password path.
 -->
 
-<p>verify-account works!</p>
+<div fxLayout="column" class="w-100">
+
+  <div fxFlex class="w-50">
+
+    <mat-card class="card-form">
+
+      <!-- Title -->
+      <mat-card-title class="title">
+        <h2>Verify your Security Questions</h2>
+      </mat-card-title>
+
+      <!-- Server Messages -->
+      <div class="messages">
+        <p-messages [(value)]="serverMessages" [enableService]="false"></p-messages>
+      </div>
+
+      <!-- Verify Security Questions Form -->
+      <mat-card-content class="w-70">
+
+        <form *ngIf="selectedSecurityQuestions" [formGroup]="form"
+        (ngSubmit)="VerifyQuestions()" #hubIdForm>
+
+          <div fxLayout="column">
+
+            <!-- Question 1 -->
+            <mat-form-field fxFlex appearance="fill">
+
+              <mat-label>{{ VerifySecurityQuestions.question1 }}</mat-label>
+              <input matInput required
+                formControlName="answerToSecurityQuestion1" />
+
+              <mat-error *ngIf=" form.controls['answerToSecurityQuestion1'].hasError('required')
+              && form.controls['answerToSecurityQuestion1'].touched">
+                Required Field
+              </mat-error>
+
+            </mat-form-field>
+
+            <!-- Question 2 -->
+            <mat-form-field fxFlex appearance="fill">
+
+              <mat-label>{{ VerifySecurityQuestions.question2 }}</mat-label>
+              <input matInput required
+                formControlName="answerToSecurityQuestion2" />
+
+              <mat-error *ngIf="form.controls['answerToSecurityQuestion2'].hasError('required')
+              && form.controls['answerToSecurityQuestion2'].touched">
+                Required Field
+              </mat-error>
+
+            </mat-form-field>
+
+            <!-- Question 3 -->
+            <mat-form-field fxFlex appearance="fill">
+
+              <mat-label>{{ VerifySecurityQuestions.question3 }}</mat-label>
+              <input matInput required
+                formControlName="answerToSecurityQuestion3" />
+
+              <mat-error *ngIf="form.controls['answerToSecurityQuestion3'].hasError('required')
+              && form.controls['answerToSecurityQuestion3'].touched">
+                Required Field
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Action Buttons -->
+            <mat-card-actions align="end">
+
+              <button mat-raised-button class="btn"
+              routerLink="/session/login" color="warn">
+                Cancel
+              </button>
+
+              <button mat-raised-button class="btn"
+              [disabled]="!form.valid" color="accent">
+                Confirm
+              </button>
+
+            </mat-card-actions>
+
+          </div>
+
+        </form>
+
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
