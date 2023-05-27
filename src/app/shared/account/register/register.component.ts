@@ -77,24 +77,6 @@ export class RegisterComponent implements OnInit {
       Validators.minLength(3), Validators.maxLength(35) ])]
   })
 
-  // Disables second security question drop down until first is selected
-  isSelectedMenu1() {
-    if (this.securityMenu1) {
-      return false
-    } else {
-      return true
-    }
-  }
-
-  // Disables third security question drop down until second is selected
-  isSelectedMenu2() {
-    if (this.securityMenu2) {
-      return false
-    } else {
-      return true
-    }
-  }
-
   // Registration function
   register() {
     const registration = this.registerForm.value;
