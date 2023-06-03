@@ -17,6 +17,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { AdminsComponent } from './pages/admin/admins/admins.component';
 import { UsersComponent } from './pages/admin/users/users.component';
 import { UserEditComponent } from './pages/admin/user-edit/user-edit.component';
 import { SecurityQuestionsComponent } from './pages/admin/security-questions/security-questions.component';
@@ -53,44 +54,51 @@ const routes: Routes = [
         path: 'contact',
         component: ContactComponent,
       },
-
-      // User Children
-      {
-        path: 'users',
-        component: UsersComponent,
-      },
-      {
-        path: 'users/:userId',
-        component: UserEditComponent
-      },
-
-      // Security Children
-      {
-        path: 'security-questions',
-        component: SecurityQuestionsComponent,
-      },
-      {
-        path: 'security-questions/:questionId',
-        component: SecurityQuestionEditComponent,
-      },
-
-      // Roles Children
-      {
-        path: 'roles',
-        component: RolesComponent,
-      },
-      {
-        path: 'roles/:roleId',
-        component: RoleEditComponent,
-      },
-
-      // User Profile Child
       {
         path: 'profile',
         component: ProfileComponent
       },
+
+      // Admin Path
+      {
+        path: 'admin',
+        component: AdminsComponent,
+        children: [
+
+          // User Children
+          {
+            path: 'users',
+            component: UsersComponent,
+          },
+          {
+            path: 'users/:userId',
+            component: UserEditComponent
+          },
+
+          // Security Children
+          {
+            path: 'security-questions',
+            component: SecurityQuestionsComponent,
+          },
+          {
+            path: 'security-questions/:questionId',
+            component: SecurityQuestionEditComponent,
+          },
+
+          // Roles Children
+          {
+            path: 'roles',
+            component: RolesComponent,
+          },
+          {
+            path: 'roles/:roleId',
+            component: RoleEditComponent,
+          },
+        ],
+        canActivate: [roleGuard],
+      },
     ],
-    //canActivate: [AuthGuard],
+    canActivate: [authGuard],
   },
 
   // Session Path
@@ -156,7 +164,6 @@ const routes: Routes = [
     useHash: true,
     enableTracing: false,
     scrollPositionRestoration: 'enabled',
-    //relativeLinkResolution: 'legacy',
   })],
   exports: [RouterModule]
 })

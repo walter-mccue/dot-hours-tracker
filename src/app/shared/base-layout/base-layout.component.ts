@@ -29,7 +29,7 @@ export class BaseLayoutComponent implements OnInit {
     private router: Router,
     private dialog: MatDialog
   ) {
-    
+
     this.hubId = this.cookieService.get('hubId') ?? '';
     this.role = this.cookieService.get('role') ?? 'standard';
   }
@@ -40,7 +40,8 @@ export class BaseLayoutComponent implements OnInit {
   }
 
   tos() {
-    this.dialog.open(TermsOfServiceComponent)
+    this.dialog.open(TermsOfServiceComponent, {disableClose: true})
+
   }
 
   ngOnInit(): void { }
