@@ -5,4 +5,66 @@
   Description: html to display the terms of service.
 -->
 
-<p>terms-of-service works!</p>
+<mat-card class="card-form mat-elevation-z0 w-100">
+
+  <mat-dialog-content>
+
+    <!-- Title -->
+    <mat-card-title class="title">
+      <h2>Terms Of Service Agreement</h2>
+    </mat-card-title>
+
+    <!-- Terms of Service -->
+    <mat-card-content class="w-70">
+      <ol>
+        <li>
+          All content on this website is for informational purposes only.
+        </li>
+        <li>
+          Any action you take as a result of anything you read on this website, is strictly at your own risk.
+          We will not be held liable for any action resulting in losses, damages, or disciplinary actions.
+        </li>
+        <li>
+          The author of this website assumes no responsibility or liability for any errors
+          or omissions and does not guarantee the accuracy of any content within the site.
+        </li>
+        <li>
+          Your Hub ID and user data should be accurate.
+          In the event that you loose complete access to your account, you will need to email the author of this website to have the account removed.
+          Once the account has been removed, you can create a new account with the same Hub ID.
+        </li>
+        <li>
+          We do not share personal information with third parties.
+          All user data is stored in private MongoDB databases and passwords are encrypted.
+          Even the author of this site does not have access to your password.
+          Passwords should still be unique and SHOULD NOT be the same password that you use to log into the HUB.
+        </li>
+        <li>
+          Misuse of this website will result in an account restriction.
+          The author of this site has sole discretion on what constitutes misuse.
+          Accounts may by blocked from logging in or restricted on what they can view/interact with.
+        </li>
+        <li>
+          This website uses cookies to authenticate users.
+          Cookies may be turned off in your browser settings.
+          Turning off cookies may result in errors and cause this site to be unusable.
+        </li>
+        <li>
+          Please view the About page for details on how to use this website.
+          If you need further assistance, please use the Contact page to email the author of the website.
+        </li>
+        <li>
+          These terms of service may change at any time without warning or notice.
+          This website may also go down due to data overages or higher than expected web traffic.
+          Use this website at your own discretion.
+        </li>
+      </ol>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button matDialogClose="confirm"
+      color="accent" class="btn">
+        Accept
+      </button>
+    </mat-card-actions>
+  </mat-dialog-content>
+</mat-card>

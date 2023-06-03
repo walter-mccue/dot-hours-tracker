@@ -20,7 +20,7 @@ export class AuthLayoutComponent implements OnInit {
   constructor(private dialog: MatDialog) { }
 
   tos() {
-    this.dialog.open(TermsOfServiceComponent)
+    this.dialog.open(TermsOfServiceComponent, {disableClose: true})
   }
 
   ngOnInit(): void { }

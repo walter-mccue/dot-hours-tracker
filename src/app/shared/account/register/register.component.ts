@@ -15,6 +15,8 @@ import { User } from '../../../shared/models/user';
 import { SessionService } from '../../../shared/services/session.service';
 import { SecurityQuestion } from '../../../shared/models/security-question';
 import { SelectedSecurityQuestion } from '../../../shared/models/selected-security-question';
+import { MatDialog } from '@angular/material/dialog'
+import { TermsOfServiceComponent } from '../terms-of-service/terms-of-service.component';
 
 @Component({
   selector: 'app-register',
@@ -38,9 +40,9 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private cookieService: CookieService,
-    private securityQuestionsService:
-    SecurityQuestionService,
-    private sessionService: SessionService
+    private securityQuestionsService: SecurityQuestionService,
+    private sessionService: SessionService,
+    private dialog: MatDialog
   ) {
 
     // API call to find all active security questions
@@ -60,7 +62,7 @@ export class RegisterComponent implements OnInit {
     hubId: [null, Validators.compose([ Validators.required,
       Validators.pattern('^[a-zA-Z]{5}[0-9]{3}' )])],
     password: [null, Validators.compose([ Validators.required,
-      Validators.pattern('(?=\\D*\\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}' )])],
+      Validators.pattern('(?=\\D*\\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}')])],
     firstName: [null, Validators.compose([ Validators.required,
       Validators.minLength(3), Validators.maxLength(35) ])],
     lastName: [null, Validators.compose([ Validators.required,
@@ -76,24 +78,6 @@ export class RegisterComponent implements OnInit {
     answerToSecurityQuestion3: [null, Validators.compose([ Validators.required,
       Validators.minLength(3), Validators.maxLength(35) ])]
   })
-
-  // Disables second security question drop down until first is selected
-  isSelectedMenu1() {
-    if (this.securityMenu1) {
-      return false
-    } else {
-      return true
-    }
-  }
-
-  // Disables third security question drop down until second is selected
-  isSelectedMenu2() {
-    if (this.securityMenu2) {
-      return false
-    } else {
-      return true
-    }
-  }
 
   // Registration function
   register() {
@@ -152,6 +136,10 @@ export class RegisterComponent implements OnInit {
         window.scroll(0,0);
       }
     });
+  }
+
+  tos() {
+    this.dialog.open(TermsOfServiceComponent)
   }
 
   ngOnInit(): void { }

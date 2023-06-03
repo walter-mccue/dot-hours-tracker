@@ -1,23 +1,21 @@
 /**
  * Title: auth.guard.ts
  * Author: Walter McCue
- * Date: 05/14/23
+ * Date: 06/02/23
  * Description: Defines the guard to only allow access to users that have successfully logged in
 */
 
-import { Injectable } from '@angular/core';
-import { CanActivateFn,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  UrlTree
+import { inject } from '@angular/core';
+import {
+  ActivatedRouteSnapshot, RouterStateSnapshot, Router
 } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
+import { GuardService } from './guard.service';
 
-
-
-export const authGuard: CanActivateFn = (route, state) => {
-
-  return true;
-};
+export const authGuard = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+  ) => {
+    return inject(GuardService).isLoggedIn()
+      ? true
+      : inject(Router).createUrlTree(['/session/login']);
+  }

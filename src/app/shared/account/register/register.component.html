@@ -5,4 +5,309 @@
   Description: html for account registration.
 -->
 
-<p>register works!</p>
+<div fxLayout="column" class="w-100">
+
+  <div fxFlex class="w-70">
+
+    <mat-card class="card-form">
+
+      <!-- Title -->
+      <mat-card-title class="title">
+        <h2>Register for a free Account</h2>
+      </mat-card-title>
+
+      <!-- Server Messages -->
+      <div class="messages">
+        <p-messages [(value)]="serverMessages" [enableService]="false"></p-messages>
+      </div>
+
+      <mat-card-content class="w-70">
+
+        <form [formGroup]="registerForm" autocomplete="off">
+
+          <!-- Credentials -->
+          <mat-card-title class="title">
+            <h3>Login Credentials</h3>
+          </mat-card-title>
+
+          <!-- Hub Id -->
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Hub Id</mat-label>
+            <input type="text" matInput formControlName="hubId" required />
+
+            <mat-error *ngIf="registerForm.controls['hubId'].hasError('required')
+            && registerForm.controls['hubId'].touched">
+              Hub Id is a required field.
+            </mat-error>
+
+            <mat-error *ngIf="registerForm.controls['hubId'].hasError('pattern')
+            && registerForm.controls['hubId'].touched">
+              Hub Id does not match the correct pattern.
+            </mat-error>
+          </mat-form-field>
+          <br />
+
+          <!-- Password -->
+          <mat-form-field appearance="fill" class="w-100">
+            <input matInput type="password" formControlName="password"
+            placeholder="Password" autocomplete="new-password" />
+
+            <mat-error *ngIf="
+              registerForm.controls['password'].hasError('required')
+              &&
+              registerForm.controls['password'].touched">
+                Password is a required field.
+            </mat-error>
+
+            <mat-error *ngIf="
+              registerForm.controls['password'].hasError('pattern')
+              &&
+              registerForm.controls['password'].touched">
+                Password must be at least 8 characters, contain one uppercase letter,
+                one lowercase letter, and one number.
+            </mat-error>
+          </mat-form-field>
+          <br />
+
+          <!-- Security Questions -->
+          <mat-card-title class="title">
+            <h3>Security Questions</h3>
+          </mat-card-title>
+
+          <!-- Security Question #1 -->
+          <div class="security">
+            <mat-form-field appearance="fill" class="w-50">
+              <mat-label>Security Question</mat-label>
+              <mat-select required formControlName="securityQuestion1"
+              [(ngModel)]="securityMenu1">
+                <mat-option *ngFor="let question of securityQuestions"
+                  [value]="question.text"
+                  [disabled]="securityMenu2 === question.text"
+                  [disabled]="securityMenu3 === question.text"
+                >{{ question.text }}
+                </mat-option>
+              </mat-select>
+
+              <mat-error class="error"
+              *ngIf="registerForm.controls['securityQuestion1'].hasError('required')
+              && registerForm.controls['securityQuestion1'].touched">
+                Required field.
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Security Answer #1 -->
+            <mat-form-field appearance="fill" class="w-50">
+              <mat-label>Answer</mat-label>
+              <input required matInput formControlName="answerToSecurityQuestion1">
+
+              <mat-error class="error"
+              *ngIf="registerForm.controls['answerToSecurityQuestion1'].hasError('required')
+              && registerForm.controls['answerToSecurityQuestion1'].touched">
+                Required field.
+              </mat-error>
+
+              <mat-error
+              *ngIf="registerForm.controls['answerToSecurityQuestion1'].hasError('minlength')
+              && registerForm.controls['answerToSecurityQuestion1'].touched">
+                Answer must be at least 3 characters.
+              </mat-error>
+
+              <mat-error
+              *ngIf="registerForm.controls['answerToSecurityQuestion1'].hasError('maxlength')
+              && registerForm.controls['answerToSecurityQuestion1'].touched">
+                Answer must be less than 35 characters.
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+
+          <!-- Security Question #2 -->
+          <div class="security">
+            <mat-form-field appearance="fill" class="w-50">
+              <mat-label>Security Question</mat-label>
+              <mat-select required formControlName="securityQuestion2"
+              [(ngModel)]="securityMenu2">
+                <mat-option *ngFor="let question of securityQuestions"
+                  [value]="question.text"
+                  [disabled]="securityMenu1 === question.text"
+                  [disabled]="securityMenu3 === question.text"
+                >{{ question.text }}
+                </mat-option>
+              </mat-select>
+              <mat-error class="error"
+              *ngIf="registerForm.controls['securityQuestion2'].hasError('required')
+              && registerForm.controls['securityQuestion2'].touched">
+                Required field.
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Security Answer #2 -->
+            <mat-form-field appearance="fill" class="w-50">
+              <mat-label>Answer</mat-label>
+              <input required matInput formControlName="answerToSecurityQuestion2">
+
+              <mat-error class="error"
+              *ngIf="registerForm.controls['answerToSecurityQuestion2'].hasError('required')
+              && registerForm.controls['answerToSecurityQuestion2'].touched">
+                Required field.
+              </mat-error>
+
+              <mat-error
+              *ngIf="registerForm.controls['answerToSecurityQuestion2'].hasError('minlength')
+              && registerForm.controls['answerToSecurityQuestion2'].touched">
+                Answer must be at least 3 characters.
+              </mat-error>
+
+              <mat-error
+              *ngIf="registerForm.controls['answerToSecurityQuestion2'].hasError('maxlength')
+              && registerForm.controls['answerToSecurityQuestion2'].touched">
+                Answer must be less than 35 characters.
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+
+          <!-- Security Question #3 -->
+          <div class="security">
+            <mat-form-field appearance="fill" class="w-50">
+              <mat-label>Security Question</mat-label>
+              <mat-select required formControlName="securityQuestion3"
+              [(ngModel)]="securityMenu3">
+                <mat-option *ngFor="let question of securityQuestions"
+                  [value]="question.text"
+                  [disabled]="securityMenu1 === question.text"
+                  [disabled]="securityMenu2 === question.text"
+                >{{ question.text }}
+                </mat-option>
+              </mat-select>
+              <mat-error class="error"
+              *ngIf="registerForm.controls['securityQuestion3'].hasError('required')
+              && registerForm.controls['securityQuestion3'].touched">
+                Required field.
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Security Answer #3 -->
+            <mat-form-field appearance="fill" class="w-50">
+              <mat-label>Answer</mat-label>
+              <input required matInput formControlName="answerToSecurityQuestion3">
+
+              <mat-error class="error"
+              *ngIf="registerForm.controls['answerToSecurityQuestion3'].hasError('required')
+              && registerForm.controls['answerToSecurityQuestion3'].touched">
+                Required field.
+              </mat-error>
+
+              <mat-error
+              *ngIf="registerForm.controls['answerToSecurityQuestion3'].hasError('minlength')
+              && registerForm.controls['answerToSecurityQuestion3'].touched">
+                Answer must be at least 3 characters.
+              </mat-error>
+
+              <mat-error
+              *ngIf="registerForm.controls['answerToSecurityQuestion3'].hasError('maxlength')
+              && registerForm.controls['answerToSecurityQuestion3'].touched">
+                Answer must be less than 35 characters.
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+          <br />
+
+          <!-- Account Information -->
+          <mat-card-title class="title">
+            <h3>Account Information</h3>
+          </mat-card-title>
+
+          <!-- First Name -->
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>First Name</mat-label>
+            <input type="text" matInput formControlName="firstName" required />
+
+            <mat-error *ngIf="registerForm.controls['firstName'].hasError('required')
+            && registerForm.controls['firstName'].touched">
+              First name is a required field.
+            </mat-error>
+
+            <mat-error *ngIf="registerForm.controls['firstName'].hasError('minlength')
+            && registerForm.controls['firstName'].touched">
+              First Name must be at least 3 characters.
+            </mat-error>
+
+            <mat-error *ngIf="registerForm.controls['firstName'].hasError('maxlength')
+            && registerForm.controls['firstName'].touched">
+              First Name must be less than 35 characters.
+            </mat-error>
+          </mat-form-field>
+          <br />
+
+          <!-- Last Name -->
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Last Name</mat-label>
+            <input type="text" matInput formControlName="lastName" required />
+
+            <mat-error *ngIf="registerForm.controls['lastName'].hasError('required')
+            && registerForm.controls['lastName'].touched">
+              Last name is a required field.
+            </mat-error>
+
+            <mat-error *ngIf="registerForm.controls['lastName'].hasError('minlength')
+            && registerForm.controls['lastName'].touched">
+              Last Name must be at least 3 characters.
+            </mat-error>
+
+            <mat-error *ngIf="registerForm.controls['lastName'].hasError('maxlength')
+            && registerForm.controls['lastName'].touched">
+              Last Name must be less than 35 characters.
+            </mat-error>
+          </mat-form-field>
+          <br />
+
+          <!-- Email Address -->
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Email address</mat-label>
+            <input type="text" matInput formControlName="email" required />
+
+            <mat-error *ngIf="registerForm.controls['email'].hasError('required')
+            && registerForm.controls['email'].touched">
+              Email is a required field.
+            </mat-error>
+
+            <mat-error *ngIf="registerForm.controls['email'].hasError('email')
+            && registerForm.controls['email'].touched">
+              Invalid email format.
+            </mat-error>
+          </mat-form-field>
+
+          <div>
+            <p class="title">
+              By registering for an account, you are agreeing to the following
+              <br />
+              <button mat-raised-button type="button" color="accent" class="btn" (click)="tos()">
+                Terms
+              </button>
+            </p>
+          </div>
+
+          <!-- Registration Buttons -->
+          <div fxLayoutAlign="end">
+
+            <button mat-raised-button routerLink="/session/login"
+            type="button" class="btn" color="warn">
+              Cancel
+            </button>
+
+            <button mat-raised-button class="btn" color="accent"
+            [disabled]="!registerForm.valid" (click)="register()">
+              Register
+            </button>
+
+          </div>
+
+        </form>
+
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+</div>

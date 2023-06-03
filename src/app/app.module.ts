@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { AdminsComponent } from './pages/admin/admins/admins.component';
 import { UsersComponent } from './pages/admin/users/users.component';
 import { UserEditComponent } from './pages/admin/user-edit/user-edit.component';
 import { SecurityQuestionsComponent } from './pages/admin/security-questions/security-questions.component';
@@ -92,6 +93,7 @@ import { ConfirmationService } from 'primeng/api';
     NotFoundComponent,
     ServerErrorComponent,
     ConfirmDialogComponent,
+    AdminsComponent,
   ],
   imports: [
     BrowserModule,
