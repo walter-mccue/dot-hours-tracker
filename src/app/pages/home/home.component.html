@@ -5,4 +5,153 @@
   Description: html for the main part of the application.
 -->
 
-<p>home works!</p>
+<form [formGroup]="hoursForm" (ngSubmit)="saveHours()"
+(keydown.enter)="$event.preventDefault()" class="w-100">
+
+  <div fxLayout="column">
+
+
+    <div fxFlex>
+      <h2 class="title">DOT Hours Tracking</h2><br />
+    </div>
+
+    <div fxFlex>
+
+      <!-- Pay Rate -->
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Pay Rate</mat-label>
+        <input type="text" matInput formControlName="payRate" required />
+
+        <mat-error *ngIf="hoursForm.controls['payRate'].hasError('required')
+        && hoursForm.controls['payRate'].touched">
+          Pay Rate is a required field.
+        </mat-error>
+
+      </mat-form-field>
+
+    </div>
+
+    <!-- Previous Week -->
+    <div fxFlex>
+
+      <mat-card>
+
+        <mat-card-title class="title">
+          <h3>Previous Week</h3>
+        </mat-card-title>
+
+        <mat-card-content>
+
+          <!-- Sunday -->
+          <div fxLayout="row">
+
+            <h4>Sunday:</h4>
+
+            <!-- Clock In -->
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Clock In</mat-label>
+              <input type="text" matInput formControlName="previousSundayIn" required />
+
+              <mat-error *ngIf="hoursForm.controls['previousSundayIn'].hasError('required')
+              && hoursForm.controls['previousSundayIn'].touched">
+                Clock In is a required field.
+              </mat-error>
+
+            </mat-form-field>
+
+            <!-- Clock Out -->
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Clock Out</mat-label>
+              <input type="text" matInput formControlName="previousSundayOut" required />
+
+              <mat-error *ngIf="hoursForm.controls['previousSundayOut'].hasError('required')
+              && hoursForm.controls['previousSundayOut'].touched">
+                Clock Out is a required field.
+              </mat-error>
+
+            </mat-form-field>
+
+            <div>
+              <p>Total Daily Hours: {{ previousSundayHours }}.</p>
+            </div>
+
+          </div>
+
+          <!-- Monday -->
+          <div fxLayout="row">
+
+            <h4>Monday:</h4>
+
+            <!-- Clock In -->
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Clock In</mat-label>
+              <input type="text" matInput formControlName="previousMondayIn" required />
+
+              <mat-error *ngIf="hoursForm.controls['previousMondayIn'].hasError('required')
+              && hoursForm.controls['previousMondayIn'].touched">
+                Clock In is a required field.
+              </mat-error>
+
+            </mat-form-field>
+
+            <!-- Clock Out -->
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Clock Out</mat-label>
+              <input type="text" matInput formControlName="previousMondayOut" required />
+
+              <mat-error *ngIf="hoursForm.controls['previousMondayOut'].hasError('required')
+              && hoursForm.controls['previousMondayOut'].touched">
+                Clock Out is a required field.
+              </mat-error>
+
+            </mat-form-field>
+
+            <div>
+              <p>Total Daily Hours: {{ previousMondayHours }}.</p>
+            </div>
+
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+    </div>
+
+    <!-- Current Week -->
+    <div fxFlex>
+
+      <mat-card>
+
+        <mat-card-title class="title">
+          <h3>Current Week</h3>
+        </mat-card-title>
+
+        <mat-card-content>
+
+        </mat-card-content>
+
+      </mat-card>
+
+    </div>
+
+    <!-- Next Week -->
+    <div fxFlex>
+
+      <mat-card>
+
+        <mat-card-title class="title">
+          <h3>Next Week</h3>
+        </mat-card-title>
+
+        <mat-card-content>
+
+        </mat-card-content>
+
+      </mat-card>
+
+    </div>
+
+  </div>
+
+</form>
