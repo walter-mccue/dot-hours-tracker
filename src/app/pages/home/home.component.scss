@@ -4,3 +4,36 @@ Author: Walter McCue
 Date: 05/14/23
 Description: Styles for this component
 */
+
+.hours-tracker {
+  margin-bottom: 2rem;
+}
+
+.daily-section {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.daily-field {
+  width: 20%;
+}
+
+.hours-controls {
+  display: flex;
+  width: 100%;
+  align-self: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 800px) {
+
+  .daily-section {
+    flex-direction: column;
+    margin-bottom: .5rem;
+  }
+
+  .daily-field {
+    width: 90%;
+  }
+}

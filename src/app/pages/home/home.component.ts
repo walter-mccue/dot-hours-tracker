@@ -28,38 +28,6 @@ export class HomeComponent implements OnInit {
   payRate: number = 0;
   hours: Hours = {} as Hours
 
-  previousSundayHours: number = 0;
-  previousMondayHours: number = 0;
-  previousTuesdayHours: number = 0;
-  previousWednesdayHours: number = 0;
-  previousThursdayHours: number = 0;
-  previousFridayHours: number = 0;
-  previousSaturdayHours: number = 0;
-
-  currentSundayHours: number = 0;
-  currentMondayHours: number = 0;
-  currentTuesdayHours: number = 0;
-  currentWednesdayHours: number = 0;
-  currentThursdayHours: number = 0;
-  currentFridayHours: number = 0;
-  currentSaturdayHours: number = 0;
-
-  currentScheduledSundayHours: number = 0;
-  currentScheduledMondayHours: number = 0;
-  currentScheduledTuesdayHours: number = 0;
-  currentScheduledWednesdayHours: number = 0;
-  currentScheduledThursdayHours: number = 0;
-  currentScheduledFridayHours: number = 0;
-  currentScheduledSaturdayHours: number = 0;
-
-  nextSundayHours: number = 0;
-  nextMondayHours: number = 0;
-  nextTuesdayHours: number = 0;
-  nextWednesdayHours: number = 0;
-  nextThursdayHours: number = 0;
-  nextFridayHours: number = 0;
-  nextSaturdayHours: number = 0;
-
   hoursForm: FormGroup = this.fb.group({
     hubId: [null, Validators.compose([Validators.required])],
     payRate: [null, Validators.compose([Validators.required])],
@@ -127,8 +95,151 @@ export class HomeComponent implements OnInit {
     nextFridayOut: [null, Validators.compose([Validators.required])],
     nextSaturdayIn:  [null, Validators.compose([Validators.required])],
     nextSaturdayOut: [null, Validators.compose([Validators.required])],
-
   })
+
+  // Form variables
+  formInput = this.hoursForm.value
+
+  // Previous Week
+  previousSundayIn: string = this.formInput.previousSundayIn
+  previousSundayOut: string = this.formInput.previousSundayOut
+  previousSundayHours: number = 0;
+
+  previousMondayIn: string = this.formInput.previousMondayIn
+  previousMondayOut: string = this.formInput.previousMondayOut
+  previousMondayHours: number = 0;
+
+  previousTuesdayIn: string = this.formInput.previousTuesdayIn
+  previousTuesdayOut: string = this.formInput.previousTuesdayOut
+  previousTuesdayHours: number = 0;
+
+  previousWednesdayIn: string = this.formInput.previousWednesdayIn
+  previousWednesdayOut: string = this.formInput.previousWednesdayOut
+  previousWednesdayHours: number = 0;
+
+  previousThursdayIn: string = this.formInput.previousThursdayIn
+  previousThursdayOut: string = this.formInput.previousThursdayOut
+  previousThursdayHours: number = 0;
+
+  previousFridayIn: string = this.formInput.previousFridayIn
+  previousFridayOut: string = this.formInput.previousFridayOut
+  previousFridayHours: number = 0;
+
+  previousSaturdayIn: string = this.formInput.previousSaturdayIn
+  previousSaturdayOut: string = this.formInput.previousSaturdayOut
+  previousSaturdayHours: number = 0;
+
+  previousPaycheck: number = 0;
+
+  // Current week actual hours
+  currentSundayClockIn: string = this.formInput.currentSundayClockIn
+  currentSundayClockOut: string = this.formInput.currentSundayClockOut
+  currentSundayActualHours: number = 0;
+  currentSundayDOT: number = 0;
+
+  currentMondayClockIn: string = this.formInput.currentMondayClockIn
+  currentMondayClockOut: string = this.formInput.currentMondayClockOut
+  currentMondayActualHours: number = 0;
+  currentMondayDOT: number = 0;
+
+  currentTuesdayClockIn: string = this.formInput.currentTuesdayClockIn
+  currentTuesdayClockOut: string = this.formInput.currentTuesdayClockOut
+  currentTuesdayActualHours: number = 0;
+  currentTuesdayDOT: number = 0;
+
+  currentWednesdayClockIn: string = this.formInput.currentWednesdayClockIn
+  currentWednesdayClockOut: string = this.formInput.currentWednesdayClockOut
+  currentWednesdayActualHours: number = 0;
+  currentWednesdayDOT: number = 0;
+
+  currentThursdayClockIn: string = this.formInput.currentThursdayClockIn
+  currentThursdayClockOut: string = this.formInput.currentThursdayClockOut
+  currentThursdayActualHours: number = 0;
+  currentThursdayDOT: number = 0;
+
+  currentFridayClockIn: string = this.formInput.currentFridayClockIn
+  currentFridayClockOut: string = this.formInput.currentFridayClockOut
+  currentFridayActualHours: number = 0;
+  currentFridayDOT: number = 0;
+
+  currentSaturdayClockIn: string = this.formInput.currentSaturdayClockIn
+  currentSaturdayClockOut: string = this.formInput.currentSaturdayClockOut
+  currentSaturdayActualHours: number = 0;
+  currentSaturdayDOT: number = 0;
+
+  currentPaycheck: number = 0;
+
+  // Current week schedule
+  currentSundayScheduleIn: string = this.formInput.currentSundayScheduleIn
+  currentSundayScheduleOut: string = this.formInput.currentSundayScheduleOut
+  currentSundayScheduledHours: number = 0;
+  currentSundayProjection: number = 0;
+
+  currentMondayScheduleIn: string = this.formInput.currentMondayScheduleIn
+  currentMondayScheduleOut: string = this.formInput.currentMondayScheduleOut
+  currentMondayScheduledHours: number = 0;
+  currentMondayProjection: number = 0;
+
+  currentTuesdayScheduleIn: string = this.formInput.currentTuesdayScheduleIn
+  currentTuesdayScheduleOut: string = this.formInput.currentTuesdayScheduleOut
+  currentTuesdayScheduledHours: number = 0;
+  currentTuesdayProjection: number = 0;
+
+  currentWednesdayScheduleIn: string = this.formInput.currentWednesdayScheduleIn
+  currentWednesdayScheduleOut: string = this.formInput.currentWednesdayScheduleOut
+  currentWednesdayScheduledHours: number = 0;
+  currentWednesdayProjection: number = 0;
+
+  currentThursdayScheduleIn: string = this.formInput.currentThursdayScheduleIn
+  currentThursdayScheduleOut: string = this.formInput.currentThursdayScheduleOut
+  currentThursdayScheduledHours: number = 0;
+  currentThursdayProjection: number = 0;
+
+  currentFridayScheduleIn: string = this.formInput.currentFridayScheduleIn
+  currentFridayScheduleOut: string = this.formInput.currentFridayScheduleOut
+  currentFridayScheduledHours: number = 0;
+  currentFridayProjection: number = 0;
+
+  currentSaturdayScheduleIn: string = this.formInput.currentSaturdayScheduleIn
+  currentSaturdayScheduleOut: string = this.formInput.currentSaturdayScheduleOut
+  currentSaturdayScheduledHours: number = 0;
+  currentSaturdayProjection: number = 0;
+
+  // Next week
+  nextSundayIn: string = this.formInput.nextSundayIn
+  nextSundayOut: string = this.formInput.nextSundayOut
+  nextSundayHours: number = 0;
+  nextSundayProjection: number = 0;
+
+  nextMondayIn: string = this.formInput.nextMondayIn
+  nextMondayOut: string = this.formInput.nextMondayOut
+  nextMondayHours: number = 0;
+  nextMondayProjection: number = 0;
+
+  nextTuesdayIn: string = this.formInput.nextTuesdayIn
+  nextTuesdayOut: string = this.formInput.nextTuesdayOut
+  nextTuesdayHours: number = 0;
+  nextTuesdayProjection: number = 0;
+
+  nextWednesdayIn: string = this.formInput.nextWednesdayIn
+  nextWednesdayOut: string = this.formInput.nextWednesdayOut
+  nextWednesdayHours: number = 0;
+  nextWednesdayProjection: number = 0;
+
+  nextThursdayIn: string = this.formInput.nextThursdayIn
+  nextThursdayOut: string = this.formInput.nextThursdayOut
+  nextThursdayHours: number = 0;
+  nextThursdayProjection: number = 0;
+
+  nextFridayIn: string = this.formInput.nextFridayIn
+  nextFridayOut: string = this.formInput.nextFridayOut
+  nextFridayHours: number = 0;
+  nextFridayProjection: number = 0;
+
+  nextSaturdayIn: string = this.formInput.nextSaturdayIn
+  nextSaturdayOut: string = this.formInput.nextSaturdayOut
+  nextSaturdayHours: number = 0;
+  nextSaturdayProjection: number = 0;
 
   constructor(
     private cookieService: CookieService,
@@ -228,6 +339,10 @@ export class HomeComponent implements OnInit {
   }
 
   saveHours() {
+
+  }
+
+  shiftHours() {
 
   }
 
