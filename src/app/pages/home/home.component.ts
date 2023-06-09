@@ -27,74 +27,132 @@ export class HomeComponent implements OnInit {
   hubId: string;
   payRate: number = 0;
   hours: Hours = {} as Hours
+  timeFormat: string = '^([01]?[0-9]|2[0-3]):[0-5][0-9]$';
 
   hoursForm: FormGroup = this.fb.group({
-    hubId: [null, Validators.compose([Validators.required])],
-    payRate: [null, Validators.compose([Validators.required])],
+
+    payRate: [null, Validators.compose([
+      Validators.required, Validators.pattern('^([0-9]{1,3}).[0-9]{2}$') ])],
 
     // Previous Week Actual Hours
-    previousSundayIn:  [null, Validators.compose([Validators.required])],
-    previousSundayOut: [null, Validators.compose([Validators.required])],
-    previousMondayIn:  [null, Validators.compose([Validators.required])],
-    previousMondayOut: [null, Validators.compose([Validators.required])],
-    previousTuesdayIn:  [null, Validators.compose([Validators.required])],
-    previousTuesdayOut: [null, Validators.compose([Validators.required])],
-    previousWednesdayIn:  [null, Validators.compose([Validators.required])],
-    previousWednesdayOut: [null, Validators.compose([Validators.required])],
-    previousThursdayIn:  [null, Validators.compose([Validators.required])],
-    previousThursdayOut: [null, Validators.compose([Validators.required])],
-    previousFridayIn:  [null, Validators.compose([Validators.required])],
-    previousFridayOut: [null, Validators.compose([Validators.required])],
-    previousSaturdayIn:  [null, Validators.compose([Validators.required])],
-    previousSaturdayOut: [null, Validators.compose([Validators.required])],
+    previousSundayIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    previousSundayOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    previousMondayIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    previousMondayOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    previousTuesdayIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    previousTuesdayOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    previousWednesdayIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    previousWednesdayOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    previousThursdayIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    previousThursdayOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    previousFridayIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    previousFridayOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    previousSaturdayIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    previousSaturdayOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
 
     // Current Week Actual Hours
-    currentSundayClockIn:  [null, Validators.compose([Validators.required])],
-    currentSundayClockOut: [null, Validators.compose([Validators.required])],
-    currentMondayClockIn:  [null, Validators.compose([Validators.required])],
-    currentMondayClockOut: [null, Validators.compose([Validators.required])],
-    currentTuesdayClockIn:  [null, Validators.compose([Validators.required])],
-    currentTuesdayClockOut: [null, Validators.compose([Validators.required])],
-    currentWednesdayClockIn:  [null, Validators.compose([Validators.required])],
-    currentWednesdayClockOut: [null, Validators.compose([Validators.required])],
-    currentThursdayClockIn:  [null, Validators.compose([Validators.required])],
-    currentThursdayClockOut: [null, Validators.compose([Validators.required])],
-    currentFridayClockIn:  [null, Validators.compose([Validators.required])],
-    currentFridayClockOut: [null, Validators.compose([Validators.required])],
-    currentSaturdayClockIn:  [null, Validators.compose([Validators.required])],
-    currentSaturdayClockOut: [null, Validators.compose([Validators.required])],
+    currentSundayClockIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentSundayClockOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentMondayClockIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentMondayClockOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentTuesdayClockIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentTuesdayClockOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentWednesdayClockIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentWednesdayClockOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentThursdayClockIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentThursdayClockOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentFridayClockIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentFridayClockOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentSaturdayClockIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentSaturdayClockOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
 
     // Current Week Schedule
-    currentSundayScheduleIn:  [null, Validators.compose([Validators.required])],
-    currentSundayScheduleOut: [null, Validators.compose([Validators.required])],
-    currentMondayScheduleIn:  [null, Validators.compose([Validators.required])],
-    currentMondayScheduleOut: [null, Validators.compose([Validators.required])],
-    currentTuesdayScheduleIn:  [null, Validators.compose([Validators.required])],
-    currentTuesdayScheduleOut: [null, Validators.compose([Validators.required])],
-    currentWednesdayScheduleIn:  [null, Validators.compose([Validators.required])],
-    currentWednesdayScheduleOut: [null, Validators.compose([Validators.required])],
-    currentThursdayScheduleIn:  [null, Validators.compose([Validators.required])],
-    currentThursdayScheduleOut: [null, Validators.compose([Validators.required])],
-    currentFridayScheduleIn:  [null, Validators.compose([Validators.required])],
-    currentFridayScheduleOut: [null, Validators.compose([Validators.required])],
-    currentSaturdayScheduleIn:  [null, Validators.compose([Validators.required])],
-    currentSaturdayScheduleOut: [null, Validators.compose([Validators.required])],
+    currentSundayScheduleIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentSundayScheduleOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentMondayScheduleIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentMondayScheduleOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentTuesdayScheduleIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentTuesdayScheduleOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentWednesdayScheduleIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentWednesdayScheduleOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentThursdayScheduleIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentThursdayScheduleOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentFridayScheduleIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentFridayScheduleOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentSaturdayScheduleIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    currentSaturdayScheduleOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
 
     // Next Week Schedule
-    nextSundayIn:  [null, Validators.compose([Validators.required])],
-    nextSundayOut: [null, Validators.compose([Validators.required])],
-    nextMondayIn:  [null, Validators.compose([Validators.required])],
-    nextMondayOut: [null, Validators.compose([Validators.required])],
-    nextTuesdayIn:  [null, Validators.compose([Validators.required])],
-    nextTuesdayOut: [null, Validators.compose([Validators.required])],
-    nextWednesdayIn:  [null, Validators.compose([Validators.required])],
-    nextWednesdayOut: [null, Validators.compose([Validators.required])],
-    nextThursdayIn:  [null, Validators.compose([Validators.required])],
-    nextThursdayOut: [null, Validators.compose([Validators.required])],
-    nextFridayIn:  [null, Validators.compose([Validators.required])],
-    nextFridayOut: [null, Validators.compose([Validators.required])],
-    nextSaturdayIn:  [null, Validators.compose([Validators.required])],
-    nextSaturdayOut: [null, Validators.compose([Validators.required])],
+    nextSundayIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    nextSundayOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    nextMondayIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    nextMondayOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    nextTuesdayIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    nextTuesdayOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    nextWednesdayIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    nextWednesdayOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    nextThursdayIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    nextThursdayOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    nextFridayIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    nextFridayOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    nextSaturdayIn:  [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
+    nextSaturdayOut: [null, Validators.compose([
+      Validators.required, Validators.pattern(this.timeFormat) ])],
   })
 
   // Form variables
@@ -248,6 +306,7 @@ export class HomeComponent implements OnInit {
     private dialogRef: MatDialog
   ) {
     this.hubId = this.cookieService.get('hubId') ?? '';
+    this.payRate = parseFloat(this.formInput.payRate);
 
     this.hoursService.findHoursByHubId(this.hubId).subscribe({
       next: (res) => {
@@ -261,6 +320,9 @@ export class HomeComponent implements OnInit {
       complete: () => {
 
         console.log(this.hours);
+
+        this.payRate = this.hours.payRate
+
         this.hoursForm.controls['payRate'].setValue(this.hours.payRate);
 
         // Previous Week In
@@ -338,12 +400,219 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  saveHours() {
+  saveHours(): void {
+    const updatedForm = this.hoursForm.value;
+    const newHours = {
+      hubId: this.hubId,
+      payRate: parseFloat(updatedForm.payRate),
+      previousWeekIn: {
+        sunday: updatedForm.previousSundayIn,
+        monday: updatedForm.previousMondayIn,
+        tuesday: updatedForm.previousTuesdayIn,
+        wednesday: updatedForm.previousWednesdayIn,
+        thursday: updatedForm.previousThursdayIn,
+        friday: updatedForm.previousFridayIn,
+        saturday: updatedForm.previousSaturdayIn,
+      },
+      previousWeekOut: {
+        sunday: updatedForm.previousSundayOut,
+        monday: updatedForm.previousMondayOut,
+        tuesday: updatedForm.previousTuesdayOut,
+        wednesday: updatedForm.previousWednesdayOut,
+        thursday: updatedForm.previousThursdayOut,
+        friday: updatedForm.previousFridayOut,
+        saturday: updatedForm.previousSaturdayOut,
+      },
+      currentWeekClockIn: {
+        sunday: updatedForm.currentSundayClockIn,
+        monday: updatedForm.currentMondayClockIn,
+        tuesday: updatedForm.currentTuesdayClockIn,
+        wednesday: updatedForm.currentWednesdayClockIn,
+        thursday: updatedForm.currentThursdayClockIn,
+        friday: updatedForm.currentFridayClockIn,
+        saturday: updatedForm.currentSaturdayClockIn,
+      },
+      currentWeekClockOut: {
+        sunday: updatedForm.currentSundayClockOut,
+        monday: updatedForm.currentMondayClockOut,
+        tuesday: updatedForm.currentTuesdayClockOut,
+        wednesday: updatedForm.currentWednesdayClockOut,
+        thursday: updatedForm.currentThursdayClockOut,
+        friday: updatedForm.currentFridayClockOut,
+        saturday: updatedForm.currentSaturdayClockOut,
+      },
+      currentWeekScheduleIn: {
+        sunday: updatedForm.currentSundayScheduleIn,
+        monday: updatedForm.currentMondayScheduleIn,
+        tuesday: updatedForm.currentTuesdayScheduleIn,
+        wednesday: updatedForm.currentWednesdayScheduleIn,
+        thursday: updatedForm.currentThursdayScheduleIn,
+        friday: updatedForm.currentFridayScheduleIn,
+        saturday: updatedForm.currentSaturdayScheduleIn,
+      },
+      currentWeekScheduleOut: {
+        sunday: updatedForm.currentSundayScheduleOut,
+        monday: updatedForm.currentMondayScheduleOut,
+        tuesday: updatedForm.currentTuesdayScheduleOut,
+        wednesday: updatedForm.currentWednesdayScheduleOut,
+        thursday: updatedForm.currentThursdayScheduleOut,
+        friday: updatedForm.currentFridayScheduleOut,
+        saturday: updatedForm.currentSaturdayScheduleOut,
+      },
+      nextWeekIn: {
+        sunday: updatedForm.nextSundayIn,
+        monday: updatedForm.nextMondayIn,
+        tuesday: updatedForm.nextTuesdayIn,
+        wednesday: updatedForm.nextWednesdayIn,
+        thursday: updatedForm.nextThursdayIn,
+        friday: updatedForm.nextFridayIn,
+        saturday: updatedForm.nextSaturdayIn,
+      },
+      nextWeekOut: {
+        sunday: updatedForm.nextSundayOut,
+        monday: updatedForm.nextMondayOut,
+        tuesday: updatedForm.nextTuesdayOut,
+        wednesday: updatedForm.nextWednesdayOut,
+        thursday: updatedForm.nextThursdayOut,
+        friday: updatedForm.nextFridayOut,
+        saturday: updatedForm.nextSaturdayOut,
+      },
+    }
+
+    this.hoursService.updateHours(this.hubId, newHours).subscribe({
+      next: (res) => {
+        this.serverMessages = [
+          {
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Hours Successfully Updated. Please wait while we refresh your data.'
+          }
+        ];
+        window.scroll(0,0);
+        setTimeout(() => {
+          location.reload()
+        }, 500);
+      },
+      error: (e) => {
+        this.serverMessages = [
+          {
+            severity: 'error',
+            summary: 'Error',
+            detail: e.message
+          }
+        ];
+        console.log(e);
+        window.scroll(0,0);
+      }
+    })
 
   }
 
-  shiftHours() {
+  shiftHours(): void {
+    const updatedForm = this.hoursForm.value;
+    const newHours = {
+      hubId: this.hubId,
+      payRate: parseFloat(updatedForm.payRate),
+      previousWeekIn: {
+        sunday: updatedForm.currentSundayClockIn,
+        monday: updatedForm.currentMondayClockIn,
+        tuesday: updatedForm.currentTuesdayClockIn,
+        wednesday: updatedForm.currentWednesdayClockIn,
+        thursday: updatedForm.currentThursdayClockIn,
+        friday: updatedForm.currentFridayClockIn,
+        saturday: updatedForm.currentSaturdayClockIn,
+      },
+      previousWeekOut: {
+        sunday: updatedForm.currentSundayClockOut,
+        monday: updatedForm.currentMondayClockOut,
+        tuesday: updatedForm.currentTuesdayClockOut,
+        wednesday: updatedForm.currentWednesdayClockOut,
+        thursday: updatedForm.currentThursdayClockOut,
+        friday: updatedForm.currentFridayClockOut,
+        saturday: updatedForm.currentSaturdayClockOut,
+      },
+      currentWeekClockIn: {
+        sunday: "00:00",
+        monday: "00:00",
+        tuesday: "00:00",
+        wednesday: "00:00",
+        thursday: "00:00",
+        friday: "00:00",
+        saturday: "00:00",
+      },
+      currentWeekClockOut: {
+        sunday: "00:00",
+        monday: "00:00",
+        tuesday: "00:00",
+        wednesday: "00:00",
+        thursday: "00:00",
+        friday: "00:00",
+        saturday: "00:00",
+      },
+      currentWeekScheduleIn: {
+        sunday: updatedForm.nextSundayIn,
+        monday: updatedForm.nextMondayIn,
+        tuesday: updatedForm.nextTuesdayIn,
+        wednesday: updatedForm.nextWednesdayIn,
+        thursday: updatedForm.nextThursdayIn,
+        friday: updatedForm.nextFridayIn,
+        saturday: updatedForm.nextSaturdayIn,
+      },
+      currentWeekScheduleOut: {
+        sunday: updatedForm.nextSundayOut,
+        monday: updatedForm.nextMondayOut,
+        tuesday: updatedForm.nextTuesdayOut,
+        wednesday: updatedForm.nextWednesdayOut,
+        thursday: updatedForm.nextThursdayOut,
+        friday: updatedForm.nextFridayOut,
+        saturday: updatedForm.nextSaturdayOut,
+      },
+      nextWeekIn: {
+        sunday: "00:00",
+        monday: "00:00",
+        tuesday: "00:00",
+        wednesday: "00:00",
+        thursday: "00:00",
+        friday: "00:00",
+        saturday: "00:00",
+      },
+      nextWeekOut: {
+        sunday: "00:00",
+        monday: "00:00",
+        tuesday: "00:00",
+        wednesday: "00:00",
+        thursday: "00:00",
+        friday: "00:00",
+        saturday: "00:00",
+      },
+    }
 
+    this.hoursService.updateHours(this.hubId, newHours).subscribe({
+      next: (res) => {
+        this.serverMessages = [
+          {
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Hours Successfully Updated. Please wait why we refresh your data.'
+          }
+        ];
+        window.scroll(0,0);
+        setTimeout(() => {
+          location.reload()
+        }, 500);
+      },
+      error: (e) => {
+        this.serverMessages = [
+          {
+            severity: 'error',
+            summary: 'Error',
+            detail: e.message
+          }
+        ];
+        console.log(e);
+        window.scroll(0,0);
+      }
+    })
   }
 
   ngOnInit(): void {
