@@ -58,42 +58,45 @@
               <h4>Sunday:</h4>
             </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="previousSundayIn" required />
+            <div class="time-fields">
 
-                <mat-error *ngIf="hoursForm.controls['previousSundayIn'].hasError('required')
-                && hoursForm.controls['previousSundayIn'].touched">
-                  Clock In is required.
-                </mat-error>
+              <!-- Clock In -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock In</mat-label>
+                  <input type="text" matInput formControlName="previousSundayIn" required />
 
-                <mat-error *ngIf="hoursForm.controls['previousSundayIn'].hasError('pattern')
-                && hoursForm.controls['previousSundayIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['previousSundayIn'].hasError('required')
+                  && hoursForm.controls['previousSundayIn'].touched">
+                    Clock In is required.
+                  </mat-error>
 
-              </mat-form-field>
-            </div>
+                  <mat-error *ngIf="hoursForm.controls['previousSundayIn'].hasError('pattern')
+                  && hoursForm.controls['previousSundayIn'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="previousSundayOut" required />
+                </mat-form-field>
+              </div>
 
-                <mat-error *ngIf="hoursForm.controls['previousSundayOut'].hasError('required')
-                && hoursForm.controls['previousSundayOut'].touched">
-                  Clock Out is required.
-                </mat-error>
+              <!-- Clock Out -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock Out</mat-label>
+                  <input type="text" matInput formControlName="previousSundayOut" required />
 
-                <mat-error *ngIf="hoursForm.controls['previousSundayOut'].hasError('pattern')
-                && hoursForm.controls['previousSundayOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['previousSundayOut'].hasError('required')
+                  && hoursForm.controls['previousSundayOut'].touched">
+                    Clock Out is required.
+                  </mat-error>
 
-              </mat-form-field>
+                  <mat-error *ngIf="hoursForm.controls['previousSundayOut'].hasError('pattern')
+                  && hoursForm.controls['previousSundayOut'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
             </div>
 
             <div class="daily-field">
@@ -102,6 +105,8 @@
 
           </div>
 
+          <hr>
+
           <!-- Monday -->
           <div class="daily-section">
 
@@ -109,42 +114,45 @@
               <h4>Monday:</h4>
             </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="previousMondayIn" required />
+            <div class="time-fields">
 
-                <mat-error *ngIf="hoursForm.controls['previousMondayIn'].hasError('required')
-                && hoursForm.controls['previousMondayIn'].touched">
-                  Clock In is required.
-                </mat-error>
+              <!-- Clock In -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock In</mat-label>
+                  <input type="text" matInput formControlName="previousMondayIn" required />
 
-                <mat-error *ngIf="hoursForm.controls['previousMondayIn'].hasError('pattern')
-                && hoursForm.controls['previousMondayIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['previousMondayIn'].hasError('required')
+                  && hoursForm.controls['previousMondayIn'].touched">
+                    Clock In is required.
+                  </mat-error>
 
-              </mat-form-field>
-            </div>
+                  <mat-error *ngIf="hoursForm.controls['previousMondayIn'].hasError('pattern')
+                  && hoursForm.controls['previousMondayIn'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="previousMondayOut" required />
+                </mat-form-field>
+              </div>
 
-                <mat-error *ngIf="hoursForm.controls['previousMondayOut'].hasError('required')
-                && hoursForm.controls['previousMondayOut'].touched">
-                  Clock Out is required.
-                </mat-error>
+              <!-- Clock Out -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock Out</mat-label>
+                  <input type="text" matInput formControlName="previousMondayOut" required />
 
-                <mat-error *ngIf="hoursForm.controls['previousMondayOut'].hasError('pattern')
-                && hoursForm.controls['previousMondayOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['previousMondayOut'].hasError('required')
+                  && hoursForm.controls['previousMondayOut'].touched">
+                    Clock Out is required.
+                  </mat-error>
 
-              </mat-form-field>
+                  <mat-error *ngIf="hoursForm.controls['previousMondayOut'].hasError('pattern')
+                  && hoursForm.controls['previousMondayOut'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
             </div>
 
             <div class="daily-field">
@@ -160,42 +168,45 @@
               <h4>Tuesday:</h4>
             </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="previousTuesdayIn" required />
+            <div class="time-fields">
 
-                <mat-error *ngIf="hoursForm.controls['previousTuesdayIn'].hasError('required')
-                && hoursForm.controls['previousTuesdayIn'].touched">
-                  Clock In is required.
-                </mat-error>
+              <!-- Clock In -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock In</mat-label>
+                  <input type="text" matInput formControlName="previousTuesdayIn" required />
 
-                <mat-error *ngIf="hoursForm.controls['previousTuesdayIn'].hasError('pattern')
-                && hoursForm.controls['previousTuesdayIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['previousTuesdayIn'].hasError('required')
+                  && hoursForm.controls['previousTuesdayIn'].touched">
+                    Clock In is required.
+                  </mat-error>
 
-              </mat-form-field>
-            </div>
+                  <mat-error *ngIf="hoursForm.controls['previousTuesdayIn'].hasError('pattern')
+                  && hoursForm.controls['previousTuesdayIn'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="previousTuesdayOut" required />
+                </mat-form-field>
+              </div>
 
-                <mat-error *ngIf="hoursForm.controls['previousTuesdayOut'].hasError('required')
-                && hoursForm.controls['previousTuesdayOut'].touched">
-                  Clock Out is required.
-                </mat-error>
+              <!-- Clock Out -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock Out</mat-label>
+                  <input type="text" matInput formControlName="previousTuesdayOut" required />
 
-                <mat-error *ngIf="hoursForm.controls['previousTuesdayOut'].hasError('pattern')
-                && hoursForm.controls['previousTuesdayOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['previousTuesdayOut'].hasError('required')
+                  && hoursForm.controls['previousTuesdayOut'].touched">
+                    Clock Out is required.
+                  </mat-error>
 
-              </mat-form-field>
+                  <mat-error *ngIf="hoursForm.controls['previousTuesdayOut'].hasError('pattern')
+                  && hoursForm.controls['previousTuesdayOut'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
             </div>
 
             <div class="daily-field">
@@ -211,42 +222,45 @@
               <h4>Wednesday:</h4>
             </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="previousWednesdayIn" required />
+            <div class="time-fields">
 
-                <mat-error *ngIf="hoursForm.controls['previousWednesdayIn'].hasError('required')
-                && hoursForm.controls['previousWednesdayIn'].touched">
-                  Clock In is required.
-                </mat-error>
+              <!-- Clock In -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock In</mat-label>
+                  <input type="text" matInput formControlName="previousWednesdayIn" required />
 
-                <mat-error *ngIf="hoursForm.controls['previousWednesdayIn'].hasError('pattern')
-                && hoursForm.controls['previousWednesdayIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['previousWednesdayIn'].hasError('required')
+                  && hoursForm.controls['previousWednesdayIn'].touched">
+                    Clock In is required.
+                  </mat-error>
 
-              </mat-form-field>
-            </div>
+                  <mat-error *ngIf="hoursForm.controls['previousWednesdayIn'].hasError('pattern')
+                  && hoursForm.controls['previousWednesdayIn'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="previousWednesdayOut" required />
+                </mat-form-field>
+              </div>
 
-                <mat-error *ngIf="hoursForm.controls['previousWednesdayOut'].hasError('required')
-                && hoursForm.controls['previousWednesdayOut'].touched">
-                  Clock Out is required.
-                </mat-error>
+              <!-- Clock Out -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock Out</mat-label>
+                  <input type="text" matInput formControlName="previousWednesdayOut" required />
 
-                <mat-error *ngIf="hoursForm.controls['previousWednesdayOut'].hasError('pattern')
-                && hoursForm.controls['previousWednesdayOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['previousWednesdayOut'].hasError('required')
+                  && hoursForm.controls['previousWednesdayOut'].touched">
+                    Clock Out is required.
+                  </mat-error>
 
-              </mat-form-field>
+                  <mat-error *ngIf="hoursForm.controls['previousWednesdayOut'].hasError('pattern')
+                  && hoursForm.controls['previousWednesdayOut'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
             </div>
 
             <div class="daily-field">
@@ -262,42 +276,45 @@
               <h4>Thursday:</h4>
             </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="previousThursdayIn" required />
+            <div class="time-fields">
 
-                <mat-error *ngIf="hoursForm.controls['previousThursdayIn'].hasError('required')
-                && hoursForm.controls['previousThursdayIn'].touched">
-                  Clock In is required.
-                </mat-error>
+              <!-- Clock In -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock In</mat-label>
+                  <input type="text" matInput formControlName="previousThursdayIn" required />
 
-                <mat-error *ngIf="hoursForm.controls['previousThursdayIn'].hasError('pattern')
-                && hoursForm.controls['previousThursdayIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['previousThursdayIn'].hasError('required')
+                  && hoursForm.controls['previousThursdayIn'].touched">
+                    Clock In is required.
+                  </mat-error>
 
-              </mat-form-field>
-            </div>
+                  <mat-error *ngIf="hoursForm.controls['previousThursdayIn'].hasError('pattern')
+                  && hoursForm.controls['previousThursdayIn'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="previousThursdayOut" required />
+                </mat-form-field>
+              </div>
 
-                <mat-error *ngIf="hoursForm.controls['previousThursdayOut'].hasError('required')
-                && hoursForm.controls['previousThursdayOut'].touched">
-                  Clock Out is required.
-                </mat-error>
+              <!-- Clock Out -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock Out</mat-label>
+                  <input type="text" matInput formControlName="previousThursdayOut" required />
 
-                <mat-error *ngIf="hoursForm.controls['previousThursdayOut'].hasError('pattern')
-                && hoursForm.controls['previousThursdayOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['previousThursdayOut'].hasError('required')
+                  && hoursForm.controls['previousThursdayOut'].touched">
+                    Clock Out is required.
+                  </mat-error>
 
-              </mat-form-field>
+                  <mat-error *ngIf="hoursForm.controls['previousThursdayOut'].hasError('pattern')
+                  && hoursForm.controls['previousThursdayOut'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
             </div>
 
             <div class="daily-field">
@@ -313,43 +330,47 @@
               <h4>Friday:</h4>
             </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="previousFridayIn" required />
+            <div class="time-fields">
 
-                <mat-error *ngIf="hoursForm.controls['previousFridayIn'].hasError('required')
-                && hoursForm.controls['previousFridayIn'].touched">
-                  Clock In is required.
-                </mat-error>
+              <!-- Clock In -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock In</mat-label>
+                  <input type="text" matInput formControlName="previousFridayIn" required />
 
-                <mat-error *ngIf="hoursForm.controls['previousFridayIn'].hasError('pattern')
-                && hoursForm.controls['previousFridayIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['previousFridayIn'].hasError('required')
+                  && hoursForm.controls['previousFridayIn'].touched">
+                    Clock In is required.
+                  </mat-error>
 
-              </mat-form-field>
+                  <mat-error *ngIf="hoursForm.controls['previousFridayIn'].hasError('pattern')
+                  && hoursForm.controls['previousFridayIn'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
+
+              <!-- Clock Out -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock Out</mat-label>
+                  <input type="text" matInput formControlName="previousFridayOut" required />
+
+                  <mat-error *ngIf="hoursForm.controls['previousFridayOut'].hasError('required')
+                  && hoursForm.controls['previousFridayOut'].touched">
+                    Clock Out is required.
+                  </mat-error>
+
+                  <mat-error *ngIf="hoursForm.controls['previousFridayOut'].hasError('pattern')
+                  && hoursForm.controls['previousFridayOut'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
             </div>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="previousFridayOut" required />
-
-                <mat-error *ngIf="hoursForm.controls['previousFridayOut'].hasError('required')
-                && hoursForm.controls['previousFridayOut'].touched">
-                  Clock Out is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['previousFridayOut'].hasError('pattern')
-                && hoursForm.controls['previousFridayOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
 
             <div class="daily-field">
               <p>Total Daily Hours: {{ previousFridayHours }}.</p>
@@ -364,42 +385,45 @@
               <h4>Saturday:</h4>
             </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="previousSaturdayIn" required />
+            <div class="time-fields">
 
-                <mat-error *ngIf="hoursForm.controls['previousSaturdayIn'].hasError('required')
-                && hoursForm.controls['previousSaturdayIn'].touched">
-                  Clock In is required.
-                </mat-error>
+              <!-- Clock In -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock In</mat-label>
+                  <input type="text" matInput formControlName="previousSaturdayIn" required />
 
-                <mat-error *ngIf="hoursForm.controls['previousSaturdayIn'].hasError('pattern')
-                && hoursForm.controls['previousSaturdayIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['previousSaturdayIn'].hasError('required')
+                  && hoursForm.controls['previousSaturdayIn'].touched">
+                    Clock In is required.
+                  </mat-error>
 
-              </mat-form-field>
-            </div>
+                  <mat-error *ngIf="hoursForm.controls['previousSaturdayIn'].hasError('pattern')
+                  && hoursForm.controls['previousSaturdayIn'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="previousSaturdayOut" required />
+                </mat-form-field>
+              </div>
 
-                <mat-error *ngIf="hoursForm.controls['previousSaturdayOut'].hasError('required')
-                && hoursForm.controls['previousSaturdayOut'].touched">
-                  Clock Out is required.
-                </mat-error>
+              <!-- Clock Out -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock Out</mat-label>
+                  <input type="text" matInput formControlName="previousSaturdayOut" required />
 
-                <mat-error *ngIf="hoursForm.controls['previousSaturdayOut'].hasError('pattern')
-                && hoursForm.controls['previousSaturdayOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['previousSaturdayOut'].hasError('required')
+                  && hoursForm.controls['previousSaturdayOut'].touched">
+                    Clock Out is required.
+                  </mat-error>
 
-              </mat-form-field>
+                  <mat-error *ngIf="hoursForm.controls['previousSaturdayOut'].hasError('pattern')
+                  && hoursForm.controls['previousSaturdayOut'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
             </div>
 
             <div class="daily-field">
@@ -428,774 +452,896 @@
           <h3>Current Week</h3>
         </mat-card-title>
 
-        <mat-card-content>
+        <mat-card-content class="w-100">
 
-          <!-- Sunday Actual -->
-          <div class="daily-section">
+          <div class="current-week">
 
-            <div class="daily-field">
-              <h4>Actual Sunday Hours:</h4>
-            </div>
+            <!-- Actual -->
+            <div class="actual-hours">
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="currentSundayClockIn" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentSundayClockIn'].hasError('required')
-                && hoursForm.controls['currentSundayClockIn'].touched">
-                  Clock In is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentSundayClockIn'].hasError('pattern')
-                && hoursForm.controls['currentSundayClockIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+              <div class="title">
+                <h3>Actual Hours:</h3>
+              </div>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="currentSundayClockOut" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentSundayClockOut'].hasError('required')
-                && hoursForm.controls['currentSundayClockOut'].touched">
-                  Clock Out is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentSundayClockOut'].hasError('pattern')
-                && hoursForm.controls['currentSundayClockOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+              <!-- Sunday Actual -->
+              <div class="current-section">
 
-            <div class="daily-field">
-              <p>Total Daily Hours: {{ currentSundayActualHours }}.</p>
-            </div>
+                <div class="title">
+                  <h4>Actual Sunday Hours:</h4>
+                </div>
 
-            <div class="daily-field">
-              <p>Actual Eight Day Hours: {{ currentSundayDOT }}.</p>
-            </div>
+                <div class="current-time">
 
-          </div>
+                  <!-- Clock In -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock In</mat-label>
+                      <input type="text" matInput formControlName="currentSundayClockIn" required />
 
-          <!-- Sunday Scheduled -->
-          <div class="daily-section">
+                      <mat-error *ngIf="hoursForm.controls['currentSundayClockIn'].hasError('required')
+                      && hoursForm.controls['currentSundayClockIn'].touched">
+                        Clock In is required.
+                      </mat-error>
 
-            <div class="daily-field">
-              <h4>Scheduled Sunday Hours:</h4>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentSundayClockIn'].hasError('pattern')
+                      && hoursForm.controls['currentSundayClockIn'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="currentSundayScheduleIn" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentSundayScheduleIn'].hasError('required')
-                && hoursForm.controls['currentSundayScheduleIn'].touched">
-                  Clock In is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentSundayScheduleIn'].hasError('pattern')
-                && hoursForm.controls['currentSundayScheduleIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                    </mat-form-field>
+                  </div>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="currentSundayScheduleOut" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentSundayScheduleOut'].hasError('required')
-                && hoursForm.controls['currentSundayScheduleOut'].touched">
-                  Clock Out is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentSundayScheduleOut'].hasError('pattern')
-                && hoursForm.controls['currentSundayScheduleOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                  <!-- Clock Out -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock Out</mat-label>
+                      <input type="text" matInput formControlName="currentSundayClockOut" required />
 
-            <div class="daily-field">
-              <p>Scheduled Daily Hours: {{ currentSundayScheduledHours }}.</p>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentSundayClockOut'].hasError('required')
+                      && hoursForm.controls['currentSundayClockOut'].touched">
+                        Clock Out is required.
+                      </mat-error>
 
-            <div class="daily-field">
-              <p>Scheduled Eight Day Hours: {{ currentSundayProjection }}.</p>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentSundayClockOut'].hasError('pattern')
+                      && hoursForm.controls['currentSundayClockOut'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
 
-          </div>
+                    </mat-form-field>
+                  </div>
+                </div>
 
-          <!-- Monday Actual -->
-          <div class="daily-section">
+                  <div class="current-time">
 
-            <div class="daily-field">
-              <h4>Actual Monday Hours:</h4>
-            </div>
+                  <div class="clock-field title">
+                    <p>Total Daily Hours:<br> {{ currentSundayActualHours }}.</p>
+                  </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="currentMondayClockIn" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentMondayClockIn'].hasError('required')
-                && hoursForm.controls['currentMondayClockIn'].touched">
-                  Clock In is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentMondayClockIn'].hasError('pattern')
-                && hoursForm.controls['currentMondayClockIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                  <div class="clock-field title">
+                    <p>Actual Eight Day Hours:<br> {{ currentSundayDOT }}.</p>
+                  </div>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="currentMondayClockOut" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentMondayClockOut'].hasError('required')
-                && hoursForm.controls['currentMondayClockOut'].touched">
-                  Clock Out is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentMondayClockOut'].hasError('pattern')
-                && hoursForm.controls['currentMondayClockOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                </div>
 
-            <div class="daily-field">
-              <p>Total Daily Hours: {{ currentMondayActualHours }}.</p>
-            </div>
+              </div>
 
-            <div class="daily-field">
-              <p>Actual Eight Day Hours: {{ currentMondayDOT }}.</p>
-            </div>
+              <!-- Monday Actual -->
+              <div class="current-section">
 
-          </div>
+                <div class="title">
+                  <h4>Actual Monday Hours:</h4>
+                </div>
 
-          <!-- Monday Scheduled -->
-          <div class="daily-section">
+                <div class="current-time">
 
-            <div class="daily-field">
-              <h4>Scheduled Monday Hours:</h4>
-            </div>
+                  <!-- Clock In -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock In</mat-label>
+                      <input type="text" matInput formControlName="currentMondayClockIn" required />
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="currentMondayScheduleIn" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentMondayScheduleIn'].hasError('required')
-                && hoursForm.controls['currentMondayScheduleIn'].touched">
-                  Clock In is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentMondayScheduleIn'].hasError('pattern')
-                && hoursForm.controls['currentMondayScheduleIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentMondayClockIn'].hasError('required')
+                      && hoursForm.controls['currentMondayClockIn'].touched">
+                        Clock In is required.
+                      </mat-error>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="currentMondayScheduleOut" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentMondayScheduleOut'].hasError('required')
-                && hoursForm.controls['currentMondayScheduleOut'].touched">
-                  Clock Out is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentMondayScheduleOut'].hasError('pattern')
-                && hoursForm.controls['currentMondayScheduleOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentMondayClockIn'].hasError('pattern')
+                      && hoursForm.controls['currentMondayClockIn'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
 
-            <div class="daily-field">
-              <p>Scheduled Daily Hours: {{ currentMondayScheduledHours }}.</p>
-            </div>
+                    </mat-form-field>
+                  </div>
 
-            <div class="daily-field">
-              <p>Scheduled Eight Day Hours: {{ currentMondayProjection }}.</p>
-            </div>
+                  <!-- Clock Out -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock Out</mat-label>
+                      <input type="text" matInput formControlName="currentMondayClockOut" required />
 
-          </div>
+                      <mat-error *ngIf="hoursForm.controls['currentMondayClockOut'].hasError('required')
+                      && hoursForm.controls['currentMondayClockOut'].touched">
+                        Clock Out is required.
+                      </mat-error>
 
-          <!-- Tuesday Actual -->
-          <div class="daily-section">
+                      <mat-error *ngIf="hoursForm.controls['currentMondayClockOut'].hasError('pattern')
+                      && hoursForm.controls['currentMondayClockOut'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
 
-            <div class="daily-field">
-              <h4>Actual Tuesday Hours:</h4>
-            </div>
+                    </mat-form-field>
+                  </div>
+                </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="currentTuesdayClockIn" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentTuesdayClockIn'].hasError('required')
-                && hoursForm.controls['currentTuesdayClockIn'].touched">
-                  Clock In is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentTuesdayClockIn'].hasError('pattern')
-                && hoursForm.controls['currentTuesdayClockIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                <div class="current-time">
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="currentTuesdayClockOut" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentTuesdayClockOut'].hasError('required')
-                && hoursForm.controls['currentTuesdayClockOut'].touched">
-                  Clock Out is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentTuesdayClockOut'].hasError('pattern')
-                && hoursForm.controls['currentTuesdayClockOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                  <div class="clock-field title">
+                    <p>Total Daily Hours:<br> {{ currentMondayActualHours }}.</p>
+                  </div>
 
-            <div class="daily-field">
-              <p>Total Daily Hours: {{ currentTuesdayActualHours }}.</p>
-            </div>
+                  <div class="clock-field title">
+                    <p>Actual Eight Day Hours:<br> {{ currentMondayDOT }}.</p>
+                  </div>
 
-            <div class="daily-field">
-              <p>Actual Eight Day Hours: {{ currentTuesdayDOT }}.</p>
-            </div>
+                </div>
 
-          </div>
+              </div>
 
-          <!-- Tuesday Scheduled -->
-          <div class="daily-section">
+              <!-- Tuesday Actual -->
+              <div class="current-section">
 
-            <div class="daily-field">
-              <h4>Scheduled Tuesday Hours:</h4>
-            </div>
+                <div class="title">
+                  <h4>Actual Tuesday Hours:</h4>
+                </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="currentTuesdayScheduleIn" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentTuesdayScheduleIn'].hasError('required')
-                && hoursForm.controls['currentTuesdayScheduleIn'].touched">
-                  Clock In is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentTuesdayScheduleIn'].hasError('pattern')
-                && hoursForm.controls['currentTuesdayScheduleIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                <div class="current-time">
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="currentTuesdayScheduleOut" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentTuesdayScheduleOut'].hasError('required')
-                && hoursForm.controls['currentTuesdayScheduleOut'].touched">
-                  Clock Out is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentTuesdayScheduleOut'].hasError('pattern')
-                && hoursForm.controls['currentTuesdayScheduleOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                  <!-- Clock In -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock In</mat-label>
+                      <input type="text" matInput formControlName="currentTuesdayClockIn" required />
 
-            <div class="daily-field">
-              <p>Scheduled Daily Hours: {{ currentTuesdayScheduledHours }}.</p>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentTuesdayClockIn'].hasError('required')
+                      && hoursForm.controls['currentTuesdayClockIn'].touched">
+                        Clock In is required.
+                      </mat-error>
 
-            <div class="daily-field">
-              <p>Scheduled Eight Day Hours: {{ currentTuesdayProjection }}.</p>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentTuesdayClockIn'].hasError('pattern')
+                      && hoursForm.controls['currentTuesdayClockIn'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
 
-          </div>
+                    </mat-form-field>
+                  </div>
 
-          <!-- Wednesday Actual -->
-          <div class="daily-section">
+                  <!-- Clock Out -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock Out</mat-label>
+                      <input type="text" matInput formControlName="currentTuesdayClockOut" required />
 
-            <div class="daily-field">
-              <h4>Actual Wednesday Hours:</h4>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentTuesdayClockOut'].hasError('required')
+                      && hoursForm.controls['currentTuesdayClockOut'].touched">
+                        Clock Out is required.
+                      </mat-error>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="currentWednesdayClockIn" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentWednesdayClockIn'].hasError('required')
-                && hoursForm.controls['currentWednesdayClockIn'].touched">
-                  Clock In is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentWednesdayClockIn'].hasError('pattern')
-                && hoursForm.controls['currentWednesdayClockIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentTuesdayClockOut'].hasError('pattern')
+                      && hoursForm.controls['currentTuesdayClockOut'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="currentWednesdayClockOut" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentWednesdayClockOut'].hasError('required')
-                && hoursForm.controls['currentWednesdayClockOut'].touched">
-                  Clock Out is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentWednesdayClockOut'].hasError('pattern')
-                && hoursForm.controls['currentWednesdayClockOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                    </mat-form-field>
+                  </div>
+                </div>
 
-            <div class="daily-field">
-              <p>Total Daily Hours: {{ currentWednesdayActualHours }}.</p>
-            </div>
+                <div class="current-time">
 
-            <div class="daily-field">
-              <p>Actual Eight Day Hours: {{ currentWednesdayDOT }}.</p>
-            </div>
+                  <div class="clock-field title">
+                    <p>Total Daily Hours:<br> {{ currentTuesdayActualHours }}.</p>
+                  </div>
 
-          </div>
+                  <div class="clock-field title">
+                    <p>Actual Eight Day Hours:<br> {{ currentTuesdayDOT }}.</p>
+                  </div>
 
-          <!-- Wednesday Scheduled -->
-          <div class="daily-section">
+                </div>
 
-            <div class="daily-field">
-              <h4>Scheduled Wednesday Hours:</h4>
-            </div>
+              </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="currentWednesdayScheduleIn" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentWednesdayScheduleIn'].hasError('required')
-                && hoursForm.controls['currentWednesdayScheduleIn'].touched">
-                  Clock In is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentWednesdayScheduleIn'].hasError('pattern')
-                && hoursForm.controls['currentWednesdayScheduleIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+              <!-- Wednesday Actual -->
+              <div class="current-section">
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="currentWednesdayScheduleOut" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentWednesdayScheduleOut'].hasError('required')
-                && hoursForm.controls['currentWednesdayScheduleOut'].touched">
-                  Clock Out is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentWednesdayScheduleOut'].hasError('pattern')
-                && hoursForm.controls['currentWednesdayScheduleOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                <div class="title">
+                  <h4>Actual Wednesday Hours:</h4>
+                </div>
 
-            <div class="daily-field">
-              <p>Scheduled Daily Hours: {{ currentWednesdayScheduledHours }}.</p>
-            </div>
+                <div class="current-time">
 
-            <div class="daily-field">
-              <p>Scheduled Eight Day Hours: {{ currentWednesdayProjection }}.</p>
-            </div>
+                  <!-- Clock In -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock In</mat-label>
+                      <input type="text" matInput formControlName="currentWednesdayClockIn" required />
 
-          </div>
+                      <mat-error *ngIf="hoursForm.controls['currentWednesdayClockIn'].hasError('required')
+                      && hoursForm.controls['currentWednesdayClockIn'].touched">
+                        Clock In is required.
+                      </mat-error>
 
-          <!-- Thursday Actual -->
-          <div class="daily-section">
+                      <mat-error *ngIf="hoursForm.controls['currentWednesdayClockIn'].hasError('pattern')
+                      && hoursForm.controls['currentWednesdayClockIn'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
 
-            <div class="daily-field">
-              <h4>Actual Thursday Hours:</h4>
-            </div>
+                    </mat-form-field>
+                  </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="currentThursdayClockIn" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentThursdayClockIn'].hasError('required')
-                && hoursForm.controls['currentThursdayClockIn'].touched">
-                  Clock In is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentThursdayClockIn'].hasError('pattern')
-                && hoursForm.controls['currentThursdayClockIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                  <!-- Clock Out -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock Out</mat-label>
+                      <input type="text" matInput formControlName="currentWednesdayClockOut" required />
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="currentThursdayClockOut" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentThursdayClockOut'].hasError('required')
-                && hoursForm.controls['currentThursdayClockOut'].touched">
-                  Clock Out is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentThursdayClockOut'].hasError('pattern')
-                && hoursForm.controls['currentThursdayClockOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentWednesdayClockOut'].hasError('required')
+                      && hoursForm.controls['currentWednesdayClockOut'].touched">
+                        Clock Out is required.
+                      </mat-error>
 
-            <div class="daily-field">
-              <p>Total Daily Hours: {{ currentThursdayActualHours }}.</p>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentWednesdayClockOut'].hasError('pattern')
+                      && hoursForm.controls['currentWednesdayClockOut'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
 
-            <div class="daily-field">
-              <p>Actual Eight Day Hours: {{ currentThursdayDOT }}.</p>
-            </div>
+                    </mat-form-field>
+                  </div>
+                </div>
 
-          </div>
+                <div class="current-time">
 
-          <!-- Thursday Scheduled -->
-          <div class="daily-section">
+                  <div class="clock-field title">
+                    <p>Total Daily Hours:<br> {{ currentWednesdayActualHours }}.</p>
+                  </div>
 
-            <div class="daily-field">
-              <h4>Scheduled Thursday Hours:</h4>
-            </div>
+                  <div class="clock-field title">
+                    <p>Actual Eight Day Hours:<br> {{ currentWednesdayDOT }}.</p>
+                  </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="currentThursdayScheduleIn" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentThursdayScheduleIn'].hasError('required')
-                && hoursForm.controls['currentThursdayScheduleIn'].touched">
-                  Clock In is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentThursdayScheduleIn'].hasError('pattern')
-                && hoursForm.controls['currentThursdayScheduleIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                </div>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="currentThursdayScheduleOut" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentThursdayScheduleOut'].hasError('required')
-                && hoursForm.controls['currentThursdayScheduleOut'].touched">
-                  Clock Out is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentThursdayScheduleOut'].hasError('pattern')
-                && hoursForm.controls['currentThursdayScheduleOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+              </div>
 
-            <div class="daily-field">
-              <p>Scheduled Daily Hours: {{ currentThursdayScheduledHours }}.</p>
-            </div>
+              <!-- Thursday Actual -->
+              <div class="current-section">
 
-            <div class="daily-field">
-              <p>Scheduled Eight Day Hours: {{ currentThursdayProjection }}.</p>
-            </div>
+                <div class="title">
+                  <h4>Actual Thursday Hours:</h4>
+                </div>
 
-          </div>
+                <div class="current-time">
 
-          <!-- Friday Actual -->
-          <div class="daily-section">
+                  <!-- Clock In -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock In</mat-label>
+                      <input type="text" matInput formControlName="currentThursdayClockIn" required />
 
-            <div class="daily-field">
-              <h4>Actual Friday Hours:</h4>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentThursdayClockIn'].hasError('required')
+                      && hoursForm.controls['currentThursdayClockIn'].touched">
+                        Clock In is required.
+                      </mat-error>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="currentFridayClockIn" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentFridayClockIn'].hasError('required')
-                && hoursForm.controls['currentFridayClockIn'].touched">
-                  Clock In is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentFridayClockIn'].hasError('pattern')
-                && hoursForm.controls['currentFridayClockIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentThursdayClockIn'].hasError('pattern')
+                      && hoursForm.controls['currentThursdayClockIn'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="currentFridayClockOut" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentFridayClockOut'].hasError('required')
-                && hoursForm.controls['currentFridayClockOut'].touched">
-                  Clock Out is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentFridayClockOut'].hasError('pattern')
-                && hoursForm.controls['currentFridayClockOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                    </mat-form-field>
+                  </div>
 
-            <div class="daily-field">
-              <p>Total Daily Hours: {{ currentFridayActualHours }}.</p>
-            </div>
+                  <!-- Clock Out -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock Out</mat-label>
+                      <input type="text" matInput formControlName="currentThursdayClockOut" required />
 
-            <div class="daily-field">
-              <p>Actual Eight Day Hours: {{ currentFridayDOT }}.</p>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentThursdayClockOut'].hasError('required')
+                      && hoursForm.controls['currentThursdayClockOut'].touched">
+                        Clock Out is required.
+                      </mat-error>
 
-          </div>
+                      <mat-error *ngIf="hoursForm.controls['currentThursdayClockOut'].hasError('pattern')
+                      && hoursForm.controls['currentThursdayClockOut'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
 
-          <!-- Friday Scheduled -->
-          <div class="daily-section">
+                    </mat-form-field>
+                  </div>
+                </div>
 
-            <div class="daily-field">
-              <h4>Scheduled Friday Hours:</h4>
-            </div>
+                <div class="current-time">
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="currentFridayScheduleIn" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentFridayScheduleIn'].hasError('required')
-                && hoursForm.controls['currentFridayScheduleIn'].touched">
-                  Clock In is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentFridayScheduleIn'].hasError('pattern')
-                && hoursForm.controls['currentFridayScheduleIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                  <div class="clock-field title">
+                    <p>Total Daily Hours:<br> {{ currentThursdayActualHours }}.</p>
+                  </div>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="currentFridayScheduleOut" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentFridayScheduleOut'].hasError('required')
-                && hoursForm.controls['currentFridayScheduleOut'].touched">
-                  Clock Out is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentFridayScheduleOut'].hasError('pattern')
-                && hoursForm.controls['currentFridayScheduleOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                  <div class="clock-field title">
+                    <p>Actual Eight Day Hours:<br> {{ currentThursdayDOT }}.</p>
+                  </div>
 
-            <div class="daily-field">
-              <p>Scheduled Daily Hours: {{ currentFridayScheduledHours }}.</p>
-            </div>
+                </div>
 
-            <div class="daily-field">
-              <p>Scheduled Eight Day Hours: {{ currentFridayProjection }}.</p>
-            </div>
+              </div>
 
-          </div>
+              <!-- Friday Actual -->
+              <div class="current-section">
 
-          <!-- Saturday Actual -->
-          <div class="daily-section">
+                <div class="title">
+                  <h4>Actual Friday Hours:</h4>
+                </div>
 
-            <div class="daily-field">
-              <h4>Actual Saturday hours:</h4>
-            </div>
+                <div class="current-time">
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="currentSaturdayClockIn" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentSaturdayClockIn'].hasError('required')
-                && hoursForm.controls['currentSaturdayClockIn'].touched">
-                  Clock In is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentSaturdayClockIn'].hasError('pattern')
-                && hoursForm.controls['currentSaturdayClockIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                  <!-- Clock In -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock In</mat-label>
+                      <input type="text" matInput formControlName="currentFridayClockIn" required />
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="currentSaturdayClockOut" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentSaturdayClockOut'].hasError('required')
-                && hoursForm.controls['currentSaturdayClockOut'].touched">
-                  Clock Out is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentSaturdayClockOut'].hasError('pattern')
-                && hoursForm.controls['currentSaturdayClockOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentFridayClockIn'].hasError('required')
+                      && hoursForm.controls['currentFridayClockIn'].touched">
+                        Clock In is required.
+                      </mat-error>
 
-            <div class="daily-field">
-              <p>Total Daily Hours: {{ currentSaturdayActualHours }}.</p>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentFridayClockIn'].hasError('pattern')
+                      && hoursForm.controls['currentFridayClockIn'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
 
-            <div class="daily-field">
-              <p>Actual Eight Day Hours: {{ currentSaturdayDOT }}.</p>
-            </div>
+                    </mat-form-field>
+                  </div>
 
-          </div>
+                  <!-- Clock Out -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock Out</mat-label>
+                      <input type="text" matInput formControlName="currentFridayClockOut" required />
 
-          <!-- Saturday Scheduled -->
-          <div class="daily-section">
+                      <mat-error *ngIf="hoursForm.controls['currentFridayClockOut'].hasError('required')
+                      && hoursForm.controls['currentFridayClockOut'].touched">
+                        Clock Out is required.
+                      </mat-error>
 
-            <div class="daily-field">
-              <h4>Scheduled Saturday Hours:</h4>
-            </div>
+                      <mat-error *ngIf="hoursForm.controls['currentFridayClockOut'].hasError('pattern')
+                      && hoursForm.controls['currentFridayClockOut'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="currentSaturdayScheduleIn" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentSaturdayScheduleIn'].hasError('required')
-                && hoursForm.controls['currentSaturdayScheduleIn'].touched">
-                  Clock In is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentSaturdayScheduleIn'].hasError('pattern')
-                && hoursForm.controls['currentSaturdayScheduleIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                    </mat-form-field>
+                  </div>
+                </div>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="currentSaturdayScheduleOut" required />
-
-                <mat-error *ngIf="hoursForm.controls['currentSaturdayScheduleOut'].hasError('required')
-                && hoursForm.controls['currentSaturdayScheduleOut'].touched">
-                  Clock Out is required.
-                </mat-error>
-
-                <mat-error *ngIf="hoursForm.controls['currentSaturdayScheduleOut'].hasError('pattern')
-                && hoursForm.controls['currentSaturdayScheduleOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
-
-              </mat-form-field>
-            </div>
+                <div class="current-time">
+
+                  <div class="clock-field title">
+                    <p>Total Daily Hours:<br> {{ currentFridayActualHours }}.</p>
+                  </div>
+
+                  <div class="clock-field title">
+                    <p>Actual Eight Day Hours:<br> {{ currentFridayDOT }}.</p>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Saturday Actual -->
+              <div class="current-section">
+
+                <div class="title">
+                  <h4>Actual Saturday hours:</h4>
+                </div>
+
+                <div class="current-time">
 
-            <div class="daily-field">
-              <p>Scheduled Daily Hours: {{ currentSaturdayScheduledHours }}.</p>
+                  <!-- Clock In -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock In</mat-label>
+                      <input type="text" matInput formControlName="currentSaturdayClockIn" required />
+
+                      <mat-error *ngIf="hoursForm.controls['currentSaturdayClockIn'].hasError('required')
+                      && hoursForm.controls['currentSaturdayClockIn'].touched">
+                        Clock In is required.
+                      </mat-error>
+
+                      <mat-error *ngIf="hoursForm.controls['currentSaturdayClockIn'].hasError('pattern')
+                      && hoursForm.controls['currentSaturdayClockIn'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
+
+                    </mat-form-field>
+                  </div>
+
+                  <!-- Clock Out -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock Out</mat-label>
+                      <input type="text" matInput formControlName="currentSaturdayClockOut" required />
+
+                      <mat-error *ngIf="hoursForm.controls['currentSaturdayClockOut'].hasError('required')
+                      && hoursForm.controls['currentSaturdayClockOut'].touched">
+                        Clock Out is required.
+                      </mat-error>
+
+                      <mat-error *ngIf="hoursForm.controls['currentSaturdayClockOut'].hasError('pattern')
+                      && hoursForm.controls['currentSaturdayClockOut'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
+
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="current-time">
+
+                  <div class="clock-field title">
+                    <p>Total Daily Hours:<br> {{ currentSaturdayActualHours }}.</p>
+                  </div>
+
+                  <div class="clock-field title">
+                    <p>Actual Eight Day Hours:<br> {{ currentSaturdayDOT }}.</p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            <!-- Paste Above -->
             </div>
+
+            <!-- Scheduled -->
+            <div class="scheduled-hours">
+
+              <div class="title">
+                <h3>Scheduled Hours:</h3>
+              </div>
+
+              <!-- Sunday Scheduled -->
+              <div class="current-section">
+
+                <div class="title">
+                  <h4>Scheduled Sunday Hours:</h4>
+                </div>
+
+                <div class="current-time">
+
+                  <!-- Clock In -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock In</mat-label>
+                      <input type="text" matInput formControlName="currentSundayScheduleIn" required />
+
+                      <mat-error *ngIf="hoursForm.controls['currentSundayScheduleIn'].hasError('required')
+                      && hoursForm.controls['currentSundayScheduleIn'].touched">
+                        Clock In is required.
+                      </mat-error>
+
+                      <mat-error *ngIf="hoursForm.controls['currentSundayScheduleIn'].hasError('pattern')
+                      && hoursForm.controls['currentSundayScheduleIn'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
+
+                    </mat-form-field>
+                  </div>
+
+                  <!-- Clock Out -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock Out</mat-label>
+                      <input type="text" matInput formControlName="currentSundayScheduleOut" required />
+
+                      <mat-error *ngIf="hoursForm.controls['currentSundayScheduleOut'].hasError('required')
+                      && hoursForm.controls['currentSundayScheduleOut'].touched">
+                        Clock Out is required.
+                      </mat-error>
+
+                      <mat-error *ngIf="hoursForm.controls['currentSundayScheduleOut'].hasError('pattern')
+                      && hoursForm.controls['currentSundayScheduleOut'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
+
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="current-time">
+
+                  <div class="clock-field title">
+                    <p>Scheduled Daily Hours:<br> {{ currentSundayScheduledHours }}.</p>
+                  </div>
+
+                  <div class="clock-field title">
+                    <p>Scheduled Eight Day Hours:<br> {{ currentSundayProjection }}.</p>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Monday Scheduled -->
+              <div class="current-section">
+
+                <div class="title">
+                  <h4>Scheduled Monday Hours:</h4>
+                </div>
+
+                <div class="current-time">
+
+                  <!-- Clock In -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock In</mat-label>
+                      <input type="text" matInput formControlName="currentMondayScheduleIn" required />
+
+                      <mat-error *ngIf="hoursForm.controls['currentMondayScheduleIn'].hasError('required')
+                      && hoursForm.controls['currentMondayScheduleIn'].touched">
+                        Clock In is required.
+                      </mat-error>
+
+                      <mat-error *ngIf="hoursForm.controls['currentMondayScheduleIn'].hasError('pattern')
+                      && hoursForm.controls['currentMondayScheduleIn'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
+
+                    </mat-form-field>
+                  </div>
+
+                  <!-- Clock Out -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock Out</mat-label>
+                      <input type="text" matInput formControlName="currentMondayScheduleOut" required />
+
+                      <mat-error *ngIf="hoursForm.controls['currentMondayScheduleOut'].hasError('required')
+                      && hoursForm.controls['currentMondayScheduleOut'].touched">
+                        Clock Out is required.
+                      </mat-error>
+
+                      <mat-error *ngIf="hoursForm.controls['currentMondayScheduleOut'].hasError('pattern')
+                      && hoursForm.controls['currentMondayScheduleOut'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
+
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="current-time">
+
+                  <div class="clock-field title">
+                    <p>Scheduled Daily Hours:<br> {{ currentMondayScheduledHours }}.</p>
+                  </div>
+
+                  <div class="clock-field title">
+                    <p>Scheduled Eight Day Hours:<br> {{ currentMondayProjection }}.</p>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Tuesday Scheduled -->
+              <div class="current-section">
+
+                <div class="title">
+                  <h4>Scheduled Tuesday Hours:</h4>
+                </div>
+
+                <div class="current-time">
+
+                  <!-- Clock In -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock In</mat-label>
+                      <input type="text" matInput formControlName="currentTuesdayScheduleIn" required />
+
+                      <mat-error *ngIf="hoursForm.controls['currentTuesdayScheduleIn'].hasError('required')
+                      && hoursForm.controls['currentTuesdayScheduleIn'].touched">
+                        Clock In is required.
+                      </mat-error>
+
+                      <mat-error *ngIf="hoursForm.controls['currentTuesdayScheduleIn'].hasError('pattern')
+                      && hoursForm.controls['currentTuesdayScheduleIn'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
+
+                    </mat-form-field>
+                  </div>
+
+                  <!-- Clock Out -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock Out</mat-label>
+                      <input type="text" matInput formControlName="currentTuesdayScheduleOut" required />
+
+                      <mat-error *ngIf="hoursForm.controls['currentTuesdayScheduleOut'].hasError('required')
+                      && hoursForm.controls['currentTuesdayScheduleOut'].touched">
+                        Clock Out is required.
+                      </mat-error>
+
+                      <mat-error *ngIf="hoursForm.controls['currentTuesdayScheduleOut'].hasError('pattern')
+                      && hoursForm.controls['currentTuesdayScheduleOut'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
+
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="current-time">
+
+                  <div class="clock-field title">
+                    <p>Scheduled Daily Hours:<br> {{ currentTuesdayScheduledHours }}.</p>
+                  </div>
+
+                  <div class="clock-field title">
+                    <p>Scheduled Eight Day Hours:<br> {{ currentTuesdayProjection }}.</p>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Wednesday Scheduled -->
+              <div class="current-section">
+
+                <div class="title">
+                  <h4>Scheduled Wednesday Hours:</h4>
+                </div>
+
+                <div class="current-time">
+
+                  <!-- Clock In -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock In</mat-label>
+                      <input type="text" matInput formControlName="currentWednesdayScheduleIn" required />
+
+                      <mat-error *ngIf="hoursForm.controls['currentWednesdayScheduleIn'].hasError('required')
+                      && hoursForm.controls['currentWednesdayScheduleIn'].touched">
+                        Clock In is required.
+                      </mat-error>
+
+                      <mat-error *ngIf="hoursForm.controls['currentWednesdayScheduleIn'].hasError('pattern')
+                      && hoursForm.controls['currentWednesdayScheduleIn'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
+
+                    </mat-form-field>
+                  </div>
+
+                  <!-- Clock Out -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock Out</mat-label>
+                      <input type="text" matInput formControlName="currentWednesdayScheduleOut" required />
+
+                      <mat-error *ngIf="hoursForm.controls['currentWednesdayScheduleOut'].hasError('required')
+                      && hoursForm.controls['currentWednesdayScheduleOut'].touched">
+                        Clock Out is required.
+                      </mat-error>
+
+                      <mat-error *ngIf="hoursForm.controls['currentWednesdayScheduleOut'].hasError('pattern')
+                      && hoursForm.controls['currentWednesdayScheduleOut'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
+
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="current-time">
+
+                  <div class="clock-field title">
+                    <p>Scheduled Daily Hours:<br> {{ currentWednesdayScheduledHours }}.</p>
+                  </div>
+
+                  <div class="clock-field title">
+                    <p>Scheduled Eight Day Hours:<br> {{ currentWednesdayProjection }}.</p>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Thursday Scheduled -->
+              <div class="current-section">
+
+                <div class="title">
+                  <h4>Scheduled Thursday Hours:</h4>
+                </div>
+
+                <div class="current-time">
+
+                  <!-- Clock In -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock In</mat-label>
+                      <input type="text" matInput formControlName="currentThursdayScheduleIn" required />
+
+                      <mat-error *ngIf="hoursForm.controls['currentThursdayScheduleIn'].hasError('required')
+                      && hoursForm.controls['currentThursdayScheduleIn'].touched">
+                        Clock In is required.
+                      </mat-error>
+
+                      <mat-error *ngIf="hoursForm.controls['currentThursdayScheduleIn'].hasError('pattern')
+                      && hoursForm.controls['currentThursdayScheduleIn'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
+
+                    </mat-form-field>
+                  </div>
+
+                  <!-- Clock Out -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock Out</mat-label>
+                      <input type="text" matInput formControlName="currentThursdayScheduleOut" required />
+
+                      <mat-error *ngIf="hoursForm.controls['currentThursdayScheduleOut'].hasError('required')
+                      && hoursForm.controls['currentThursdayScheduleOut'].touched">
+                        Clock Out is required.
+                      </mat-error>
+
+                      <mat-error *ngIf="hoursForm.controls['currentThursdayScheduleOut'].hasError('pattern')
+                      && hoursForm.controls['currentThursdayScheduleOut'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
+
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="current-time">
+
+                  <div class="clock-field title">
+                    <p>Scheduled Daily Hours:<br> {{ currentThursdayScheduledHours }}.</p>
+                  </div>
+
+                  <div class="clock-field title">
+                    <p>Scheduled Eight Day Hours:<br> {{ currentThursdayProjection }}.</p>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Friday Scheduled -->
+              <div class="current-section">
+
+                <div class="title">
+                  <h4>Scheduled Friday Hours:</h4>
+                </div>
+
+                <div class="current-time">
+
+                  <!-- Clock In -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock In</mat-label>
+                      <input type="text" matInput formControlName="currentFridayScheduleIn" required />
+
+                      <mat-error *ngIf="hoursForm.controls['currentFridayScheduleIn'].hasError('required')
+                      && hoursForm.controls['currentFridayScheduleIn'].touched">
+                        Clock In is required.
+                      </mat-error>
+
+                      <mat-error *ngIf="hoursForm.controls['currentFridayScheduleIn'].hasError('pattern')
+                      && hoursForm.controls['currentFridayScheduleIn'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
+
+                    </mat-form-field>
+                  </div>
+
+                  <!-- Clock Out -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock Out</mat-label>
+                      <input type="text" matInput formControlName="currentFridayScheduleOut" required />
+
+                      <mat-error *ngIf="hoursForm.controls['currentFridayScheduleOut'].hasError('required')
+                      && hoursForm.controls['currentFridayScheduleOut'].touched">
+                        Clock Out is required.
+                      </mat-error>
+
+                      <mat-error *ngIf="hoursForm.controls['currentFridayScheduleOut'].hasError('pattern')
+                      && hoursForm.controls['currentFridayScheduleOut'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
+
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="current-time">
+
+                  <div class="clock-field title">
+                    <p>Scheduled Daily Hours:<br> {{ currentFridayScheduledHours }}.</p>
+                  </div>
+
+                  <div class="clock-field title">
+                    <p>Scheduled Eight Day Hours:<br> {{ currentFridayProjection }}.</p>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Saturday Scheduled -->
+              <div class="current-section">
+
+                <div class="title">
+                  <h4>Scheduled Saturday Hours:</h4>
+                </div>
+
+                <div class="current-time">
+
+                  <!-- Clock In -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock In</mat-label>
+                      <input type="text" matInput formControlName="currentSaturdayScheduleIn" required />
+
+                      <mat-error *ngIf="hoursForm.controls['currentSaturdayScheduleIn'].hasError('required')
+                      && hoursForm.controls['currentSaturdayScheduleIn'].touched">
+                        Clock In is required.
+                      </mat-error>
+
+                      <mat-error *ngIf="hoursForm.controls['currentSaturdayScheduleIn'].hasError('pattern')
+                      && hoursForm.controls['currentSaturdayScheduleIn'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
+
+                    </mat-form-field>
+                  </div>
+
+                  <!-- Clock Out -->
+                  <div class="clock-field">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Clock Out</mat-label>
+                      <input type="text" matInput formControlName="currentSaturdayScheduleOut" required />
+
+                      <mat-error *ngIf="hoursForm.controls['currentSaturdayScheduleOut'].hasError('required')
+                      && hoursForm.controls['currentSaturdayScheduleOut'].touched">
+                        Clock Out is required.
+                      </mat-error>
+
+                      <mat-error *ngIf="hoursForm.controls['currentSaturdayScheduleOut'].hasError('pattern')
+                      && hoursForm.controls['currentSaturdayScheduleOut'].touched">
+                        Please use a 24 hour format.
+                      </mat-error>
+
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="current-time">
+
+                  <div class="clock-field title">
+                    <p>Scheduled Daily Hours:<br> {{ currentSaturdayScheduledHours }}.</p>
+                  </div>
+
+                  <div class="clock-field title">
+                    <p>Scheduled Eight Day Hours:<br> {{ currentSaturdayProjection }}.</p>
+                  </div>
+
+                </div>
+
+              </div>
 
-            <div class="daily-field">
-              <p>Scheduled Eight Day Hours: {{ currentSaturdayProjection }}.</p>
+            <!-- Paste Above -->
             </div>
 
           </div>
@@ -1229,42 +1375,45 @@
               <h4>Sunday:</h4>
             </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="nextSundayIn" required />
+            <div class="time-fields">
 
-                <mat-error *ngIf="hoursForm.controls['nextSundayIn'].hasError('required')
-                && hoursForm.controls['nextSundayIn'].touched">
-                  Clock In is required.
-                </mat-error>
+              <!-- Clock In -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock In</mat-label>
+                  <input type="text" matInput formControlName="nextSundayIn" required />
 
-                <mat-error *ngIf="hoursForm.controls['nextSundayIn'].hasError('pattern')
-                && hoursForm.controls['nextSundayIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['nextSundayIn'].hasError('required')
+                  && hoursForm.controls['nextSundayIn'].touched">
+                    Clock In is required.
+                  </mat-error>
 
-              </mat-form-field>
-            </div>
+                  <mat-error *ngIf="hoursForm.controls['nextSundayIn'].hasError('pattern')
+                  && hoursForm.controls['nextSundayIn'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="nextSundayOut" required />
+                </mat-form-field>
+              </div>
 
-                <mat-error *ngIf="hoursForm.controls['nextSundayOut'].hasError('required')
-                && hoursForm.controls['nextSundayOut'].touched">
-                  Clock Out is required.
-                </mat-error>
+              <!-- Clock Out -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock Out</mat-label>
+                  <input type="text" matInput formControlName="nextSundayOut" required />
 
-                <mat-error *ngIf="hoursForm.controls['nextSundayOut'].hasError('pattern')
-                && hoursForm.controls['nextSundayOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['nextSundayOut'].hasError('required')
+                  && hoursForm.controls['nextSundayOut'].touched">
+                    Clock Out is required.
+                  </mat-error>
 
-              </mat-form-field>
+                  <mat-error *ngIf="hoursForm.controls['nextSundayOut'].hasError('pattern')
+                  && hoursForm.controls['nextSundayOut'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
             </div>
 
             <div class="daily-field">
@@ -1284,42 +1433,45 @@
               <h4>Monday:</h4>
             </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="nextMondayIn" required />
+            <div class="time-fields">
 
-                <mat-error *ngIf="hoursForm.controls['nextMondayIn'].hasError('required')
-                && hoursForm.controls['nextMondayIn'].touched">
-                  Clock In is required.
-                </mat-error>
+              <!-- Clock In -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock In</mat-label>
+                  <input type="text" matInput formControlName="nextMondayIn" required />
 
-                <mat-error *ngIf="hoursForm.controls['nextMondayIn'].hasError('pattern')
-                && hoursForm.controls['nextMondayIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['nextMondayIn'].hasError('required')
+                  && hoursForm.controls['nextMondayIn'].touched">
+                    Clock In is required.
+                  </mat-error>
 
-              </mat-form-field>
-            </div>
+                  <mat-error *ngIf="hoursForm.controls['nextMondayIn'].hasError('pattern')
+                  && hoursForm.controls['nextMondayIn'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="nextMondayOut" required />
+                </mat-form-field>
+              </div>
 
-                <mat-error *ngIf="hoursForm.controls['nextMondayOut'].hasError('required')
-                && hoursForm.controls['nextMondayOut'].touched">
-                  Clock Out is required.
-                </mat-error>
+              <!-- Clock Out -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock Out</mat-label>
+                  <input type="text" matInput formControlName="nextMondayOut" required />
 
-                <mat-error *ngIf="hoursForm.controls['nextMondayOut'].hasError('pattern')
-                && hoursForm.controls['nextMondayOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['nextMondayOut'].hasError('required')
+                  && hoursForm.controls['nextMondayOut'].touched">
+                    Clock Out is required.
+                  </mat-error>
 
-              </mat-form-field>
+                  <mat-error *ngIf="hoursForm.controls['nextMondayOut'].hasError('pattern')
+                  && hoursForm.controls['nextMondayOut'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
             </div>
 
             <div class="daily-field">
@@ -1339,42 +1491,45 @@
               <h4>Tuesday:</h4>
             </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="nextTuesdayIn" required />
+            <div class="time-fields">
 
-                <mat-error *ngIf="hoursForm.controls['nextTuesdayIn'].hasError('required')
-                && hoursForm.controls['nextTuesdayIn'].touched">
-                  Clock In is required.
-                </mat-error>
+              <!-- Clock In -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock In</mat-label>
+                  <input type="text" matInput formControlName="nextTuesdayIn" required />
 
-                <mat-error *ngIf="hoursForm.controls['nextTuesdayIn'].hasError('pattern')
-                && hoursForm.controls['nextTuesdayIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['nextTuesdayIn'].hasError('required')
+                  && hoursForm.controls['nextTuesdayIn'].touched">
+                    Clock In is required.
+                  </mat-error>
 
-              </mat-form-field>
-            </div>
+                  <mat-error *ngIf="hoursForm.controls['nextTuesdayIn'].hasError('pattern')
+                  && hoursForm.controls['nextTuesdayIn'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="nextTuesdayOut" required />
+                </mat-form-field>
+              </div>
 
-                <mat-error *ngIf="hoursForm.controls['nextTuesdayOut'].hasError('required')
-                && hoursForm.controls['nextTuesdayOut'].touched">
-                  Clock Out is required.
-                </mat-error>
+              <!-- Clock Out -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock Out</mat-label>
+                  <input type="text" matInput formControlName="nextTuesdayOut" required />
 
-                <mat-error *ngIf="hoursForm.controls['nextTuesdayOut'].hasError('pattern')
-                && hoursForm.controls['nextTuesdayOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['nextTuesdayOut'].hasError('required')
+                  && hoursForm.controls['nextTuesdayOut'].touched">
+                    Clock Out is required.
+                  </mat-error>
 
-              </mat-form-field>
+                  <mat-error *ngIf="hoursForm.controls['nextTuesdayOut'].hasError('pattern')
+                  && hoursForm.controls['nextTuesdayOut'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
             </div>
 
             <div class="daily-field">
@@ -1394,42 +1549,45 @@
               <h4>Wednesday:</h4>
             </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="nextWednesdayIn" required />
+            <div class="time-fields">
 
-                <mat-error *ngIf="hoursForm.controls['nextWednesdayIn'].hasError('required')
-                && hoursForm.controls['nextWednesdayIn'].touched">
-                  Clock In is required.
-                </mat-error>
+              <!-- Clock In -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock In</mat-label>
+                  <input type="text" matInput formControlName="nextWednesdayIn" required />
 
-                <mat-error *ngIf="hoursForm.controls['nextWednesdayIn'].hasError('pattern')
-                && hoursForm.controls['nextWednesdayIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['nextWednesdayIn'].hasError('required')
+                  && hoursForm.controls['nextWednesdayIn'].touched">
+                    Clock In is required.
+                  </mat-error>
 
-              </mat-form-field>
-            </div>
+                  <mat-error *ngIf="hoursForm.controls['nextWednesdayIn'].hasError('pattern')
+                  && hoursForm.controls['nextWednesdayIn'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="nextWednesdayOut" required />
+                </mat-form-field>
+              </div>
 
-                <mat-error *ngIf="hoursForm.controls['nextWednesdayOut'].hasError('required')
-                && hoursForm.controls['nextWednesdayOut'].touched">
-                  Clock Out is required.
-                </mat-error>
+              <!-- Clock Out -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock Out</mat-label>
+                  <input type="text" matInput formControlName="nextWednesdayOut" required />
 
-                <mat-error *ngIf="hoursForm.controls['nextWednesdayOut'].hasError('pattern')
-                && hoursForm.controls['nextWednesdayOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['nextWednesdayOut'].hasError('required')
+                  && hoursForm.controls['nextWednesdayOut'].touched">
+                    Clock Out is required.
+                  </mat-error>
 
-              </mat-form-field>
+                  <mat-error *ngIf="hoursForm.controls['nextWednesdayOut'].hasError('pattern')
+                  && hoursForm.controls['nextWednesdayOut'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
             </div>
 
             <div class="daily-field">
@@ -1449,42 +1607,45 @@
               <h4>Thursday:</h4>
             </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="nextThursdayIn" required />
+            <div class="time-fields">
 
-                <mat-error *ngIf="hoursForm.controls['nextThursdayIn'].hasError('required')
-                && hoursForm.controls['nextThursdayIn'].touched">
-                  Clock In is required.
-                </mat-error>
+              <!-- Clock In -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock In</mat-label>
+                  <input type="text" matInput formControlName="nextThursdayIn" required />
 
-                <mat-error *ngIf="hoursForm.controls['nextThursdayIn'].hasError('pattern')
-                && hoursForm.controls['nextThursdayIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['nextThursdayIn'].hasError('required')
+                  && hoursForm.controls['nextThursdayIn'].touched">
+                    Clock In is required.
+                  </mat-error>
 
-              </mat-form-field>
-            </div>
+                  <mat-error *ngIf="hoursForm.controls['nextThursdayIn'].hasError('pattern')
+                  && hoursForm.controls['nextThursdayIn'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="nextThursdayOut" required />
+                </mat-form-field>
+              </div>
 
-                <mat-error *ngIf="hoursForm.controls['nextThursdayOut'].hasError('required')
-                && hoursForm.controls['nextThursdayOut'].touched">
-                  Clock Out is required.
-                </mat-error>
+              <!-- Clock Out -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock Out</mat-label>
+                  <input type="text" matInput formControlName="nextThursdayOut" required />
 
-                <mat-error *ngIf="hoursForm.controls['nextThursdayOut'].hasError('pattern')
-                && hoursForm.controls['nextThursdayOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['nextThursdayOut'].hasError('required')
+                  && hoursForm.controls['nextThursdayOut'].touched">
+                    Clock Out is required.
+                  </mat-error>
 
-              </mat-form-field>
+                  <mat-error *ngIf="hoursForm.controls['nextThursdayOut'].hasError('pattern')
+                  && hoursForm.controls['nextThursdayOut'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
             </div>
 
             <div class="daily-field">
@@ -1504,42 +1665,45 @@
               <h4>Friday:</h4>
             </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="nextFridayIn" required />
+            <div class="time-fields">
 
-                <mat-error *ngIf="hoursForm.controls['nextFridayIn'].hasError('required')
-                && hoursForm.controls['nextFridayIn'].touched">
-                  Clock In is required.
-                </mat-error>
+              <!-- Clock In -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock In</mat-label>
+                  <input type="text" matInput formControlName="nextFridayIn" required />
 
-                <mat-error *ngIf="hoursForm.controls['nextFridayIn'].hasError('pattern')
-                && hoursForm.controls['nextFridayIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['nextFridayIn'].hasError('required')
+                  && hoursForm.controls['nextFridayIn'].touched">
+                    Clock In is required.
+                  </mat-error>
 
-              </mat-form-field>
-            </div>
+                  <mat-error *ngIf="hoursForm.controls['nextFridayIn'].hasError('pattern')
+                  && hoursForm.controls['nextFridayIn'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="nextFridayOut" required />
+                </mat-form-field>
+              </div>
 
-                <mat-error *ngIf="hoursForm.controls['nextFridayOut'].hasError('required')
-                && hoursForm.controls['nextFridayOut'].touched">
-                  Clock Out is required.
-                </mat-error>
+              <!-- Clock Out -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock Out</mat-label>
+                  <input type="text" matInput formControlName="nextFridayOut" required />
 
-                <mat-error *ngIf="hoursForm.controls['nextFridayOut'].hasError('pattern')
-                && hoursForm.controls['nextFridayOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['nextFridayOut'].hasError('required')
+                  && hoursForm.controls['nextFridayOut'].touched">
+                    Clock Out is required.
+                  </mat-error>
 
-              </mat-form-field>
+                  <mat-error *ngIf="hoursForm.controls['nextFridayOut'].hasError('pattern')
+                  && hoursForm.controls['nextFridayOut'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
             </div>
 
             <div class="daily-field">
@@ -1559,42 +1723,45 @@
               <h4>Saturday:</h4>
             </div>
 
-            <!-- Clock In -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock In</mat-label>
-                <input type="text" matInput formControlName="nextSaturdayIn" required />
+            <div class="time-fields">
 
-                <mat-error *ngIf="hoursForm.controls['nextSaturdayIn'].hasError('required')
-                && hoursForm.controls['nextSaturdayIn'].touched">
-                  Clock In is required.
-                </mat-error>
+              <!-- Clock In -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock In</mat-label>
+                  <input type="text" matInput formControlName="nextSaturdayIn" required />
 
-                <mat-error *ngIf="hoursForm.controls['nextSaturdayIn'].hasError('pattern')
-                && hoursForm.controls['nextSaturdayIn'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['nextSaturdayIn'].hasError('required')
+                  && hoursForm.controls['nextSaturdayIn'].touched">
+                    Clock In is required.
+                  </mat-error>
 
-              </mat-form-field>
-            </div>
+                  <mat-error *ngIf="hoursForm.controls['nextSaturdayIn'].hasError('pattern')
+                  && hoursForm.controls['nextSaturdayIn'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
 
-            <!-- Clock Out -->
-            <div class="daily-field">
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Clock Out</mat-label>
-                <input type="text" matInput formControlName="nextSaturdayOut" required />
+                </mat-form-field>
+              </div>
 
-                <mat-error *ngIf="hoursForm.controls['nextSaturdayOut'].hasError('required')
-                && hoursForm.controls['nextSaturdayOut'].touched">
-                  Clock Out is required.
-                </mat-error>
+              <!-- Clock Out -->
+              <div class="clock-field">
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Clock Out</mat-label>
+                  <input type="text" matInput formControlName="nextSaturdayOut" required />
 
-                <mat-error *ngIf="hoursForm.controls['nextSaturdayOut'].hasError('pattern')
-                && hoursForm.controls['nextSaturdayOut'].touched">
-                  Please use a 24 hour format.
-                </mat-error>
+                  <mat-error *ngIf="hoursForm.controls['nextSaturdayOut'].hasError('required')
+                  && hoursForm.controls['nextSaturdayOut'].touched">
+                    Clock Out is required.
+                  </mat-error>
 
-              </mat-form-field>
+                  <mat-error *ngIf="hoursForm.controls['nextSaturdayOut'].hasError('pattern')
+                  && hoursForm.controls['nextSaturdayOut'].touched">
+                    Please use a 24 hour format.
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
             </div>
 
             <div class="daily-field">
