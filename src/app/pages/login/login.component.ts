@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
           {
             severity: 'error',
             summary: 'Error',
-            detail: "Invalid Hub Id or Password."
+            detail: e.message
           },
         ];
         console.log(e);

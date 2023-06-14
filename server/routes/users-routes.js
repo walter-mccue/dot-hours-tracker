@@ -30,25 +30,6 @@ const saltRounds = 10;
 // Validation
 const ajv = new Ajv();
 
-// Schema for  create validation
-const userSchema = {
-  type: "object",
-  properties: {
-    hubId: { type: "string" },
-    password: { type: "string" },
-    firstName: { type: "string" },
-    lastName: { type: "string" },
-    email: { type: "string" },
-  },
-  required: [
-    "hubId",
-    "password",
-    "firstName",
-    "lastName",
-    "email",
-  ],
-  additionalProperties: false,
-};
 
 // Schema for  update validation
 const updateUserSchema = {
@@ -277,79 +258,6 @@ router.get("/:id", async (req, res) => {
  *       '500':
  *         description: Server Exception
  */
-
-// createUser
-router.post("/", async (req, res) => {
-  try {
-
-    // Password encryption
-    let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
-
-    // Sets the default user role to standard
-    standardRole = {
-      text: "standard",
-    };
-
-    // User object from the request body
-    let newUser = req.body;
-
-    // Checks current request body against the schema
-    const validator = ajv.compile(userSchema);
-    const valid = validator(newUser);
-
-    // If invalid return 400 Error
-    if (!valid) {
-      console.log("Bad Request, unable to validate");
-      const userError = new ErrorResponse(
-        400, "Bad Request, unable to validate", newUser);
-      res.status(400).send(userError.toObject());
-      validError(newUser);
-      return;
-    }
-
-    // New User Object to be saved to the database
-    createUser = {
-      hubId: newUser.hubId,
-      password: hashedPassword,
-      firstName: newUser.firstName,
-      lastName: newUser.lastName,
-      email: newUser.email,
-      role: standardRole,
-    };
-
-    // create function for the user object
-    User.create(createUser, function (err, user) {
-
-      // If error
-      if (err) {
-        console.log(err);
-        const userError = new ErrorResponse(
-          404, "Bad request, please ensure request meets requirements.", err);
-        res.status(404).send(userError.toObject());
-        errorLogger({
-          filename: myFile,
-          message: "Bad request, please ensure request meets requirements.",
-          item: err});
-        return
-      }
-
-      // Successful post
-      console.log(user);
-      const userResponse = new BaseResponse(
-        200, "Query successful", user);
-      res.json(userResponse.toObject());
-      successResponse(user);
-    });
-
-  // Server error
-  } catch (e) {
-    console.log(e);
-    const userError = ErrorResponse(
-      500, "Internal server error", e.message);
-    res.status(500).send(userError.toObject());
-    serverError(e.message);
-  }
-});
 
 
 /**
