@@ -18,6 +18,52 @@ BUWEBDEV - inspired files:
       base-response.js
       error-response.js
     index.js
+  src/
+    pages/
+      admin/
+        role-edit/
+          role-edit.html
+          role-edit.ts
+        roles/
+          roles.html
+          roles.ts
+        security-question-edit/
+          security-question-edit.html
+          security-question-edit.ts
+        security-questions/
+          security-questions.html
+          security-questions.ts
+        user-edit/
+          user-edit.html
+          user-edit.ts
+        users/
+          users.html
+          users.ts
+      errors/
+        error.interceptor.ts
+    shared/
+      account/
+        verify-account/
+          verify-account.html
+          verify-account.ts
+        register/
+          register.html
+          register.ts
+      confirm-dialog/
+        confirm-dialog.html
+        confirm-dialog.ts
+      models/
+        role.ts
+        security-question.ts
+        selected-security-question.ts
+        user.ts
+        verify-security-questions.ts
+      services/
+        role.service.ts
+        security-question.service.ts
+        session.service.ts
+        user.service.ts
+
 
 Code in the above files is inspired by code written by members of House Slytherin in Web-450 316H
   Contributors include: Richard Krasso, Thomas Schultz, Jamal Damir, Carl Logan, Walter McCue

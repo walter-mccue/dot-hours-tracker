@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "server": "nodemon ./server/index.js",
-    "dev": "ng build && node ./server/index.js"
+    "dev": "ng build && node ./server/index.js",
+    "render-deploy": "ng build --configuration=production"
   },
   "private": true,
   "dependencies": {
@@ -49,5 +50,9 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~5.0.2"
+  },
+  "engines": {
+    "node": "^16.15.0",
+    "npm": "^9.2.0"
   }
 }
