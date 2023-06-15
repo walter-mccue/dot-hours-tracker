@@ -4,3 +4,19 @@ Author: Walter McCue
 Date: 05/14/23
 Description: Styles for this component
 */
+
+.center {
+  text-align: center;
+}
+
+.img-container img {
+  display: block;
+  margin-inline: auto;
+  width: 30%;
+}
+
+@media (max-width: 800px) {
+  .img-container img {
+    width: 50%;
+  }
+}

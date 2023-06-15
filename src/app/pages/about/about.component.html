@@ -5,4 +5,97 @@
   Description: html to display information about the application.
 -->
 
-<p>about works!</p>
+<div fxLayout="column">
+
+  <mat-card class="card-form">
+
+    <mat-card-title class="title">
+      <h2>How to use the Application</h2>
+    </mat-card-title>
+
+    <div class="about">
+
+      <mat-card-content class="about-content w-100">
+        <p>
+          Creating an account is simple.
+          Fill out account credentials: Hub Id and Password.
+          Your Hub Id should match your real Hub Id.
+          Password can be anything you want it to be.
+          Select three security questions and type the answers for each.
+          This is done for account recovery, if you ever forget your password or need to change it.
+          Then fill out your personal information.
+          Please use your real name and email.
+          We will not email you unless there is a major update,
+          or if there is something account specific that we need to disclose.
+          Review the Terms of Service and click the Register button.
+          <br><br>
+          In the event that you get completely locked out of your account,
+          you will need to provide a copy of your Drivers License and PERNER for verification.
+          If your information on your Drivers License does not match what is found on Roster,
+          we will be unable to assist.
+          Misuse of this site will result in disabling your account.
+          If your account is disabled, you can appeal to have it re-enabled once.
+          For any of the above assistance, please utilize the email link in the Contact page.
+          <br><br>
+          The main part of the application consists of 4 sections.
+          Previous Week, Current Week Actual Hours, Current Week Schedule, Next Week Schedule.
+          Enter Payrate if you want the application to approximate your pay.
+          It will not be accurate.
+          It uses a 5 day 40 hour work week to calculate pay
+          and does not account for regular days off, incentive-pay, or double-time from the Bullpen.
+          Clock in and out fields use military time.
+          For example, shifts starting at 1:00pm must be entered as 13:00.
+          Forms were made large on purpose for accessibility reasons.
+        </p>
+      </mat-card-content>
+
+      <mat-card-content class="about-content">
+        <p>
+          Previous Week consists of your actual clock in and clock out times.
+          The application will automatically calculate your hours for each day,
+          including a lunch break for all shifts over 7 hours and 15 minutes.
+          <br><br>
+          Current week actual hours consists of your actual clock in and clock out for each day.
+          The DOT hour calculation will consist of that day and the 7 days before it.
+          If you go over 65 hours, a warning will display.
+          <br><br>
+          After entering your schedule in for current week,
+          each day will calculate what you are scheduled for that day,
+          and the previous 7 days actually worked hours.
+          If you worked 62 hours in 7 days and are scheduled to work a 10 hour shift the next day,
+          the application will display a warning that working that shift will put you over DOT hours.
+          <br><br>
+          Next week schedule will project hours
+          from previous clocks in the current week and scheduled days of the next week.
+          <br><br>
+          Once you make changes to the form,
+          you must use the Update button at the bottom for those changes to take effect.
+          At the end of the week, select the New Week button to migrate next week schedule to current week
+          and current week actual hours to the previous week.
+          It will also reset current week actual hours and next week schedule back to 00:00.
+          Some of the colors may not have enough contrast,
+          if this is a concern, please reach out via the email link on the contact page.
+          If there is enough demand to change the color scheme,
+          we will put out a poll for users to vote on new colors.
+        </p>
+      </mat-card-content>
+
+    </div>
+
+    <mat-card-content>
+      <p>
+        This site is currently free to use.
+        If there is a large amount of use,
+        or if we go over the data allotments from the database provider,
+        the site may not work.
+        If that happens, we may upgrade to a paid service tier.
+        The site would still be free to use but donations would be accepted to help offset costs.
+        We would communicate this via email to all registered users.
+        For more information, please feel free to reach out via the email link on the contact page.
+        Thank you for your time and support.
+      </p>
+    </mat-card-content>
+
+  </mat-card>
+
+</div>

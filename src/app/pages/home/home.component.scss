@@ -4,3 +4,90 @@ Author: Walter McCue
 Date: 05/14/23
 Description: Styles for this component
 */
+
+.hours-tracker {
+  margin-bottom: 2rem;
+}
+
+.current-week {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+}
+
+.actual-hours, .scheduled-hours {
+  width: 50%;
+  padding: .75rem;
+  background-color: #333333;
+  border-radius: .5rem;
+}
+
+.current-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.current-time {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.daily-section {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.time-fields {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.clock-field {
+  width: 50%;
+}
+
+.daily-field {
+  width: 20%;
+}
+
+.center {
+  text-align: center;
+}
+
+.hours-controls {
+  display: flex;
+  width: 100%;
+  align-self: center;
+  justify-content: space-between;
+}
+
+hr {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+
+  .current-week, .daily-section {
+    flex-direction: column;
+    margin-bottom: .5rem;
+    margin-inline: auto;
+  }
+  .current-week {
+    background-color: #333333
+  }
+
+  .daily-field, .time-fields, .actual-hours, .scheduled-hours {
+    width: 90%;
+  }
+
+  hr {
+    display: block;
+  }
+}

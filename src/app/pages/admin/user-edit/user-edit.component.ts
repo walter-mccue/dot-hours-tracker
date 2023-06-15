@@ -87,7 +87,7 @@ export class UserEditComponent implements OnInit {
     // Success
     this.userService.updateUser(this.userId, updateUser).subscribe({
       next: (res) => {
-        this.router.navigate(['/users']);
+        this.router.navigate(['/admin/users']);
       },
 
       // Error
@@ -107,7 +107,7 @@ export class UserEditComponent implements OnInit {
 
   // Cancel edit and return
   cancel(): void {
-    this.router.navigate(['/users'])
+    this.router.navigate(['/admin/users'])
   }
 
   ngOnInit(): void {

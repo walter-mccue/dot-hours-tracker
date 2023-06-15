@@ -4,3 +4,23 @@ Author: Walter McCue
 Date: 05/14/23
 Description: Styles for this component
 */
+
+.center {
+  text-align: center;
+}
+
+mat-card {
+  width: 70%;
+  margin-inline: auto;
+}
+
+a {
+  color: #FF9800;
+  text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  mat-card {
+    width: 100%;
+  }
+}

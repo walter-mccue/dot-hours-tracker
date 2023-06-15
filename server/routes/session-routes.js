@@ -159,6 +159,8 @@ function successResponse(responseData) { debugLogger({
  *         description: Bad request.
  *       '401':
  *         description: Invalid login credentials.
+ *       '403':
+ *         description: Account Disabled.
  *       '404':
  *         description: Not found.
  *       '500':
@@ -197,26 +199,9 @@ router.post("/login", async (req, res) => {
         serverError(err);
         return
       }
-      console.log(user);
 
-      // Compare the string password with the hashed password in the database
-      if (user) {
-        let passwordIsValid = bcrypt.compareSync(
-          req.body.password,
-          user.password
-        );
-
-        // Valid password
-        if (passwordIsValid) {
-          console.log("Login successful");
-          const sessionResponse = new BaseResponse(
-            200, "Login successful", user);
-          res.json(sessionResponse.toObject());
-          successResponse(user);
-          return
-        }
-
-        // Invalid password
+      //  Invalid hubId
+      if (!user) {
         console.log("Invalid password or hubId");
         const sessionError = new BaseResponse(
           401, "Invalid password or hubId, please try again.", null);
@@ -224,19 +209,51 @@ router.post("/login", async (req, res) => {
         errorLogger({
           filename: myFile,
           message: "Invalid password or hubId",
-          item: req.body.password});
+          item: req.body.hubId});
+          return
+      }
+
+      // If account is disabled
+      if (user.isDisabled === true) {
+        const sessionError = new BaseResponse(
+          403, "Account is disabled.", user);
+        res.status(403).send(sessionError.toObject());
+        errorLogger({
+          filename: myFile,
+          message: "Account is disabled.",
+          item: req.body});
         return
       }
 
-      //  Invalid hubId
-      console.log("Invalid password or hubId");
-      const sessionError = new BaseResponse(
-        401, "Invalid password or hubId, please try again.", null);
-      res.status(401).send(sessionError.toObject());
-      errorLogger({
-        filename: myFile,
-        message: "Invalid password or hubId",
-        item: req.body.hubId});
+      // Compare the string password with the hashed password in the database
+      if (user) {
+        console.log(user);
+        let passwordIsValid = bcrypt.compareSync(
+          req.body.password,
+          user.password
+        );
+
+        // Invalid password
+        if (!passwordIsValid) {
+          console.log("Invalid password or hubId");
+          const sessionError = new BaseResponse(
+            401, "Invalid password or hubId, please try again.", null);
+          res.status(401).send(sessionError.toObject());
+          errorLogger({
+            filename: myFile,
+            message: "Invalid password or hubId",
+            item: req.body.password});
+          return
+        }
+
+        // Valid password
+        console.log("Login successful");
+        const sessionResponse = new BaseResponse(
+          200, "Login successful", user);
+        res.json(sessionResponse.toObject());
+        successResponse(user);
+        return
+      }
     });
 
   // Server Error

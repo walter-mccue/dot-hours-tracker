@@ -56,7 +56,7 @@ export class RoleEditComponent implements OnInit {
 
     this.roleService.updateRole(this.roleId, updatedRole).subscribe({
       next: (res) => {
-        this.router.navigate(['/roles']);
+        this.router.navigate(['/admin/roles']);
       },
       error: (e) => {
         this.serverMessage = [
@@ -74,7 +74,7 @@ export class RoleEditComponent implements OnInit {
 
   // Cancel edit and return
   cancel(): void {
-    this.router.navigate(['/roles'])
+    this.router.navigate(['/admin/roles'])
   }
 
   ngOnInit(): void {

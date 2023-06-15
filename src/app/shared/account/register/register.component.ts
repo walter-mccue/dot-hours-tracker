@@ -17,6 +17,8 @@ import { SecurityQuestion } from '../../../shared/models/security-question';
 import { SelectedSecurityQuestion } from '../../../shared/models/selected-security-question';
 import { MatDialog } from '@angular/material/dialog'
 import { TermsOfServiceComponent } from '../terms-of-service/terms-of-service.component';
+import { HoursService } from '../../services/hours.service';
+import { Hours } from '../../models/hours';
 
 @Component({
   selector: 'app-register',
@@ -34,6 +36,7 @@ export class RegisterComponent implements OnInit {
   securityMenu1 = '';
   securityMenu2 = '';
   securityMenu3 = '';
+  hours: Hours = {} as Hours
 
   // Constructor
   constructor(
@@ -42,6 +45,7 @@ export class RegisterComponent implements OnInit {
     private cookieService: CookieService,
     private securityQuestionsService: SecurityQuestionService,
     private sessionService: SessionService,
+    private hoursService: HoursService,
     private dialog: MatDialog
   ) {
 
@@ -114,6 +118,53 @@ export class RegisterComponent implements OnInit {
     // API call to save the new user object
     this.sessionService.register(this.user).subscribe({
       next: (res) => {
+
+        const zeroHours = {
+          sunday: "00:00",
+          monday: "00:00",
+          tuesday: "00:00",
+          wednesday: "00:00",
+          thursday: "00:00",
+          friday: "00:00",
+          saturday: "00:00",
+        }
+
+        const newHours = {
+          hubId: registration.hubId,
+          payRate: 0.99,
+          previousWeekIn: zeroHours,
+          previousWeekOut: zeroHours,
+          currentWeekClockIn: zeroHours,
+          currentWeekClockOut: zeroHours,
+          currentWeekScheduleIn: zeroHours,
+          currentWeekScheduleOut: zeroHours,
+          nextWeekIn: zeroHours,
+          nextWeekOut: zeroHours,
+        }
+
+        this.hoursService.createHours(registration.hubId, newHours).subscribe({
+          next: (res) => {
+            this.serverMessages = [
+              {
+                severity: 'success',
+                summary: 'Success',
+                detail: 'Account created, please standby.'
+              }
+            ];
+
+          },
+          error: (e) => {
+            this.serverMessages = [
+              {
+                severity: 'error',
+                summary: 'Error',
+                detail: e.message
+              }
+            ];
+            console.log(e);
+            window.scroll(0,0);
+          }
+        })
 
         // sets the cookies for authentication and authorization within the application
         this.cookieService.set('hubId', registration.hubId, 1);
