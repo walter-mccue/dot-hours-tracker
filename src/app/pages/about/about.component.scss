@@ -5,7 +5,7 @@ Date: 05/14/23
 Description: Styles for this component
 */
 
-.center {
+p {
   text-align: center;
 }
 
@@ -18,5 +18,14 @@ Description: Styles for this component
 }
 
 .about-content {
-  width: 30%;
+  width: 50%;
+}
+
+@media (max-width: 800px) {
+  .about {
+    flex-direction: column;
+  }
+  .about-content {
+    width: 100%;
+  }
 }
