@@ -171,7 +171,7 @@ export class RegisterComponent implements OnInit {
         this.cookieService.set('role', "standard", 1);
 
         // Navigates user to the home page.
-        this.router.navigate(['/']);
+        this.router.navigate(['/about']);
       },
 
       // Error handling
