@@ -62,7 +62,7 @@ export class SecurityQuestionEditComponent implements OnInit {
       .updateSecurityQuestion(this.questionId, updateSecurityQuestion)
       .subscribe({
         next: (res) => {
-          this.router.navigate(['/security-questions']);
+          this.router.navigate(['/admin/security-questions']);
         },
 
         // Error
@@ -83,7 +83,7 @@ export class SecurityQuestionEditComponent implements OnInit {
 
   // Cancel edit and return
   cancel(): void {
-    this.router.navigate(['/security-questions']);
+    this.router.navigate(['/admin/security-questions']);
   }
 
   ngOnInit(): void {

@@ -8,7 +8,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Message } from 'primeng/api';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
@@ -220,7 +219,7 @@ export class HomeComponent implements OnInit {
     private cookieService: CookieService,
     private fb: FormBuilder,
     private hoursService: HoursService,
-    private dialogRef: MatDialog
+    private dialog: MatDialog
   ) {
     this.hubId = this.cookieService.get('hubId') ?? '';
 
@@ -533,38 +532,35 @@ export class HomeComponent implements OnInit {
           this.previousSundayHours,
           this.nextSundayHours);
 
-        this.currentMondayProjection = this.calculateMoreDOT(
+        this.nextMondayProjection = this.calculateMoreDOT(
           this.currentMondayDOT,
           this.previousMondayHours,
           this.nextMondayHours);
 
-        this.currentTuesdayProjection = this.calculateMoreDOT(
+        this.nextTuesdayProjection = this.calculateMoreDOT(
           this.currentTuesdayDOT,
           this.previousTuesdayHours,
           this.nextTuesdayHours);
 
-        this.currentWednesdayProjection = this.calculateMoreDOT(
+        this.nextWednesdayProjection = this.calculateMoreDOT(
           this.currentWednesdayDOT,
           this.previousWednesdayHours,
           this.nextWednesdayHours);
 
-        this.currentThursdayProjection = this.calculateMoreDOT(
+        this.nextThursdayProjection = this.calculateMoreDOT(
           this.currentThursdayDOT,
           this.previousThursdayHours,
           this.nextThursdayHours);
 
-        this.currentFridayProjection = this.calculateMoreDOT(
+        this.nextFridayProjection = this.calculateMoreDOT(
           this.currentFridayDOT,
           this.previousFridayHours,
           this.nextFridayHours);
 
-        this.currentSaturdayProjection = this.calculateMoreDOT(
+        this.nextSaturdayProjection = this.calculateMoreDOT(
           this.currentSaturdayDOT,
           this.previousSaturdayHours,
           this.nextSaturdayHours);
-
-
-
       }
     })
   }
@@ -678,107 +674,115 @@ export class HomeComponent implements OnInit {
   }
 
   shiftHours(): void {
-    const updatedForm = this.hoursForm.value;
-    const newHours = {
-      hubId: this.hubId,
-      payRate: parseFloat(updatedForm.payRate),
-      previousWeekIn: {
-        sunday: updatedForm.currentSundayClockIn,
-        monday: updatedForm.currentMondayClockIn,
-        tuesday: updatedForm.currentTuesdayClockIn,
-        wednesday: updatedForm.currentWednesdayClockIn,
-        thursday: updatedForm.currentThursdayClockIn,
-        friday: updatedForm.currentFridayClockIn,
-        saturday: updatedForm.currentSaturdayClockIn,
-      },
-      previousWeekOut: {
-        sunday: updatedForm.currentSundayClockOut,
-        monday: updatedForm.currentMondayClockOut,
-        tuesday: updatedForm.currentTuesdayClockOut,
-        wednesday: updatedForm.currentWednesdayClockOut,
-        thursday: updatedForm.currentThursdayClockOut,
-        friday: updatedForm.currentFridayClockOut,
-        saturday: updatedForm.currentSaturdayClockOut,
-      },
-      currentWeekClockIn: {
-        sunday: "00:00",
-        monday: "00:00",
-        tuesday: "00:00",
-        wednesday: "00:00",
-        thursday: "00:00",
-        friday: "00:00",
-        saturday: "00:00",
-      },
-      currentWeekClockOut: {
-        sunday: "00:00",
-        monday: "00:00",
-        tuesday: "00:00",
-        wednesday: "00:00",
-        thursday: "00:00",
-        friday: "00:00",
-        saturday: "00:00",
-      },
-      currentWeekScheduleIn: {
-        sunday: updatedForm.nextSundayIn,
-        monday: updatedForm.nextMondayIn,
-        tuesday: updatedForm.nextTuesdayIn,
-        wednesday: updatedForm.nextWednesdayIn,
-        thursday: updatedForm.nextThursdayIn,
-        friday: updatedForm.nextFridayIn,
-        saturday: updatedForm.nextSaturdayIn,
-      },
-      currentWeekScheduleOut: {
-        sunday: updatedForm.nextSundayOut,
-        monday: updatedForm.nextMondayOut,
-        tuesday: updatedForm.nextTuesdayOut,
-        wednesday: updatedForm.nextWednesdayOut,
-        thursday: updatedForm.nextThursdayOut,
-        friday: updatedForm.nextFridayOut,
-        saturday: updatedForm.nextSaturdayOut,
-      },
-      nextWeekIn: {
-        sunday: "00:00",
-        monday: "00:00",
-        tuesday: "00:00",
-        wednesday: "00:00",
-        thursday: "00:00",
-        friday: "00:00",
-        saturday: "00:00",
-      },
-      nextWeekOut: {
-        sunday: "00:00",
-        monday: "00:00",
-        tuesday: "00:00",
-        wednesday: "00:00",
-        thursday: "00:00",
-        friday: "00:00",
-        saturday: "00:00",
-      },
-    }
 
-    this.hoursService.updateHours(this.hubId, newHours).subscribe({
-      next: (res) => {
-        this.serverMessages = [
-          {
-            severity: 'success',
-            summary: 'Success',
-            detail: 'Hours Successfully Updated. Please wait why we refresh your data.'
-          }
-        ];
-        window.scroll(0,0);
-        setTimeout(() => {
-          location.reload()
-        }, 500);
+    // Confirmation Dialog
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        header: 'Would you like to start a new week?',
+        body: "Are you sure you want to shift the current week's hours to the previous week and next week's schedule to this week's schedule?"
       },
-      error: (e) => {
+      disableClose: true
+    })
+
+    // If confirmed
+    dialogRef.afterClosed().subscribe({
+      next: (result) => {
+        if (result === 'confirm') {
+
+          const updatedForm = this.hoursForm.value;
+
+          const zeroHours = {
+            sunday: "00:00",
+            monday: "00:00",
+            tuesday: "00:00",
+            wednesday: "00:00",
+            thursday: "00:00",
+            friday: "00:00",
+            saturday: "00:00",
+          }
+
+          const newHours = {
+            hubId: this.hubId,
+            payRate: parseFloat(updatedForm.payRate),
+            previousWeekIn: {
+              sunday: updatedForm.currentSundayClockIn,
+              monday: updatedForm.currentMondayClockIn,
+              tuesday: updatedForm.currentTuesdayClockIn,
+              wednesday: updatedForm.currentWednesdayClockIn,
+              thursday: updatedForm.currentThursdayClockIn,
+              friday: updatedForm.currentFridayClockIn,
+              saturday: updatedForm.currentSaturdayClockIn,
+            },
+            previousWeekOut: {
+              sunday: updatedForm.currentSundayClockOut,
+              monday: updatedForm.currentMondayClockOut,
+              tuesday: updatedForm.currentTuesdayClockOut,
+              wednesday: updatedForm.currentWednesdayClockOut,
+              thursday: updatedForm.currentThursdayClockOut,
+              friday: updatedForm.currentFridayClockOut,
+              saturday: updatedForm.currentSaturdayClockOut,
+            },
+            currentWeekClockIn: zeroHours,
+            currentWeekClockOut: zeroHours,
+            currentWeekScheduleIn: {
+              sunday: updatedForm.nextSundayIn,
+              monday: updatedForm.nextMondayIn,
+              tuesday: updatedForm.nextTuesdayIn,
+              wednesday: updatedForm.nextWednesdayIn,
+              thursday: updatedForm.nextThursdayIn,
+              friday: updatedForm.nextFridayIn,
+              saturday: updatedForm.nextSaturdayIn,
+            },
+            currentWeekScheduleOut: {
+              sunday: updatedForm.nextSundayOut,
+              monday: updatedForm.nextMondayOut,
+              tuesday: updatedForm.nextTuesdayOut,
+              wednesday: updatedForm.nextWednesdayOut,
+              thursday: updatedForm.nextThursdayOut,
+              friday: updatedForm.nextFridayOut,
+              saturday: updatedForm.nextSaturdayOut,
+            },
+            nextWeekIn: zeroHours,
+            nextWeekOut: zeroHours,
+          }
+
+          this.hoursService.updateHours(this.hubId, newHours).subscribe({
+            next: (res) => {
+              this.serverMessages = [
+                {
+                  severity: 'success',
+                  summary: 'Success',
+                  detail: 'Hours Successfully Updated. Please wait why we refresh your data.'
+                }
+              ];
+              window.scroll(0,0);
+              setTimeout(() => {
+                location.reload()
+              }, 500);
+            },
+            error: (e) => {
+              this.serverMessages = [
+                {
+                  severity: 'error',
+                  summary: 'Error',
+                  detail: e.message
+                }
+              ];
+              console.log(e);
+              window.scroll(0,0);
+            }
+          })
+          return
+        }
+
+        // If Cancelled
         this.serverMessages = [
           {
-            severity: 'error',
-            summary: 'Error',
-            detail: e.message
+            severity: 'info',
+            summary: 'Info',
+            detail: 'Action Canceled'
           }
-        ];
-        console.log(e);
+        ]
         window.scroll(0,0);
       }
     })
@@ -857,6 +861,10 @@ export class HomeComponent implements OnInit {
       overtimeHours += sat - 8;
     } else {
       standardHours += sat;
+    }
+    if (standardHours > 40) {
+      overtimeHours += (standardHours - 40)
+      standardHours = 40
     }
     let totalPay = (standardHours * payRate) + (overtimeHours * payRate * 1.5);
     return parseFloat(totalPay.toFixed(2));
