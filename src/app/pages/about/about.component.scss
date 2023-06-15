@@ -4,3 +4,19 @@ Author: Walter McCue
 Date: 05/14/23
 Description: Styles for this component
 */
+
+.center {
+  text-align: center;
+}
+
+.about {
+  display: flex;
+  flex-direction: row;
+  gap: .5rem;
+  width: 100%;
+  padding: .5rem;
+}
+
+.about-content {
+  width: 30%;
+}
